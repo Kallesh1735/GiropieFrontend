@@ -54,46 +54,52 @@
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    aspect-ratio: 5 / 1;
+    background-color: #0d1e38;
 }
 
 .heroImage {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
     object-fit: cover;
-    min-height: 240px;
 }
 
-/* Dark semi-transparent gradient so text is always 100% readable */
+/* Dark semi-transparent frosted card for editable HTML text */
 .heroOverlayContent {
     position: absolute;
-    right: 4%;
+    right: 3%;
     top: 50%;
     transform: translateY(-50%);
-    text-align: right;
+    text-align: left;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    gap: 0.5rem;
-    background: rgba(11, 26, 48, 0.45);
-    backdrop-filter: blur(8px);
-    padding: 2rem 2.5rem;
-    border-radius: 18px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    align-items: flex-start;
+    gap: 0.35rem;
+    background: rgba(15, 23, 42, 0.72);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 1.1rem 1.8rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    max-width: 480px;
+    z-index: 2;
 }
 
 .heroTag {
-    font-size: 1.15rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    color: #ffffff;
-    letter-spacing: 0.5px;
+    color: #e2e8f0;
+    letter-spacing: 0.3px;
 }
 
 .heroTitle {
-    font-size: 2.5rem;
+    font-size: 1.75rem;
     font-weight: 900;
-    line-height: 1.1;
-    letter-spacing: -0.5px;
+    line-height: 1.15;
+    letter-spacing: -0.3px;
+    white-space: nowrap;
 }
 
 .titleBlue {
@@ -105,24 +111,24 @@
 }
 
 .applyNowBtn {
-    margin-top: 0.8rem;
+    margin-top: 0.35rem;
     display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.5rem;
     background: linear-gradient(135deg, #a855f7, #9333ea);
     color: #ffffff;
-    padding: 0.75rem 2rem;
+    padding: 0.55rem 1.5rem;
     border-radius: 50px;
-    font-size: 1rem;
+    font-size: 0.92rem;
     font-weight: 700;
     text-decoration: none;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 20px rgba(168, 85, 247, 0.35);
+    box-shadow: 0 6px 18px rgba(168, 85, 247, 0.35);
 }
 
 .applyNowBtn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 25px rgba(168, 85, 247, 0.45);
+    box-shadow: 0 10px 24px rgba(168, 85, 247, 0.45);
 }
 
 /* Introductory Paragraph */
@@ -161,67 +167,105 @@
 
 .pillarsGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.25rem;
 }
 
 .pillarCard {
-    background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 18px;
-    padding: 2.2rem 1.5rem;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 250px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    transition: all 0.35s ease;
+    justify-content: flex-end;
+    padding: 1.5rem 1.1rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    background: #0d1e38;
 }
 
 .pillarCard:hover {
-    transform: translateY(-6px);
-    border-color: rgba(37, 131, 239, 0.3);
-    box-shadow: 0 15px 35px rgba(37, 131, 239, 0.12);
+    transform: translateY(-8px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+    border-color: rgba(247, 147, 30, 0.5);
 }
 
-.pillarIconPod {
-    width: 60px;
-    height: 60px;
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.6rem;
-    color: #ffffff;
-    margin-bottom: 1.2rem;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+.pillarCard::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--color-primary);
+    transform: scaleX(0);
+    transition: transform 0.35s ease;
+    z-index: 3;
 }
 
-.podBlue {
-    background: linear-gradient(135deg, #1C4E80, #3A8DD5);
+.pillarCard:hover::after {
+    transform: scaleX(1);
 }
 
-.podGreen {
-    background: linear-gradient(135deg, #10b981, #059669);
+.pillarBgImg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: 0;
 }
 
-.podOrange {
-    background: linear-gradient(135deg, #F7931E, #ff7b54);
+.pillarCard:hover .pillarBgImg {
+    transform: scale(1.08);
 }
 
-.podPurple {
-    background: linear-gradient(135deg, #a855f7, #7c3aed);
+/* Dark gradient scrim ensuring text is always crisp and readable */
+.pillarOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(11, 26, 48, 0.95) 0%,
+        rgba(11, 26, 48, 0.72) 45%,
+        rgba(11, 26, 48, 0.25) 80%,
+        rgba(11, 26, 48, 0.1) 100%
+    );
+    z-index: 1;
+    transition: all 0.35s ease;
 }
 
-.podCyan {
-    background: linear-gradient(135deg, #0ea5e9, #0284c7);
+.pillarCard:hover .pillarOverlay {
+    background: linear-gradient(
+        to top,
+        rgba(11, 26, 48, 0.98) 0%,
+        rgba(11, 26, 48, 0.6) 45%,
+        rgba(11, 26, 48, 0.15) 100%
+    );
+}
+
+.pillarContent {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
 }
 
 .pillarTitle {
     font-size: 1.15rem;
-    font-weight: 700;
-    color: var(--color-secondary);
+    font-weight: 800;
+    color: #ffffff;
     line-height: 1.35;
+    letter-spacing: -0.2px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    transition: color 0.3s ease;
+}
+
+.pillarCard:hover .pillarTitle {
+    color: var(--color-primary);
 }
 
 /* ==========================================================================
@@ -381,32 +425,98 @@
     overflow: hidden;
     margin-top: 2rem;
 }
+.tabsSliderWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #f1f5f9;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 0.6rem 0.8rem;
+    gap: 0.6rem;
+}
+
+.tabSlideBtn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--color-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.25s ease;
+    font-size: 0.9rem;
+    z-index: 2;
+}
+
+.tabSlideBtn:hover {
+    background: var(--color-secondary);
+    color: #ffffff;
+    border-color: var(--color-secondary);
+    transform: scale(1.06);
+}
+
+.tabSlideBtn:active {
+    transform: scale(0.96);
+}
 
 .industryTabs {
     display: flex;
-    background: #f1f5f9;
+    gap: 0.75rem;
     overflow-x: auto;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 0.3rem 0.2rem;
+    flex: 1;
+    cursor: grab;
+    user-select: none;
+}
+
+.industryTabs::-webkit-scrollbar {
+    display: none;
+}
+
+.industryTabs.isDraggingTabs {
+    cursor: grabbing;
+    scroll-behavior: auto;
 }
 
 .industryTab {
-    flex: 1;
-    min-width: 180px;
-    padding: 1.2rem 1.2rem;
-    background: transparent;
-    border: none;
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 0.9rem 1.6rem;
+    background: #ffffff;
+    border: 1.5px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
     font-size: 0.95rem;
     font-weight: 700;
     color: #64748b;
     cursor: pointer;
-    transition: all 0.3s ease;
-    white-space: nowrap;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
 }
 
-.activeIndustryTab {
-    background: #ffffff;
-    color: var(--color-primary);
-    border-bottom: 3px solid var(--color-primary);
+.industryTab:hover {
+    color: var(--color-secondary);
+    border-color: rgba(28, 78, 128, 0.3);
+    background: #f8fafc;
+    transform: translateY(-1px);
+}
+
+.activeIndustryTab,
+.activeIndustryTab:hover {
+    background: #fff8f0;
+    color: #f7931e;
+    border-color: #f7931e;
+    box-shadow: 0 4px 16px rgba(247, 147, 30, 0.22);
+    font-weight: 800;
+    transform: translateY(-1px);
 }
 
 .industryContent {
@@ -436,6 +546,11 @@
    6. RESPONSIVE DESIGN (TABLETS & MOBILE)
    ========================================================================== */
 @media (max-width: 968px) {
+    .pillarsGrid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.2rem;
+    }
+
     .solutionsGrid {
         grid-template-columns: 1fr;
         gap: 3rem;
@@ -445,6 +560,11 @@
         position: static;
     }
 
+    .heroImageWrapper {
+        aspect-ratio: auto;
+        min-height: 200px;
+    }
+
     .heroOverlayContent {
         position: static;
         transform: none;
@@ -452,19 +572,33 @@
         align-items: center;
         margin-top: 1rem;
         background: #1c4e80;
+        max-width: 100%;
+        width: 100%;
     }
 
     .heroTitle {
-        font-size: 2rem;
+        font-size: 1.6rem;
+        white-space: normal;
     }
 }
 
 @media (max-width: 768px) {
+    .pillarsGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
     .formRow {
         grid-template-columns: 1fr;
     }
 
     .sectionTitle {
         font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .pillarsGrid {
+        grid-template-columns: 1fr;
     }
 }

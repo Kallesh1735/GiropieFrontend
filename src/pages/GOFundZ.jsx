@@ -1,14 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styles from './GOFundZ.module.css';
-import gofundzHeroImg from '../assets/gofundz page.png';
+import gofundzHeroImg from '../assets/gofundz-banner-clean.jpg';
+import handshakeImg from '../assets/Business Handshake.avif';
+import invoiceFinancingImg from '../assets/Invoice Financing.avif';
+import factoringImg from '../assets/Factoring.avif';
+import riskMitigationImg from '../assets/Risk Mitigation.avif';
+import laptopImg from '../assets/laptop.avif';
 import {
-    FaHandshake,
-    FaMoneyBillTrendUp,
-    FaFileInvoiceDollar,
-    FaShieldHalved,
-    FaBoltLightning,
-    FaArrowRight
+    FaArrowRight,
+    FaChevronLeft,
+    FaChevronRight
 } from 'react-icons/fa6';
+
+const pillarsData = [
+    {
+        title: 'Unlock Working Capital',
+        image: handshakeImg,
+        alt: 'Business Handshake - Unlock Working Capital'
+    },
+    {
+        title: 'Invoice Financing',
+        image: invoiceFinancingImg,
+        alt: 'Invoice Financing'
+    },
+    {
+        title: 'Bill Discounting',
+        image: factoringImg,
+        alt: 'Bill Discounting'
+    },
+    {
+        title: 'Mitigate Risks',
+        image: riskMitigationImg,
+        alt: 'Mitigate Risks'
+    },
+    {
+        title: 'Fast & Easy Processing',
+        image: laptopImg,
+        alt: 'Fast and Easy Processing'
+    }
+];
 
 const industryData = [
     {
@@ -35,6 +65,42 @@ const industryData = [
 
 const GOFundZ = () => {
     const [activeIndustry, setActiveIndustry] = useState(0);
+    const tabsContainerRef = useRef(null);
+    const [isDragging, setIsDragging] = useState(false);
+    const [startX, setStartX] = useState(0);
+    const [scrollLeft, setScrollLeft] = useState(0);
+
+    const handleMouseDown = (e) => {
+        setIsDragging(true);
+        setStartX(e.pageX - tabsContainerRef.current.offsetLeft);
+        setScrollLeft(tabsContainerRef.current.scrollLeft);
+    };
+
+    const handleMouseLeave = () => {
+        setIsDragging(false);
+    };
+
+    const handleMouseUp = () => {
+        setIsDragging(false);
+    };
+
+    const handleMouseMove = (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - tabsContainerRef.current.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        tabsContainerRef.current.scrollLeft = scrollLeft - walk;
+    };
+
+    const scrollTabs = (direction) => {
+        if (tabsContainerRef.current) {
+            const scrollAmount = 260;
+            tabsContainerRef.current.scrollBy({
+                left: direction === 'left' ? -scrollAmount : scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+    };
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
@@ -82,40 +148,19 @@ const GOFundZ = () => {
             <section className={styles.importanceSection}>
                 <h2 className={styles.sectionTitle}>The Importance of Trade Finance for Businesses</h2>
                 <div className={styles.pillarsGrid}>
-                    <div className={styles.pillarCard}>
-                        <div className={`${styles.pillarIconPod} ${styles.podBlue}`}>
-                            <FaHandshake />
+                    {pillarsData.map((pillar, idx) => (
+                        <div key={idx} className={styles.pillarCard}>
+                            <img
+                                src={pillar.image}
+                                alt={pillar.alt}
+                                className={styles.pillarBgImg}
+                            />
+                            <div className={styles.pillarOverlay}></div>
+                            <div className={styles.pillarContent}>
+                                <h3 className={styles.pillarTitle}>{pillar.title}</h3>
+                            </div>
                         </div>
-                        <h3 className={styles.pillarTitle}>Unlock Working Capital</h3>
-                    </div>
-
-                    <div className={styles.pillarCard}>
-                        <div className={`${styles.pillarIconPod} ${styles.podGreen}`}>
-                            <FaMoneyBillTrendUp />
-                        </div>
-                        <h3 className={styles.pillarTitle}>Invoice Financing</h3>
-                    </div>
-
-                    <div className={styles.pillarCard}>
-                        <div className={`${styles.pillarIconPod} ${styles.podOrange}`}>
-                            <FaFileInvoiceDollar />
-                        </div>
-                        <h3 className={styles.pillarTitle}>Bill Discounting</h3>
-                    </div>
-
-                    <div className={styles.pillarCard}>
-                        <div className={`${styles.pillarIconPod} ${styles.podPurple}`}>
-                            <FaShieldHalved />
-                        </div>
-                        <h3 className={styles.pillarTitle}>Mitigate Risks</h3>
-                    </div>
-
-                    <div className={styles.pillarCard}>
-                        <div className={`${styles.pillarIconPod} ${styles.podCyan}`}>
-                            <FaBoltLightning />
-                        </div>
-                        <h3 className={styles.pillarTitle}>Fast & Easy Processing</h3>
-                    </div>
+                    ))}
                 </div>
             </section>
 
@@ -244,21 +289,51 @@ const GOFundZ = () => {
             </section>
 
             {/* ==============================================================
-                SECTION 4: WHO WE SUPPORT (INDUSTRY TABS)
+                SECTION 4: WHO WE SUPPORT (INDUSTRY TABS SLIDER)
                 ============================================================== */}
             <section className={styles.supportSection}>
                 <h2 className={styles.sectionTitle}>Who We Support</h2>
                 <div className={styles.supportCard}>
-                    <div className={styles.industryTabs}>
-                        {industryData.map((item, idx) => (
-                            <button
-                                key={idx}
-                                className={`${styles.industryTab} ${activeIndustry === idx ? styles.activeIndustryTab : ''}`}
-                                onClick={() => setActiveIndustry(idx)}
-                            >
-                                {item.name}
-                            </button>
-                        ))}
+                    <div className={styles.tabsSliderWrapper}>
+                        <button
+                            type="button"
+                            className={`${styles.tabSlideBtn} ${styles.prevBtn}`}
+                            onClick={() => scrollTabs('left')}
+                            aria-label="Previous industries"
+                        >
+                            <FaChevronLeft />
+                        </button>
+
+                        <div
+                            className={`${styles.industryTabs} ${isDragging ? styles.isDraggingTabs : ''}`}
+                            ref={tabsContainerRef}
+                            onMouseDown={handleMouseDown}
+                            onMouseLeave={handleMouseLeave}
+                            onMouseUp={handleMouseUp}
+                            onMouseMove={handleMouseMove}
+                        >
+                            {industryData.map((item, idx) => (
+                                <button
+                                    key={idx}
+                                    type="button"
+                                    className={`${styles.industryTab} ${activeIndustry === idx ? styles.activeIndustryTab : ''}`}
+                                    onClick={() => {
+                                        if (!isDragging) setActiveIndustry(idx);
+                                    }}
+                                >
+                                    {item.name}
+                                </button>
+                            ))}
+                        </div>
+
+                        <button
+                            type="button"
+                            className={`${styles.tabSlideBtn} ${styles.nextBtn}`}
+                            onClick={() => scrollTabs('right')}
+                            aria-label="Next industries"
+                        >
+                            <FaChevronRight />
+                        </button>
                     </div>
 
                     <div className={styles.industryContent}>
