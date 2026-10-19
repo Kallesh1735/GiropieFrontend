@@ -1,0 +1,443 @@
+/* ==========================================================================
+   1. MAIN PAGE WRAPPER & AMBIENT GLOWS
+   ========================================================================== */
+.featuresPage {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f0f4f9;
+    /* Matching the soft grayish-blue tone */
+    overflow-x: hidden;
+    padding: 1.5rem 0 5rem;
+}
+
+/* Ambient Floating Glow Lights */
+.bgGlow1,
+.bgGlow2 {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(130px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.bgGlow1 {
+    width: 600px;
+    height: 600px;
+    background: #3a8dd5;
+    opacity: 0.12;
+    top: 20%;
+    left: -150px;
+}
+
+.bgGlow2 {
+    width: 550px;
+    height: 550px;
+    background: #f7931e;
+    opacity: 0.10;
+    top: 60%;
+    right: -150px;
+}
+
+/* ==========================================================================
+   2. HERO BANNER IMAGE
+   ========================================================================== */
+.heroBanner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 5% 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.heroImage {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    display: block;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+/* ==========================================================================
+   3. THE OPERATIONAL GAP (MODERN CARDS)
+   ========================================================================== */
+.gapSection {
+    max-width: 12100px;
+    margin: 3rem auto 5rem;
+    padding: 0 5%;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.sectionHeader {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.sectionBadge {
+    display: inline-block;
+    padding: 0.4rem 1.2rem;
+    background: rgba(28, 78, 128, 0.08);
+    color: var(--color-secondary);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.sectionTitle {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--color-secondary);
+    margin-bottom: 0.8rem;
+    letter-spacing: -0.5px;
+}
+
+.sectionSubtitle {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.gapGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+/* Base Card with subtle inner glow & top accent */
+.gapCard {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    padding: 2.5rem 2rem 2.2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Glowing 4px top accent line on each card */
+.gapCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+}
+
+.gapCard1::before {
+    background: linear-gradient(90deg, #f43f5e, #fb7185);
+}
+
+.gapCard2::before {
+    background: linear-gradient(90deg, #f59e0b, #fbbf24);
+}
+
+.gapCard3::before {
+    background: linear-gradient(90deg, #1C4E80, #3A8DD5);
+}
+
+/* Subtle corner ambient wash inside cards */
+.gapCard1 {
+    background: radial-gradient(circle at top right, rgba(244, 63, 94, 0.04), transparent 60%), #ffffff;
+}
+
+.gapCard2 {
+    background: radial-gradient(circle at top right, rgba(245, 158, 11, 0.05), transparent 60%), #ffffff;
+}
+
+.gapCard3 {
+    background: radial-gradient(circle at top right, rgba(58, 141, 213, 0.05), transparent 60%), #ffffff;
+}
+
+/* Lift on hover */
+.gapCard:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.gapCard1:hover {
+    border-color: rgba(244, 63, 94, 0.3);
+}
+
+.gapCard2:hover {
+    border-color: rgba(245, 158, 11, 0.3);
+}
+
+.gapCard3:hover {
+    border-color: rgba(58, 141, 213, 0.3);
+}
+
+/* Larger, 3D Gradient Icon Pods */
+.gapIconPod {
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease;
+}
+
+.gapCard:hover .gapIconPod {
+    transform: scale(1.1) rotate(4deg);
+}
+
+.iconPodRed {
+    background: linear-gradient(135deg, #f43f5e, #e11d48);
+}
+
+.iconPodAmber {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.iconPodBlue {
+    background: linear-gradient(135deg, #1C4E80, #3A8DD5);
+}
+
+/* Category Micro-Tag */
+.gapTag {
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 0.5rem;
+}
+
+.tagRed {
+    color: #f43f5e;
+}
+
+.tagAmber {
+    color: #d97706;
+}
+
+.tagBlue {
+    color: #1C4E80;
+}
+
+/* Titles & Descriptions */
+.gapTitle {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--color-secondary);
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+    letter-spacing: -0.3px;
+}
+
+.gapText {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+
+/* ==========================================================================
+   4. CAPABILITIES / CORE FEATURES (5 DETAILED CARDS)
+   ========================================================================== */
+.capabilitiesSection {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+    position: relative;
+    z-index: 1;
+}
+
+.featuresList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    margin-top: 2.5rem;
+}
+
+/* Horizontal Feature Card */
+.featureCard {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    padding: 2.2rem 2.5rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+    display: grid;
+    grid-template-columns: 80px 300px 1fr;
+    align-items: center;
+    gap: 2rem;
+    transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.featureCard:hover {
+    transform: translateY(-4px);
+    border-color: rgba(37, 131, 239, 0.35);
+    box-shadow: 0 15px 40px rgba(37, 131, 239, 0.12);
+}
+
+/* Feature Icon Block */
+.featureIconBox {
+    width: 72px;
+    height: 72px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.featureCard:hover .featureIconBox {
+    transform: scale(1.08) rotate(3deg);
+}
+
+/* Icon Gradients */
+.iconOrange {
+    background: linear-gradient(135deg, #F7931E, #ff7b54);
+}
+
+.iconBlue {
+    background: linear-gradient(135deg, #1C4E80, #3A8DD5);
+}
+
+.iconCyan {
+    background: linear-gradient(135deg, #0ea5e9, #0284c7);
+}
+
+.iconNavy {
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+}
+
+.iconGold {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+/* Title & Category Tag */
+.featureTitleWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.categoryTag {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-primary);
+}
+
+.featureTitle {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--color-secondary);
+    line-height: 1.35;
+    letter-spacing: -0.3px;
+}
+
+/* Description Text */
+.featureDesc {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--text-muted);
+    border-left: 2px solid rgba(0, 0, 0, 0.06);
+    padding-left: 2rem;
+}
+
+/* ==========================================================================
+   5. BOTTOM CALL TO ACTION
+   ========================================================================== */
+.ctaBox {
+    max-width: 1200px;
+    margin: 5rem auto 0;
+    background: linear-gradient(135deg, #0b1a30 0%, #1c4e80 100%);
+    border-radius: 24px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    color: #ffffff;
+    box-shadow: 0 20px 50px rgba(28, 78, 128, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.ctaBox h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+}
+
+.ctaBox p {
+    font-size: 1.15rem;
+    color: #94a3b8;
+    max-width: 600px;
+}
+
+.ctaButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: var(--color-primary);
+    color: #ffffff;
+    padding: 1rem 2.8rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(247, 147, 30, 0.35);
+}
+
+.ctaButton:hover {
+    transform: translateY(-3px);
+    background: var(--color-primary-hover);
+    box-shadow: 0 12px 30px rgba(247, 147, 30, 0.45);
+}
+
+/* ==========================================================================
+   6. RESPONSIVE DESIGN (TABLETS & PHONES)
+   ========================================================================== */
+@media (max-width: 968px) {
+    .featureCard {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 2rem;
+    }
+
+    .featureDesc {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+        padding-top: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .sectionTitle {
+        font-size: 2rem;
+    }
+
+    .ctaBox {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .ctaBox h2 {
+        font-size: 1.7rem;
+    }
+}

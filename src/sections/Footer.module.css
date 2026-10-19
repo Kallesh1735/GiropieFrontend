@@ -1,0 +1,150 @@
+ /* ==========================================================================
+   1. FOOTER CANVAS & TOP GRADIENT LINE
+   Responsible for deep dark background and glowing accent bar at the top
+   ========================================================================== */
+ .footer {
+     position: relative;
+     background-color: #070b14;
+     /* Deep midnight fintech background */
+     color: #ffffff;
+     padding: 1rem 5% 2rem;
+     overflow: hidden;
+ }
+
+ /* Glowing accent gradient line across the top border */
+ .footer::before {
+     content: '';
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 4px;
+     background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+ }
+
+ .container {
+     max-width: 1200px;
+     margin: 0 auto;
+ }
+
+ /* ==========================================================================
+   2. FOOTER COLUMNS GRID
+   Responsible for 4-column layout (Brand info + 3 Link columns)
+   ========================================================================== */
+ .columns {
+     display: grid;
+     grid-template-columns: 1.5fr 1fr 1fr 1fr;
+     gap: 4rem;
+     padding-bottom: 1rem;
+     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+ }
+
+ /* ==========================================================================
+   3. BRAND COLUMN & LOGO
+   Responsible for footer logo filter and introductory description
+   ========================================================================== */
+ .footerLogo {
+     height: 40px;
+     width: auto;
+     margin-bottom: 1.5rem;
+     filter: brightness(0) invert(1);
+     /* Inverts colors so logo appears crisp white on dark */
+ }
+
+ .brandColumn p {
+     color: #94a3b8;
+     line-height: 1.6;
+     font-size: 0.95rem;
+ }
+
+ /* ==========================================================================
+   4. NAVIGATION LINK COLUMNS
+   Responsible for link headings and hover interactions
+   ========================================================================== */
+ .column h4 {
+     font-size: 1.1rem;
+     font-weight: 600;
+     margin-bottom: 1.5rem;
+     color: #fff;
+ }
+
+ .column ul {
+     list-style: none;
+     padding: 0;
+     margin: 0;
+ }
+
+ .column ul li {
+     margin-bottom: 0.4rem;
+ }
+
+ .column ul a {
+     text-decoration: none;
+     color: #94a3b8;
+     font-size: 0.95rem;
+     transition: color 0.2s ease;
+ }
+
+ .column ul a:hover {
+     color: #fff;
+     /* Highlights white when hovered */
+ }
+
+ /* ==========================================================================
+   5. BOTTOM BAR & SOCIAL MEDIA ICONS
+   Responsible for copyright notice and circular social media buttons
+   ========================================================================== */
+ .bottomBar {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding-top: 1rem;
+ }
+
+ .bottomBar p {
+     color: #64748b;
+     font-size: 0.9rem;
+ }
+
+ .socials {
+     display: flex;
+     gap: 1rem;
+ }
+
+ /* Circular social icon button */
+ .socialIcon {
+     width: 40px;
+     height: 40px;
+     background: rgba(255, 255, 255, 0.05);
+     border: 1px solid rgba(255, 255, 255, 0.1);
+     border-radius: 50%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     color: #fff;
+     font-weight: bold;
+     text-decoration: none;
+     transition: all 0.3s ease;
+ }
+
+ /* Social icon hover: turns brand orange and lifts up */
+ .socialIcon:hover {
+     background: var(--color-primary);
+     border-color: var(--color-primary);
+     transform: translateY(-3px);
+ }
+
+ /* ==========================================================================
+   6. RESPONSIVE DESIGN (TABLETS & MOBILE)
+   ========================================================================== */
+ @media (max-width: 968px) {
+     .columns {
+         grid-template-columns: 1fr 1fr;
+     }
+
+     .bottomBar {
+         flex-direction: column;
+         gap: 1.5rem;
+         text-align: center;
+     }
+ }

@@ -1,0 +1,399 @@
+/* ==========================================================================
+   1. MAIN PAGE WRAPPER & AMBIENT LIGHTING
+   ========================================================================== */
+.pricingPage {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f0f4f9; /* Matching the soft grayish-blue tone */
+    overflow-x: hidden;
+    padding: 1.5rem 0 5rem;
+}
+
+/* Ambient Floating Glow Lights */
+.bgGlow1,
+.bgGlow2 {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(130px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.bgGlow1 {
+    width: 600px;
+    height: 600px;
+    background: #3a8dd5;
+    opacity: 0.12;
+    top: 25%;
+    left: -150px;
+}
+
+.bgGlow2 {
+    width: 550px;
+    height: 550px;
+    background: #f7931e;
+    opacity: 0.10;
+    top: 60%;
+    right: -150px;
+}
+
+/* ==========================================================================
+   2. HERO BANNER IMAGE
+   ========================================================================== */
+.heroBanner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 5% 2.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.heroImage {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    display: block;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+/* ==========================================================================
+   3. PRICING SECTION CONTAINER & TABS
+   ========================================================================== */
+.pricingContainer {
+    max-width: 1100px;
+    margin: 1rem auto 4rem;
+    padding: 0 5%;
+    position: relative;
+    z-index: 1;
+}
+
+/* Modern Segmented Tab Bar */
+.tabBar {
+    display: flex;
+    background: #1c4e80; /* GIROPie Navy base */
+    padding: 6px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(28, 78, 128, 0.15);
+    margin-bottom: 2rem;
+    gap: 6px;
+}
+
+.tabButton {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #cbd5e1;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tabButton:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Active Tab: Brand Orange */
+.activeTab {
+    background: var(--color-primary) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 15px rgba(247, 147, 30, 0.4);
+}
+
+/* ==========================================================================
+   4. ACTIVE PLAN DISPLAY CARD (BALANCED 2-COLUMN LAYOUT)
+   ========================================================================== */
+.planCard {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 24px;
+    padding: 3.5rem 3.5rem;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 3.5rem;
+    align-items: start;
+    animation: fadeIn 0.35s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Left: Features & Scope */
+.planInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.planAudience {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-primary);
+    margin-bottom: 0.6rem;
+}
+
+.planTitle {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-secondary);
+    margin-bottom: 2rem;
+    letter-spacing: -0.5px;
+}
+
+.featureList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.featureItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+    font-size: 1.05rem;
+    color: var(--text-main);
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+.checkIcon {
+    color: #10b981; /* Fresh emerald green */
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Right: Dedicated Pricing & Action Box */
+.priceBox {
+    background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+    border: 1px solid rgba(37, 131, 239, 0.15);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: sticky;
+    top: 6rem;
+}
+
+.offerBadge {
+    display: inline-block;
+    padding: 0.35rem 1rem;
+    background: rgba(247, 147, 30, 0.12);
+    color: var(--color-primary);
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 1.2rem;
+}
+
+.strikethroughPrice {
+    font-size: 1.15rem;
+    color: #94a3b8;
+    text-decoration: line-through;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.currentPrice {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--color-secondary);
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+}
+
+.currentPrice span {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.customPriceHeading {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--color-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.priceSubtext {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 1.8rem;
+}
+
+.actionBtn {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.primaryActionBtn {
+    background: var(--color-primary);
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 8px 20px rgba(247, 147, 30, 0.3);
+}
+
+.primaryActionBtn:hover {
+    transform: translateY(-2px);
+    background: var(--color-primary-hover);
+    box-shadow: 0 12px 25px rgba(247, 147, 30, 0.4);
+}
+
+.secondaryActionBtn {
+    background: var(--color-secondary);
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 8px 20px rgba(28, 78, 128, 0.25);
+}
+
+.secondaryActionBtn:hover {
+    transform: translateY(-2px);
+    background: var(--color-secondary-hover);
+    box-shadow: 0 12px 25px rgba(28, 78, 128, 0.35);
+}
+
+.priceNote {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin-top: 1rem;
+    line-height: 1.4;
+}
+
+/* ==========================================================================
+   5. CONSULTATION CTA CARD
+   ========================================================================== */
+.consultationSection {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 5%;
+    position: relative;
+    z-index: 1;
+}
+
+.consultationCard {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 24px;
+    padding: 3.5rem 3rem;
+    text-align: center;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.consultationTitle {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--color-secondary);
+    letter-spacing: -0.5px;
+    margin-bottom: 0.8rem;
+}
+
+.accentBar {
+    width: 50px;
+    height: 3px;
+    background: var(--color-primary);
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+}
+
+.consultationText {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 720px;
+    margin-bottom: 2.5rem;
+}
+
+.consultationBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: linear-gradient(135deg, #a855f7, #9333ea); /* Modern Purple as in screenshot */
+    color: #ffffff;
+    padding: 1.1rem 2.8rem;
+    border-radius: 50px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(168, 85, 247, 0.35);
+}
+
+.consultationBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(168, 85, 247, 0.45);
+}
+
+/* ==========================================================================
+   6. RESPONSIVE DESIGN (TABLETS & PHONES)
+   ========================================================================== */
+@media (max-width: 968px) {
+    .planCard {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding: 2.5rem 2rem;
+    }
+
+    .priceBox {
+        position: static;
+        width: 100%;
+    }
+
+    .tabBar {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 768px) {
+    .consultationTitle {
+        font-size: 1.7rem;
+    }
+
+    .planTitle {
+        font-size: 1.6rem;
+    }
+
+    .tabButton {
+        padding: 0.8rem 1rem;
+        font-size: 0.95rem;
+    }
+}

@@ -1,0 +1,45 @@
+:root {
+  /* Primary GIROPie Brand Colors */
+  --color-primary: #F7931E; /* The Orange */
+  --color-primary-hover: #e08317;
+  
+  --color-secondary: #1C4E80; /* The Deep Blue */
+  --color-secondary-hover: #153b61;
+
+  --color-accent: #3A8DD5; /* Light Blue/Cyan */
+
+  /* Light Mode Colors (Default) */
+  --bg-main: #FFFFFF;
+  --bg-card: rgba(230, 242, 248, 0.7); /* Frosted light blue */
+  --text-main: #1A1A1A;
+  --text-muted: #555555;
+  --border-light: rgba(0, 0, 0, 0.05);
+}
+
+/* Dark Mode (Easily switchable later) */
+.dark-mode {
+  --bg-main: #0B1120;
+  --bg-card: rgba(30, 41, 59, 0.7);
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  --border-light: rgba(255, 255, 255, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
