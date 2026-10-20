@@ -44,11 +44,15 @@
    Responsible for footer logo filter and introductory description
    ========================================================================== */
  .footerLogo {
-     height: 40px;
+     height: 42px;
      width: auto;
      margin-bottom: 1.5rem;
-     filter: brightness(0) invert(1);
-     /* Inverts colors so logo appears crisp white on dark */
+     display: block;
+     transition: transform 0.25s ease;
+ }
+
+ .footerLogo:hover {
+     transform: scale(1.03);
  }
 
  .brandColumn p {

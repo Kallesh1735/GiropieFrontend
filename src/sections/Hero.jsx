@@ -35,21 +35,7 @@ const Hero = () => {
                 <p>
                     Uncover hidden operational costs behind every invoice and reduce them by up to 20% with invoice-to-cash automation.
                 </p>
-
-                <div className={styles.buttonGroup}>
-                    <a
-                        href="https://live.giropie.com/signup"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.primaryBtn}
-                        style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
-                    >
-                        Start Your Trial
-                    </a>
-
-
-                    <button className={styles.secondaryBtn}>Discover True Cost</button>
-                </div>
+                
             </div>
 
             {/* Split Section: Slider (Left) & Data (Right) */}
