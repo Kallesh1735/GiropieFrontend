@@ -51,7 +51,10 @@ const Footer = () => {
                             <li><Link to="/about">About Us</Link></li>
                             <li><Link to="/careers">Careers</Link></li>
                             <li><Link to="/contact">Contact Us</Link></li>
-                            <li><Link to="/resources">Resources</Link></li>
+                            <li><Link to="/news">News</Link></li>
+                            <li><Link to="/faq">FAQ</Link></li>
+                            <li><Link to="/blog">Blog</Link></li>
+                            <li><Link to="/privacy">Privacy Policy</Link></li>
                         </ul>
                     </div>
 
@@ -76,7 +79,7 @@ const Footer = () => {
 
                 {/* Bottom Bar */}
                 <div className={styles.bottomBar}>
-                    <p>© 2023 by PepperTree.AI Pvt. Ltd. All rights reserved.</p>
+                    <p>© {new Date().getFullYear()} by PepperTree.AI Pvt. Ltd. All rights reserved.</p>
                     <div className={styles.socials}>
                         <a
                             href="https://youtube.com"
@@ -106,7 +109,7 @@ const Footer = () => {
                             <FaXTwitter size={18} />
                         </a>
                         <a
-                            href="https://linkedin.com"
+                            href="https://www.linkedin.com/company/peppertreeai/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={`${styles.socialIcon} ${styles.linkedin}`}

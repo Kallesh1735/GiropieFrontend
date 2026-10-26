@@ -43,3 +43,33 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Subtle page-load transition */
+main {
+  animation: pageFadeIn 0.22s ease-in-out;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0.85;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Global Tactile Button & CTA Click Feedback */
+button:active,
+a[role="button"]:active {
+  transform: scale(0.98);
+  transition: transform 0.08s ease;
+}
+
+/* Focus rings for accessibility */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}

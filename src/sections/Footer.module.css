@@ -7,7 +7,7 @@
      background-color: #070b14;
      /* Deep midnight fintech background */
      color: #ffffff;
-     padding: 1rem 5% 2rem;
+     padding: 0.75rem 5% 1rem;
      overflow: hidden;
  }
 
@@ -168,6 +168,7 @@
  .socialIcon.youtube {
      background: #ff0000;
  }
+
  .socialIcon.youtube:hover {
      transform: translateY(-3px) scale(1.08);
      box-shadow: 0 8px 18px rgba(255, 0, 0, 0.5);
@@ -177,6 +178,7 @@
  .socialIcon.facebook {
      background: #1877f2;
  }
+
  .socialIcon.facebook:hover {
      transform: translateY(-3px) scale(1.08);
      box-shadow: 0 8px 18px rgba(24, 119, 242, 0.5);
@@ -187,6 +189,7 @@
      background: #000000;
      border: 1px solid rgba(255, 255, 255, 0.25);
  }
+
  .socialIcon.twitter:hover {
      transform: translateY(-3px) scale(1.08);
      background: #111111;
@@ -198,6 +201,7 @@
  .socialIcon.linkedin {
      background: #0a66c2;
  }
+
  .socialIcon.linkedin:hover {
      transform: translateY(-3px) scale(1.08);
      box-shadow: 0 8px 18px rgba(10, 102, 194, 0.5);

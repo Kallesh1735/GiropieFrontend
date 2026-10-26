@@ -7,6 +7,23 @@ import { useLocation } from 'react-router-dom';
  * resolving the issue where navigating to another page or navigating back
  * retains previous scroll positions midway or at the bottom.
  */
+const PAGE_TITLES = {
+    '/': 'GIROPie | Connected Invoice-to-Cash & Working Capital Automation',
+    '/about': 'About Us | GIROPie',
+    '/features': 'Platform Features & Capabilities | GIROPie',
+    '/pricing': 'Transparent Pricing Plans | GIROPie',
+    '/gofundz': 'GOFundZ Trade Finance Solutions | GIROPie',
+    '/careers': 'Careers & Opportunities | GIROPie',
+    '/news': 'News & Recognitions | GIROPie',
+    '/resources/news': 'News & Recognitions | GIROPie',
+    '/faq': 'Frequently Asked Questions | GIROPie',
+    '/resources/faq': 'Frequently Asked Questions | GIROPie',
+    '/blog': 'Blog & Industry Insights | GIROPie',
+    '/resources/blog': 'Blog & Industry Insights | GIROPie',
+    '/contact': 'Contact Us | GIROPie',
+    '/privacy': 'Privacy Policy | GIROPie'
+};
+
 const ScrollToTop = () => {
     const { pathname, hash } = useLocation();
 
@@ -16,16 +33,25 @@ const ScrollToTop = () => {
             window.history.scrollRestoration = 'manual';
         }
 
-        // If there's an anchor hash (e.g. #apply-portal), scroll to it smoothly
-        if (hash) {
-            const targetElement = document.querySelector(hash);
-            if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
-                return;
-            }
+        // Dynamically update document title per route
+        if (pathname === '/about' && hash === '#contact') {
+            document.title = 'Contact Us | GIROPie';
+        } else {
+            document.title = PAGE_TITLES[pathname] || 'GIROPie | Connected Invoice-to-Cash & Working Capital Automation';
         }
 
-        // Instantly reset scroll to top of window and root document
+        // If there's an anchor hash (e.g. #contact, #apply-portal), scroll to it smoothly
+        if (hash) {
+            const timer = setTimeout(() => {
+                const targetElement = document.querySelector(hash);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 100);
+            return () => clearTimeout(timer);
+        }
+
+        // Instantly reset scroll to top of window and root document when navigating without a hash
         window.scrollTo({
             top: 0,
             left: 0,

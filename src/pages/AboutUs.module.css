@@ -1,18 +1,16 @@
 /* ==========================================================================
-   1. MAIN PAGE WRAPPER
-   Responsible for overall page background and vertical layout
+   ABOUT US PAGE STYLES - GIROPie
+   Modern, elevated aesthetics matching GIROPie brand guidelines
    ========================================================================== */
-/* ==========================================================================
-   1. MAIN PAGE WRAPPER WITH SUBTLE TECH PATTERN
-   ========================================================================== */
+
 .aboutPage {
     position: relative;
     width: 100%;
     min-height: 100vh;
-    /* Rich soft grayish-blue identical to the Features section */
-    background-color: #f0f4f9;
+    background-color: #fafbfd;
     overflow-x: hidden;
-    padding-top: 1rem;
+    padding-top: 1.5rem;
+    padding-bottom: 5rem;
 }
 
 /* Ambient Floating Glow Lights */
@@ -21,211 +19,306 @@
 .bgGlow3 {
     position: absolute;
     border-radius: 50%;
-    filter: blur(120px);
+    filter: blur(140px);
     z-index: 0;
     pointer-events: none;
 }
 
-/* Soft Blue Glow behind What We Do */
 .bgGlow1 {
     width: 600px;
     height: 600px;
-    background: #3a8dd5;
-    opacity: 0.12;
-    top: 25%;
+    background: rgba(58, 141, 213, 0.12);
+    top: 15%;
     left: -150px;
 }
 
-/* Soft Brand Orange Glow behind Mission & Vision */
 .bgGlow2 {
     width: 550px;
     height: 550px;
-    background: #f7931e;
-    opacity: 0.10;
-    top: 55%;
+    background: rgba(247, 147, 30, 0.08);
+    top: 48%;
     right: -150px;
 }
 
-/* Soft Cyan Glow behind Contact Form */
 .bgGlow3 {
     width: 500px;
     height: 500px;
-    background: #0ea5e9;
-    opacity: 0.08;
-    bottom: 5%;
+    background: rgba(14, 165, 233, 0.08);
+    bottom: 8%;
     left: 20%;
 }
 
 /* ==========================================================================
-   2. HERO BANNER IMAGE
-   Responsible for presenting the header banner image cleanly
+   1. HERO BANNER SECTION
    ========================================================================== */
 .heroBanner {
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    padding: 1.5rem 5% 0.5rem;
+    padding: 1rem 5% 2rem 5%;
     position: relative;
     z-index: 1;
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+.heroBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 1.1rem;
+    background: rgba(28, 78, 128, 0.08);
+    border: 1px solid rgba(28, 78, 128, 0.2);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1C4E80;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.badgeDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #F7931E;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.6; }
+}
+
+.heroImageContainer {
+    width: 100%;
+    max-width: 1150px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid rgba(37, 131, 239, 0.2);
+    box-shadow: 0 16px 40px rgba(28, 78, 128, 0.09);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.heroImageContainer:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 22px 50px rgba(28, 78, 128, 0.13);
 }
 
 .heroImage {
     width: 100%;
-    max-width: 1200px;
-    height: 200px;
+    height: auto;
     display: block;
-    border-radius: 16px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-}
-
-@media (max-width: 768px) {
-    .heroBanner {
-        padding: 1rem 3% 1.5rem;
-    }
-
-    .heroImage {
-        border-radius: 10px;
-    }
+    object-fit: cover;
 }
 
 /* ==========================================================================
-   3. SECTION 2: OUR STORY & THE TEAM
-   Responsible for narrative storytelling, high-contrast quotes, and team background
+   2. SECTION 2: OUR STORY & THE TEAM
    ========================================================================== */
 .storySection {
-    max-width: 1000px;
-    margin: 1rem auto;
-    padding: 1rem 3.5rem;
+    max-width: 1150px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.storyCard,
+.teamCard {
     background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.07);
-    border-radius: 24px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    border-radius: 22px;
+    padding: 2.5rem 2.25rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
 }
 
-.storyBlock {
-    text-align: center;
+.storyCard:hover,
+.teamCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 38px rgba(28, 78, 128, 0.08);
+    border-color: rgba(37, 131, 239, 0.25);
 }
 
-/* Elegant section heading */
+.storyHeader {
+    margin-bottom: 1.5rem;
+}
+
 .storyTitle {
-    font-size: 2.3rem;
+    font-size: 2rem;
     font-weight: 800;
-    color: var(--color-secondary);
-    margin-bottom: 2rem;
+    color: #1C4E80;
+    margin: 0 0 0.5rem 0;
     letter-spacing: -0.5px;
-    position: relative;
-    display: inline-block;
 }
 
-/* Subtle orange accent underline under the titles */
-.storyTitle::after {
-    content: '';
-    display: block;
+.storyTitleUnderline {
     width: 45px;
     height: 3px;
-    background: var(--color-primary);
-    margin: 0.6rem auto 0;
+    background: #F7931E;
     border-radius: 2px;
 }
 
-/* Story descriptive paragraphs */
-.storyText {
-    font-size: 1.15rem;
-    line-height: 1.85;
-    color: var(--text-muted);
-    margin-bottom: 1.5rem;
-    text-align: justify;
+.teamTitleUnderline {
+    width: 45px;
+    height: 3px;
+    background: #3A8DD5;
+    border-radius: 2px;
 }
 
-/* Highlighted quote callout card */
-.storyQuote {
-    background: rgba(37, 131, 239, 0.05);
-    border-left: 4px solid var(--color-primary);
-    padding: 1.4rem 1.8rem;
-    margin: 2rem 0;
+.storyQuoteBox {
+    background: linear-gradient(135deg, rgba(37, 131, 239, 0.06) 0%, rgba(247, 147, 30, 0.04) 100%);
+    border-left: 4px solid #F7931E;
+    padding: 1.25rem 1.5rem;
     border-radius: 0 12px 12px 0;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--color-secondary);
-    line-height: 1.6;
-    text-align: justify;
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
 }
 
-/* Subtle separator between Story and Team */
-.storyDivider {
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.08), transparent);
+.quoteIcon {
+    font-size: 1.5rem;
+    color: #F7931E;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+}
+
+.storyQuoteText {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #1C4E80;
+    line-height: 1.55;
+    margin: 0;
+    font-style: italic;
+}
+
+.storyText {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #475569;
+    margin-bottom: 1.25rem;
+}
+
+.storyText strong {
+    color: #1C4E80;
+    font-weight: 700;
 }
 
 /* ==========================================================================
-   4. SECTION 3: WHAT WE DO & FLOW DIAGRAM
-   Responsible for the workflow architecture showcase and diagram frame
+   3. SECTION 3: WHAT WE DO & FLOW DIAGRAM
    ========================================================================== */
 .whatWeDoSection {
-    max-width: 1100px;
-    margin: 4rem auto;
-    padding: 1.5rem 1.5rem;
+    max-width: 1150px;
+    margin: 3.5rem auto;
+    padding: 3rem 2rem;
     text-align: center;
     background: #ffffff;
     border-radius: 24px;
     border: 1px solid rgba(0, 0, 0, 0.07);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    position: relative;
+    z-index: 1;
+}
+
+.sectionHeader {
+    max-width: 850px;
+    margin: 0 auto 2.5rem auto;
 }
 
 .leadText {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     line-height: 1.7;
-    color: var(--text-main);
-    max-width: 850px;
-    margin: 0.5rem auto 2.5rem auto;
+    color: #1e293b;
+    margin: 1rem 0 0 0;
 }
 
-/* Feature tags pill bar */
-.featureTagBar {
-    display: inline-flex;
-    flex-wrap: wrap;
+/* 3 Core Highlight Pillars */
+.pillarsTrioGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+}
+
+.trioCard {
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    padding: 1.5rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s ease;
+}
+
+.trioCard:hover {
+    transform: translateY(-4px);
+    border-color: rgba(37, 131, 239, 0.35);
+    box-shadow: 0 10px 25px rgba(28, 78, 128, 0.08);
+}
+
+.trioIconWrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 1rem;
-    background: rgba(37, 131, 239, 0.08);
-    border: 1px solid rgba(37, 131, 239, 0.2);
-    padding: 0.8rem 2rem;
-    border-radius: 50px;
-    margin-bottom: 3.5rem;
+    font-size: 1.3rem;
+    color: #ffffff;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.trioIcon1 {
+    background: linear-gradient(135deg, #1C4E80, #3A8DD5);
+}
+
+.trioIcon2 {
+    background: linear-gradient(135deg, #F7931E, #ff6b4a);
+}
+
+.trioIcon3 {
+    background: linear-gradient(135deg, #0ea5e9, #0284c7);
+}
+
+.trioTitle {
     font-size: 1.05rem;
     font-weight: 700;
-    color: var(--color-secondary);
+    color: #1C4E80;
+    margin: 0;
 }
 
-.featureTagBar span {
-    color: var(--color-primary);
-}
-
-/* Diagram presentation frame */
-/* Diagram presentation frame (Seamless & Merged) */
+/* Diagram Container */
 .diagramContainer {
     width: 100%;
     max-width: 950px;
-    margin: 0 auto 3rem auto;
-    background: transparent;
-    /* Removes the solid white box */
-    border: none;
-    /* Removes the hard outer border */
-    box-shadow: none;
-    /* Removes the heavy container shadow */
-    padding: 1rem 0;
+    margin: 0 auto 2.5rem auto;
+    background: #f8fafc;
+    border-radius: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    padding: 1.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.3s ease;
 }
 
 .diagramContainer:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 30px 60px rgba(37, 131, 239, 0.12);
+    transform: translateY(-3px);
+    box-shadow: 0 18px 45px rgba(28, 78, 128, 0.1);
+    border-color: rgba(37, 131, 239, 0.3);
 }
 
 .diagramImg {
@@ -235,165 +328,216 @@
     border-radius: 12px;
 }
 
-/* Explanatory text under the diagram */
 .diagramCaption {
-    font-size: 1.15rem;
-    line-height: 1.8;
-    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: #475569;
     max-width: 900px;
     margin: 0 auto;
-    text-align: justify;
+    text-align: center;
 }
 
 /* ==========================================================================
-   5. SECTION 4: MISSION, VISION & VALUE CARDS
-   Responsible for the 3-column core values grid and hover interactions
+   4. SECTION 4: MISSION, VISION & VALUE CARDS
    ========================================================================== */
 .pillarsSection {
     max-width: 1200px;
-    margin: 4rem auto 5rem auto;
-    padding: 0 5%;
+    margin: 3.5rem auto 4.5rem auto;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 1;
 }
 
 .pillarsGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
 }
 
-/* Elevated White Card Design */
 .pillarCard {
     background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.07);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 20px;
-    padding: 3rem 2.2rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    padding: 1.5rem 1.5rem 2rem 1.5rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
     transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    position: relative;
 }
 
 .pillarCard:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 45px rgba(37, 131, 239, 0.12);
-    border-color: rgba(37, 131, 239, 0.25);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 45px rgba(28, 78, 128, 0.12);
+    border-color: rgba(37, 131, 239, 0.3);
 }
 
-/* Icon badge wrapper */
-.pillarIcon {
-    width: 60px;
-    height: 60px;
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-    color: #ffffff;
-    margin-bottom: 2rem;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-    transition: transform 0.3s ease;
-}
-
-.pillarCard:hover .pillarIcon {
-    transform: scale(1.1) rotate(5deg);
-}
-
-/* Gradient accents for each pillar */
-.missionIcon {
-    background: linear-gradient(135deg, #F7931E, #ff6b4a);
-    /* Brand Orange */
-}
-
-.visionIcon {
-    background: linear-gradient(135deg, #1C4E80, #3A8DD5);
-    /* Brand Blue */
-}
-
-.valueIcon {
-    background: linear-gradient(135deg, #0ea5e9, #0284c7);
-    /* Sky Cyan */
-}
-
-/* Card typography */
-.pillarTitle {
-    font-size: 1.7rem;
-    font-weight: 800;
-    color: var(--color-secondary);
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.5px;
-}
-
-/* Blue underline bar matching old design */
-.pillarBar {
-    width: 45px;
-    height: 3px;
-    background: var(--color-accent);
-    border-radius: 2px;
+.pillarImageFrame {
+    width: 100%;
+    height: 190px;
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
     margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
 }
 
-.pillarDesc {
-    font-size: 1.05rem;
-    line-height: 1.75;
-    color: var(--text-muted);
-    text-align: justify;
-}
-
-/* Card illustration banner (easily adjustable) */
 .pillarImage {
     width: 100%;
-    height: 180px;
-    /* Change this number if you want taller or shorter images */
+    height: 100%;
     object-fit: cover;
-    /* Keeps the image crisp without stretching */
-    border-radius: 14px;
-    /* Rounded corners */
-    margin-bottom: 1.5rem;
-    /* Spacing between image and title */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     transition: transform 0.4s ease;
 }
 
-/* Subtle zoom effect when hovering over the card */
 .pillarCard:hover .pillarImage {
-    transform: scale(1.03);
+    transform: scale(1.05);
+}
+
+/* Floating Icon Badge over the image */
+.pillarIconBadge {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    color: #ffffff;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+    transition: transform 0.3s ease;
+}
+
+.pillarCard:hover .pillarIconBadge {
+    transform: scale(1.12);
+}
+
+.missionBadge {
+    background: linear-gradient(135deg, #F7931E, #ff6b4a);
+}
+
+.visionBadge {
+    background: linear-gradient(135deg, #1C4E80, #3A8DD5);
+}
+
+.valueBadge {
+    background: linear-gradient(135deg, #0ea5e9, #0284c7);
+}
+
+.pillarTitle {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #1C4E80;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.5px;
+}
+
+.pillarBar {
+    width: 40px;
+    height: 3px;
+    background: #3A8DD5;
+    border-radius: 2px;
+    margin-bottom: 1.25rem;
+}
+
+.pillarDesc {
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: #475569;
+    margin: 0;
+}
+
+/* ==========================================================================
+   5. BACKED BY TRUST RIBBON
+   ========================================================================== */
+.backedBySection {
+    max-width: 1000px;
+    margin: 1rem auto 3rem auto;
+    padding: 0 1.5rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.backedByTitle {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #64748b;
+    margin-bottom: 1.25rem;
+}
+
+.backedByGrid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.75rem;
+}
+
+.backedByBadge {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 14px;
+    padding: 0.75rem 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    transition: all 0.25s ease;
+}
+
+.backedByBadge:hover {
+    transform: translateY(-2px);
+    border-color: rgba(37, 131, 239, 0.3);
+    box-shadow: 0 8px 20px rgba(28, 78, 128, 0.08);
+}
+
+.backedByLogo {
+    height: 38px;
+    max-width: 140px;
+    object-fit: contain;
 }
 
 /* ==========================================================================
    6. SECTION 5: INQUIRY FORM ("We Would Love to Hear From You")
-   Responsible for the contact card, input fields, and submit button
    ========================================================================== */
 .contactSection {
     max-width: 800px;
-    margin: 5rem auto 6rem auto;
-    padding: 3.5rem 3rem;
+    margin: 3rem auto 2rem auto;
+    padding: 2.5rem 2.5rem;
     background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 24px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
     text-align: center;
+    position: relative;
+    z-index: 1;
+    scroll-margin-top: 100px;
 }
 
 .contactTitle {
-    font-size: 2.3rem;
+    font-size: 2.2rem;
     font-weight: 800;
-    color: var(--color-secondary);
-    margin-bottom: 0.8rem;
+    color: #1C4E80;
+    margin-bottom: 0.5rem;
     letter-spacing: -0.5px;
 }
 
 .contactSubtitle {
-    font-size: 1.15rem;
-    color: var(--text-muted);
-    margin-bottom: 3rem;
+    font-size: 1.05rem;
+    color: #64748b;
+    margin-bottom: 2.5rem;
 }
 
 /* 2-column input grid */
 .formGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.8rem;
+    gap: 1.5rem;
     text-align: left;
 }
 
@@ -407,19 +551,19 @@
 }
 
 .formLabel {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     font-weight: 600;
-    color: var(--text-main);
-    margin-bottom: 0.5rem;
+    color: #1e293b;
+    margin-bottom: 0.45rem;
 }
 
 .formInput {
     width: 100%;
-    padding: 0.9rem 1.2rem;
+    padding: 0.85rem 1.1rem;
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.12);
-    font-size: 1rem;
-    color: var(--text-main);
+    font-size: 0.98rem;
+    color: #1e293b;
     background: #fafbfc;
     transition: all 0.3s ease;
     outline: none;
@@ -427,7 +571,7 @@
 
 .formInput:focus {
     background: #ffffff;
-    border-color: var(--color-accent);
+    border-color: #3A8DD5;
     box-shadow: 0 0 0 4px rgba(58, 141, 213, 0.12);
 }
 
@@ -443,31 +587,26 @@
 
 .phoneInputWrapper:focus-within {
     background: #ffffff;
-    border-color: var(--color-accent);
+    border-color: #3A8DD5;
     box-shadow: 0 0 0 4px rgba(58, 141, 213, 0.12);
 }
 
 .countryFlag {
-    padding: 0 0.9rem;
+    padding: 0.85rem 0.6rem 0.85rem 1rem;
     font-size: 1.1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    color: var(--text-muted);
-    font-weight: 600;
-    border-right: 1px solid rgba(0, 0, 0, 0.08);
+    user-select: none;
 }
 
 .phoneInput {
+    flex: 1;
     border: none;
-    background: transparent;
-    padding: 0.9rem 1rem;
-    width: 100%;
-    font-size: 1rem;
     outline: none;
+    background: transparent;
+    padding: 0.85rem 1rem 0.85rem 0.2rem;
+    font-size: 0.98rem;
+    color: #1e293b;
 }
 
-/* Centered Submit Button */
 .submitBtnWrapper {
     grid-column: span 2;
     display: flex;
@@ -476,47 +615,80 @@
 }
 
 .submitBtn {
-    background: var(--color-secondary);
+    padding: 0.85rem 3rem;
+    background: #1C4E80;
     color: #ffffff;
     border: none;
-    padding: 1rem 3.5rem;
     border-radius: 10px;
     font-size: 1.05rem;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 20px rgba(28, 78, 128, 0.2);
+    box-shadow: 0 6px 18px rgba(28, 78, 128, 0.2);
 }
 
 .submitBtn:hover {
-    background: var(--color-secondary-hover);
+    background: #F7931E;
     transform: translateY(-2px);
-    box-shadow: 0 12px 25px rgba(28, 78, 128, 0.3);
+    box-shadow: 0 8px 25px rgba(247, 147, 30, 0.3);
 }
 
-/* Privacy policy text */
 .privacyText {
     grid-column: span 2;
     font-size: 0.85rem;
-    line-height: 1.5;
-    color: var(--text-muted);
+    color: #64748b;
     text-align: center;
     margin-top: 1rem;
 }
 
 .privacyText a {
-    color: var(--color-secondary);
+    color: #1C4E80;
     text-decoration: underline;
-    text-underline-offset: 3px;
 }
 
-/* Tablet & Mobile Layout */
-@media (max-width: 768px) {
-    .contactSection {
-        padding: 2.5rem 1.5rem;
-        margin: 3rem 5% 4rem;
+/* In-Page Success Feedback Banner */
+.successNotice {
+    grid-column: span 2;
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    color: #065f46;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    font-weight: 600;
+    font-size: 0.98rem;
+    margin-bottom: 0.5rem;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.successIcon {
+    color: #10b981;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 992px) {
+    .storySection {
+        grid-template-columns: 1fr;
     }
 
+    .pillarsTrioGrid,
+    .pillarsGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
     .formGrid {
         grid-template-columns: 1fr;
     }
@@ -527,7 +699,12 @@
         grid-column: span 1;
     }
 
-    .submitBtn {
-        width: 100%;
+    .contactSection {
+        padding: 2rem 1.25rem;
+    }
+
+    .storyCard,
+    .teamCard {
+        padding: 1.75rem 1.5rem;
     }
 }

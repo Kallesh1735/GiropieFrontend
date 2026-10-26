@@ -183,9 +183,11 @@
      cursor: pointer;
      transition: all 0.3s ease;
      box-shadow: 0 8px 20px rgba(37, 131, 239, 0.25);
-     display: flex;
+     display: inline-flex;
      align-items: center;
+     justify-content: center;
      gap: 0.5rem;
+     text-decoration: none;
  }
 
  .demoBtn:hover {
@@ -204,6 +206,10 @@
      font-size: 1rem;
      cursor: pointer;
      transition: all 0.3s ease;
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     text-decoration: none;
  }
 
  .contactBtn:hover {

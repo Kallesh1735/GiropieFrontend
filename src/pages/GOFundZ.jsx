@@ -9,7 +9,8 @@ import laptopImg from '../assets/laptop.avif';
 import {
     FaArrowRight,
     FaChevronLeft,
-    FaChevronRight
+    FaChevronRight,
+    FaCheck
 } from 'react-icons/fa6';
 
 const pillarsData = [
@@ -65,6 +66,7 @@ const industryData = [
 
 const GOFundZ = () => {
     const [activeIndustry, setActiveIndustry] = useState(0);
+    const [isSubmitted, setIsSubmitted] = useState(false);
     const tabsContainerRef = useRef(null);
     const [isDragging, setIsDragging] = useState(false);
     const [startX, setStartX] = useState(0);
@@ -104,7 +106,11 @@ const GOFundZ = () => {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        alert('Thank you! Your trade finance application has been submitted. Our team will contact you shortly.');
+        setIsSubmitted(true);
+        e.target.reset();
+        setTimeout(() => {
+            setIsSubmitted(false);
+        }, 7000);
     };
 
     return (
@@ -215,6 +221,14 @@ const GOFundZ = () => {
                     {/* Right: Apply Today Form */}
                     <div className={styles.applyCard}>
                         <h3 className={styles.applyTitle}>Apply Today</h3>
+
+                        {isSubmitted && (
+                            <div className={styles.successNotice}>
+                                <FaCheck className={styles.successIcon} />
+                                <span>Thank you! Your trade finance application has been submitted. Our team will contact you shortly.</span>
+                            </div>
+                        )}
+
                         <form className={styles.applyForm} onSubmit={handleFormSubmit}>
                             <div className={styles.formGroup}>
                                 <label className={styles.formLabel}>Company Name *</label>

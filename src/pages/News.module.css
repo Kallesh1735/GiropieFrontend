@@ -1,0 +1,578 @@
+/* ==========================================================================
+   NEWS & MEDIA PAGE STYLES - GIROPie
+   Modern, elegant, high-contrast design with interactive slider and feed
+   ========================================================================== */
+
+.newsPage {
+    min-height: 100vh;
+    padding-bottom: 6rem;
+    position: relative;
+    overflow-x: hidden;
+    background-color: #fafbfd;
+}
+
+/* Ambient Background Glows */
+.bgGlow1 {
+    position: absolute;
+    top: 5%;
+    left: 10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(58, 141, 213, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.bgGlow2 {
+    position: absolute;
+    top: 40%;
+    right: 5%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(247, 147, 30, 0.06) 0%, rgba(255, 255, 255, 0) 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ==========================================================================
+   HERO HEADER
+   ========================================================================== */
+.heroHeader {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 3.5rem 1.5rem 2rem 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 1.1rem;
+    background: rgba(28, 78, 128, 0.08);
+    border: 1px solid rgba(28, 78, 128, 0.2);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1C4E80;
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.badgeDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #F7931E;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.6; }
+}
+
+.heroTitle {
+    font-size: 2.75rem;
+    font-weight: 800;
+    color: #1C4E80;
+    line-height: 1.2;
+    margin: 0 0 1rem 0;
+}
+
+.heroTitleHighlight {
+    color: #F7931E;
+}
+
+.heroSubtitle {
+    font-size: 1.1rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0 auto;
+    max-width: 700px;
+}
+
+/* ==========================================================================
+   CAROUSEL / SLIDER SECTION
+   ========================================================================== */
+.sliderSection {
+    position: relative;
+    z-index: 1;
+    max-width: 1240px;
+    margin: 2rem auto 3.5rem auto;
+    padding: 0 1.5rem;
+}
+
+.sliderHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    padding: 0 0.25rem;
+}
+
+.sliderTitleWrap {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.sliderTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+}
+
+.sliderHint {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.sliderControls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.navArrowBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #1C4E80;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.25s ease;
+    outline: none;
+}
+
+.navArrowBtn:hover:not(:disabled) {
+    background: #1C4E80;
+    color: #ffffff;
+    border-color: #1C4E80;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(28, 78, 128, 0.25);
+}
+
+.navArrowBtn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.sliderTrack {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 0.5rem 0.25rem 1.5rem 0.25rem;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+    scroll-snap-type: x mandatory;
+}
+
+.sliderTrack::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+}
+
+/* Individual Slider Card */
+.slideCard {
+    flex: 0 0 280px;
+    scroll-snap-align: start;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+}
+
+.slideCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #1C4E80, #3A8DD5, #F7931E);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.slideCard:hover {
+    transform: translateY(-5px);
+    border-color: rgba(37, 131, 239, 0.4);
+    box-shadow: 0 12px 30px rgba(28, 78, 128, 0.12);
+}
+
+.slideCard:hover::before {
+    opacity: 1;
+}
+
+.slideTopRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.slideCategoryBadge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.25rem 0.65rem;
+    border-radius: 50px;
+    background: #f1f5f9;
+    color: #475569;
+}
+
+.slideYear {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #94a3b8;
+}
+
+.slideVisualBox {
+    height: 130px;
+    background: #f8fafc;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    padding: 0.6rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.slideCard:hover .slideVisualBox {
+    background: #ffffff;
+    border-color: rgba(37, 131, 239, 0.35);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+.slideImg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.35s ease;
+}
+
+.slideCard:hover .slideImg {
+    transform: scale(1.06);
+}
+
+.slideVisualIcon {
+    font-size: 2.2rem;
+    color: #1C4E80;
+}
+
+.slideVisualPlaceholder {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.slideTitle {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1e293b;
+    line-height: 1.35;
+    margin: 0 0 0.35rem 0;
+}
+
+.slideOrg {
+    font-size: 0.85rem;
+    color: #64748b;
+    font-weight: 500;
+    margin: 0 0 1.25rem 0;
+    line-height: 1.4;
+}
+
+.slideFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #1C4E80;
+}
+
+.slideFooterIcon {
+    transition: transform 0.2s ease;
+}
+
+.slideCard:hover .slideFooterIcon {
+    transform: translateY(2px);
+    color: #F7931E;
+}
+
+/* ==========================================================================
+   ARTICLES FEED CONTAINER
+   ========================================================================== */
+.feedSection {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.feedHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.feedSectionTitle {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1C4E80;
+    margin: 0;
+}
+
+.feedCount {
+    font-size: 0.9rem;
+    color: #64748b;
+    font-weight: 600;
+}
+
+/* Article Card */
+.articleCard {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 18px;
+    padding: 2.25rem 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    scroll-margin-top: 100px;
+}
+
+.articleCard:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+    border-color: rgba(37, 131, 239, 0.3);
+}
+
+/* Highlight flash when jump-navigated from slider */
+.articleCardHighlighted {
+    border-color: #3A8DD5 !important;
+    box-shadow: 0 0 0 4px rgba(58, 141, 213, 0.25), 0 12px 35px rgba(28, 78, 128, 0.12) !important;
+    animation: flashGlow 2.5s ease-out forwards;
+}
+
+@keyframes flashGlow {
+    0% { background-color: rgba(58, 141, 213, 0.08); }
+    100% { background-color: #ffffff; }
+}
+
+.articleMetaRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.articleCategory {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: rgba(28, 78, 128, 0.08);
+    color: #1C4E80;
+}
+
+.articleDate {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.dateIcon {
+    color: #F7931E;
+}
+
+.articleTitle {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: #1e293b;
+    line-height: 1.35;
+    margin: 0 0 1.25rem 0;
+}
+
+.articleTitleLink {
+    color: #1C4E80;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.articleTitleLink:hover {
+    color: #F7931E;
+    text-decoration: underline;
+}
+
+.articleBody {
+    font-size: 1rem;
+    color: #475569;
+    line-height: 1.7;
+    margin: 0 0 1.5rem 0;
+}
+
+.articlePointsList {
+    margin: 1rem 0 1.5rem 0;
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.articlePointItem {
+    font-size: 0.96rem;
+    color: #334155;
+    line-height: 1.55;
+}
+
+.articleHighlightBox {
+    background: #f8fafc;
+    border-left: 4px solid #F7931E;
+    padding: 0.85rem 1.25rem;
+    border-radius: 0 8px 8px 0;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+/* Footer / Actions */
+.articleFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.viewMoreBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.4rem;
+    background: #1C4E80;
+    color: #ffffff;
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 8px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: all 0.25s ease;
+    box-shadow: 0 3px 10px rgba(28, 78, 128, 0.15);
+}
+
+.viewMoreBtn:hover {
+    background: #F7931E;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(247, 147, 30, 0.25);
+}
+
+.viewMoreUnderlineLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #1C4E80;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-bottom: 2px solid #F7931E;
+    padding-bottom: 3px;
+    transition: all 0.2s ease;
+}
+
+.viewMoreUnderlineLink:hover {
+    color: #F7931E;
+    border-bottom-color: #1C4E80;
+    transform: translateX(3px);
+}
+
+.anchorBadge {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    font-weight: 500;
+    background: #f8fafc;
+    padding: 0.3rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 768px) {
+    .heroHeader {
+        padding: 2.5rem 1rem 1.5rem 1rem;
+    }
+
+    .heroTitle {
+        font-size: 2.1rem;
+    }
+
+    .slideCard {
+        flex: 0 0 240px;
+        padding: 1rem;
+    }
+
+    .slideVisualBox {
+        height: 100px;
+    }
+
+    .articleCard {
+        padding: 1.5rem;
+        border-radius: 14px;
+    }
+
+    .articleTitle {
+        font-size: 1.25rem;
+    }
+
+    .articleBody {
+        font-size: 0.95rem;
+    }
+}

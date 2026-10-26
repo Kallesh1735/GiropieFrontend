@@ -175,12 +175,47 @@
 .sliderContainer {
     width: 100%;
     border-radius: 16px;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.4);
+    padding: 10px 10px 12px 10px;
+    background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(20px);
     border: 3px solid rgba(60, 145, 230, 0.6);
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
     overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sliderDots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 0.85rem;
+}
+
+.dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(28, 78, 128, 0.25);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.dot:hover {
+    background: var(--color-primary);
+    transform: scale(1.2);
+}
+
+.activeDot {
+    width: 26px;
+    border-radius: 8px;
+    background: var(--color-primary);
+    box-shadow: 0 2px 8px rgba(247, 147, 30, 0.35);
 }
 
 .sliderImage {

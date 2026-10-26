@@ -49,7 +49,7 @@ const FeaturesPage = () => {
                         <div className={`${styles.gapIconPod} ${styles.iconPodRed}`}>
                             <FaLinkSlash />
                         </div>
-                        <span className={`${styles.gapTag} ${styles.tagRed}`}>01 • Solid Workflows</span>
+                        <span className={`${styles.gapTag} ${styles.tagRed}`}>01 • Siloed Workflows</span>
                         <h3 className={styles.gapTitle}>Disconnected Workflows</h3>
                         <p className={styles.gapText}>
                             Invoice status, payment commitments, and settlements are rarely connected end-to-end across buyers and suppliers.

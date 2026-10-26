@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Onboarding.module.css';
 import { FaCheckCircle, FaArrowRight } from 'react-icons/fa'; // Importing modern icons
 
@@ -74,9 +75,19 @@ const Onboarding = () => {
                     </div>
                 </div>
 
+                {/* Action CTA Buttons wired to actual destinations */}
                 <div className={styles.btnGroup}>
-                    <button className={styles.demoBtn}>Book a Demo <FaArrowRight /></button>
-                    <button className={styles.contactBtn}>Contact Us</button>
+                    <a
+                        href="https://calendly.com/giropie/giropie-demo"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.demoBtn}
+                    >
+                        Book a Demo <FaArrowRight />
+                    </a>
+                    <Link to="/about#contact" className={styles.contactBtn}>
+                        Contact Us
+                    </Link>
                 </div>
             </div>
         </section>

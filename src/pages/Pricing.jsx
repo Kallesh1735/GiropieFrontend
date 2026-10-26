@@ -47,7 +47,7 @@ const plansData = {
     growth: {
         audience: 'For Growing Businesses',
         title: 'Growth Plan',
-        customPrice: 'High Volume Volume',
+        customPrice: 'High Volume Operations',
         badge: 'Multi-Entity Ready',
         subtext: 'Custom reporting and ERP integration for scaling enterprises',
         note: '*Includes custom ERP connector setup and API guidance.',

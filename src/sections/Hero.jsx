@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Hero.module.css';
 
 import slide1 from '../assets/slide1.png';
@@ -10,14 +11,18 @@ const slides = [slide1, slide2, slide3, slide4];
 
 const Hero = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [isPaused, setIsPaused] = useState(false);
 
-    // Auto-sliding logic
+    // Auto-sliding logic with hover pause
     useEffect(() => {
+        if (isPaused) return;
+
         const timer = setInterval(() => {
             setCurrentSlide((prev) => (prev + 1) % slides.length);
-        }, 2000);
+        }, 3000);
+
         return () => clearInterval(timer);
-    }, []);
+    }, [isPaused]);
 
     return (
         <section className={styles.heroContainer}>
@@ -35,20 +40,35 @@ const Hero = () => {
                 <p>
                     Uncover hidden operational costs behind every invoice and reduce them by up to 20% with invoice-to-cash automation.
                 </p>
-                
             </div>
 
             {/* Split Section: Slider (Left) & Data (Right) */}
             <div className={styles.heroBottom}>
-
-                {/* Left Side: Slider */}
-                <div className={styles.sliderContainer}>
+                {/* Left Side: Interactive Slider with Hover Pause & Dot Controls */}
+                <div
+                    className={styles.sliderContainer}
+                    onMouseEnter={() => setIsPaused(true)}
+                    onMouseLeave={() => setIsPaused(false)}
+                >
                     <img
                         key={currentSlide}
                         src={slides[currentSlide]}
-                        alt={`Dashboard view ${currentSlide + 1}`}
+                        alt={`GIROPie Platform Dashboard view ${currentSlide + 1}`}
                         className={styles.sliderImage}
                     />
+
+                    {/* Interactive Dot Indicators */}
+                    <div className={styles.sliderDots}>
+                        {slides.map((_, idx) => (
+                            <button
+                                key={idx}
+                                type="button"
+                                aria-label={`View slide ${idx + 1}`}
+                                className={`${styles.dot} ${currentSlide === idx ? styles.activeDot : ''}`}
+                                onClick={() => setCurrentSlide(idx)}
+                            />
+                        ))}
+                    </div>
                 </div>
 
                 {/* Right Side: Re-added Data */}
@@ -63,9 +83,10 @@ const Hero = () => {
                         GIROPie gives your customers the flexibility to choose and manage when to pay, while you gain <span>real-time visibility</span> and control over your collection and cash flow.
                     </p>
 
-                    <a href="#" className={styles.readMoreLink}>Read More</a>
+                    <Link to="/features" className={styles.readMoreLink}>
+                        Read More &rarr;
+                    </Link>
                 </div>
-
             </div>
         </section>
     );
