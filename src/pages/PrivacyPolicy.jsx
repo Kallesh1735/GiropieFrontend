@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './LegalPage.module.css';
-import { FaShieldHalved } from 'react-icons/fa6';
+import logo from '../assets/giropie-logo.png';
+import { FaShieldHalved, FaHouse } from 'react-icons/fa6';
 
 const PrivacyPolicy = () => {
     return (
@@ -10,13 +12,21 @@ const PrivacyPolicy = () => {
             <div className={styles.bgGlow2}></div>
 
             <div className={styles.container}>
-                <div className={styles.badge}>
-                    <FaShieldHalved /> Compliance &amp; Data Security
+                {/* Top Header Row with Centered GIROPie Logo & Home Button matching design */}
+                <div className={styles.topHeaderBar}>
+                    <div className={styles.logoWrapper}>
+                        <Link to="/">
+                            <img src={logo} alt="GIROPie Logo" className={styles.topLogo} />
+                        </Link>
+                    </div>
+                    <Link to="/" className={styles.homeBtn} title="Back to Home" aria-label="Back to Home">
+                        <FaHouse />
+                    </Link>
                 </div>
 
                 <h1 className={styles.title}>PEPPERTREE.AI PVT. LTD. – PRIVACY POLICY</h1>
                 <p className={styles.subtitle}>
-                    Last Updated: 19 May 2026 &bull; Peppertree.AI Pvt. Ltd. (operating "GIROPie")
+                    Last Updated: 19 May 2026
                 </p>
 
                 {/* 1. Introduction */}

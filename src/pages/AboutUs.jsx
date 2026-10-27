@@ -98,9 +98,9 @@ const AboutUs = () => {
             </section>
 
             {/* ==============================================================
-                SECTION 3: WHAT WE DO & FLOW DIAGRAM
+                SECTION 3: WHAT WE DO & FLOW DIAGRAM (Shared Invoice Layer)
                 ============================================================== */}
-            <section className={styles.whatWeDoSection}>
+            <section id="what-we-do" className={styles.whatWeDoSection}>
                 <div className={styles.sectionHeader}>
                     <h2 className={styles.storyTitle}>What we do</h2>
                     <p className={styles.leadText}>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Hero.module.css';
+import TrueCostModal from '../components/TrueCostModal';
 
 import slide1 from '../assets/slide1.png';
 import slide2 from '../assets/slide2.png';
@@ -12,6 +13,7 @@ const slides = [slide1, slide2, slide3, slide4];
 const Hero = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
+    const [isCostModalOpen, setIsCostModalOpen] = useState(false);
 
     // Auto-sliding logic with hover pause
     useEffect(() => {
@@ -40,34 +42,50 @@ const Hero = () => {
                 <p>
                     Uncover hidden operational costs behind every invoice and reduce them by up to 20% with invoice-to-cash automation.
                 </p>
+
+                {/* Discover Your True Cost Per Invoice Action Button */}
+                <button
+                    type="button"
+                    className={styles.discoverBtn}
+                    onClick={() => setIsCostModalOpen(true)}
+                >
+                    Discover Your True Cost Per Invoice
+                </button>
             </div>
 
             {/* Split Section: Slider (Left) & Data (Right) */}
             <div className={styles.heroBottom}>
                 {/* Left Side: Interactive Slider with Hover Pause & Dot Controls */}
-                <div
-                    className={styles.sliderContainer}
-                    onMouseEnter={() => setIsPaused(true)}
-                    onMouseLeave={() => setIsPaused(false)}
-                >
-                    <img
-                        key={currentSlide}
-                        src={slides[currentSlide]}
-                        alt={`GIROPie Platform Dashboard view ${currentSlide + 1}`}
-                        className={styles.sliderImage}
-                    />
+                <div className={styles.sliderWrapper}>
+                    <div
+                        className={styles.sliderContainer}
+                        onMouseEnter={() => setIsPaused(true)}
+                        onMouseLeave={() => setIsPaused(false)}
+                    >
+                        <img
+                            key={currentSlide}
+                            src={slides[currentSlide]}
+                            alt={`GIROPie Platform Dashboard view ${currentSlide + 1}`}
+                            className={styles.sliderImage}
+                        />
 
-                    {/* Interactive Dot Indicators */}
-                    <div className={styles.sliderDots}>
-                        {slides.map((_, idx) => (
-                            <button
-                                key={idx}
-                                type="button"
-                                aria-label={`View slide ${idx + 1}`}
-                                className={`${styles.dot} ${currentSlide === idx ? styles.activeDot : ''}`}
-                                onClick={() => setCurrentSlide(idx)}
-                            />
-                        ))}
+                        {/* Interactive Dot Indicators */}
+                        <div className={styles.sliderDots}>
+                            {slides.map((_, idx) => (
+                                <button
+                                    key={idx}
+                                    type="button"
+                                    aria-label={`View slide ${idx + 1}`}
+                                    className={`${styles.dot} ${currentSlide === idx ? styles.activeDot : ''}`}
+                                    onClick={() => setCurrentSlide(idx)}
+                                />
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* DSO Reduction Caption matching screenshot 4 */}
+                    <div className={styles.sliderCaption}>
+                        Reduce DSO By 5-10 Days* in a Credit Cycle
                     </div>
                 </div>
 
@@ -83,11 +101,18 @@ const Hero = () => {
                         GIROPie gives your customers the flexibility to choose and manage when to pay, while you gain <span>real-time visibility</span> and control over your collection and cash flow.
                     </p>
 
-                    <Link to="/features" className={styles.readMoreLink}>
+                    {/* Read More button leads to What We Do / Shared Invoice Layer in About Us */}
+                    <Link to="/about#what-we-do" className={styles.readMoreLink}>
                         Read More &rarr;
                     </Link>
                 </div>
             </div>
+
+            {/* True Cost Analysis & Savings Calculator Modal */}
+            <TrueCostModal
+                isOpen={isCostModalOpen}
+                onClose={() => setIsCostModalOpen(false)}
+            />
         </section>
     );
 };

@@ -36,6 +36,8 @@ const ScrollToTop = () => {
         // Dynamically update document title per route
         if (pathname === '/about' && hash === '#contact') {
             document.title = 'Contact Us | GIROPie';
+        } else if (pathname.startsWith('/blog/') || pathname.startsWith('/post/')) {
+            document.title = 'Blog & Insights | GIROPie';
         } else {
             document.title = PAGE_TITLES[pathname] || 'GIROPie | Connected Invoice-to-Cash & Working Capital Automation';
         }

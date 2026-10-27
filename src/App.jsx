@@ -43,7 +43,10 @@ function App() {
             <Route path="/faq" element={<FAQ />} />
             <Route path="/resources/faq" element={<FAQ />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<Blog />} />
             <Route path="/resources/blog" element={<Blog />} />
+            <Route path="/resources/blog/:slug" element={<Blog />} />
+            <Route path="/post/:slug" element={<Blog />} />
             <Route path="/contact" element={<Navigate to="/about#contact" replace />} />
 
             {/* Legal & Compliance Routes */}

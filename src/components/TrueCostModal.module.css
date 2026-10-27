@@ -1,0 +1,398 @@
+/* ==========================================================================
+   TRUE COST MODAL & CALCULATOR STYLES - GIROPie
+   Pixel-matched to old website modal with interactive savings calculator
+   ========================================================================== */
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(8px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    animation: fadeInOverlay 0.25s ease-out;
+}
+
+@keyframes fadeInOverlay {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modalCard {
+    background: #ffffff;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 860px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 2.25rem 2.75rem 2rem;
+    position: relative;
+    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+    animation: scaleInCard 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes scaleInCard {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Close Button (X) */
+.closeBtn {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #f1f5f9;
+    border: none;
+    color: #64748b;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.closeBtn:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+    transform: rotate(90deg);
+}
+
+/* Header with Logo and Headline */
+.modalHeader {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.modalLogo {
+    height: 48px;
+    object-fit: contain;
+    margin-bottom: 1.25rem;
+}
+
+.modalHeading {
+    font-size: 1.55rem;
+    font-weight: 800;
+    color: #1C4E80;
+    line-height: 1.35;
+    margin: 0 auto;
+    max-width: 720px;
+    letter-spacing: -0.3px;
+}
+
+/* Two-column layout */
+.modalBodyGrid {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 2.5rem;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+/* Left Illustration Container */
+.illustrationCol {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.fintechSvg {
+    width: 100%;
+    max-width: 310px;
+    height: auto;
+    filter: drop-shadow(0 10px 20px rgba(28, 78, 128, 0.1));
+}
+
+/* Right Form */
+.formCol {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.formField {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.fieldLabel {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1C4E80;
+    text-align: center;
+}
+
+.fieldInput {
+    background: #e2e8f0;
+    border: 1px solid transparent;
+    border-radius: 50px;
+    padding: 0.8rem 1.4rem;
+    font-size: 0.95rem;
+    color: #1e293b;
+    outline: none;
+    transition: all 0.25s ease;
+    text-align: center;
+    font-family: inherit;
+}
+
+.fieldInput::placeholder {
+    color: #94a3b8;
+    font-style: italic;
+}
+
+.fieldInput:focus {
+    background: #ffffff;
+    border-color: #1C4E80;
+    box-shadow: 0 0 0 3px rgba(28, 78, 128, 0.15);
+}
+
+.startBtn {
+    background: #233876;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 0.85rem 2.5rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    align-self: center;
+    width: 160px;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 14px rgba(35, 56, 118, 0.3);
+}
+
+.startBtn:hover {
+    background: #182755;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(35, 56, 118, 0.4);
+}
+
+/* Footer Disclaimer */
+.modalFooter {
+    border-top: 1px solid #e2e8f0;
+    padding-top: 1.25rem;
+    text-align: center;
+}
+
+.disclaimerText {
+    font-size: 0.78rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0 auto;
+    max-width: 740px;
+}
+
+.disclaimerText a {
+    color: #1C4E80;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   STEP 2: INTERACTIVE CALCULATOR VIEW
+   ========================================================================== */
+.calculatorView {
+    padding: 0.5rem 0;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.calcSubhead {
+    text-align: center;
+    color: #64748b;
+    font-size: 1rem;
+    margin: 0 0 2rem 0;
+}
+
+.sliderBox {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+}
+
+.sliderLabelRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.sliderLabel {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.sliderValue {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #1C4E80;
+    background: #ffffff;
+    padding: 0.3rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+}
+
+.rangeInput {
+    width: 100%;
+    accent-color: #1C4E80;
+    cursor: pointer;
+    height: 8px;
+}
+
+.calcResultsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 2.25rem;
+}
+
+.resultCard {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.35rem 1rem;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+    position: relative;
+    overflow: hidden;
+}
+
+.resultHighlight {
+    border-color: #F7931E;
+    background: linear-gradient(135deg, #fffaf5 0%, #ffffff 100%);
+    box-shadow: 0 8px 20px -6px rgba(247, 147, 30, 0.25);
+}
+
+.resultTitle {
+    font-size: 0.85rem;
+    color: #64748b;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.resultStat {
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: #1C4E80;
+    margin: 0;
+}
+
+.highlightStat {
+    color: #F7931E;
+}
+
+.resultNote {
+    font-size: 0.78rem;
+    color: #94a3b8;
+    margin-top: 0.4rem;
+}
+
+.calcActionsRow {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.demoBtn {
+    background: #F7931E;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.85rem 1.8rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(247, 147, 30, 0.35);
+}
+
+.demoBtn:hover {
+    background: #e08215;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(247, 147, 30, 0.45);
+}
+
+.recalcBtn {
+    background: transparent;
+    color: #64748b;
+    border: 1px solid #cbd5e1;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.recalcBtn:hover {
+    background: #f1f5f9;
+    color: #1e293b;
+}
+
+/* ==========================================================================
+   RESPONSIVE MODAL
+   ========================================================================== */
+@media (max-width: 768px) {
+    .modalCard {
+        padding: 2rem 1.5rem;
+    }
+
+    .modalHeading {
+        font-size: 1.25rem;
+    }
+
+    .modalBodyGrid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .illustrationCol {
+        display: none;
+    }
+
+    .calcResultsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .startBtn {
+        width: 100%;
+    }
+}

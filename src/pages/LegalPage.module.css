@@ -45,32 +45,73 @@
     background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 24px;
-    padding: 3.5rem 3rem;
+    padding: 3rem 3rem 4rem;
     box-shadow: 0 12px 40px rgba(28, 78, 128, 0.05);
 }
 
-.badge {
-    display: inline-flex;
+/* Top Header Bar matching Screenshot 2 */
+.topHeaderBar {
+    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.35rem 1rem;
-    background: rgba(28, 78, 128, 0.07);
-    border: 1px solid rgba(28, 78, 128, 0.15);
-    border-radius: 50px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #1C4E80;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 1.25rem;
+    position: relative;
+    margin-bottom: 2.25rem;
+    padding-bottom: 1rem;
+}
+
+.logoWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.topLogo {
+    height: 52px;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+}
+
+.topLogo:hover {
+    transform: scale(1.03);
+}
+
+.homeBtn {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #1e293b;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    text-decoration: none;
+    transition: background 0.25s ease, transform 0.25s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.homeBtn:hover {
+    background: #1C4E80;
+    transform: translateY(-50%) scale(1.08);
 }
 
 .title {
-    font-size: 2.6rem;
-    font-weight: 800;
-    color: #1C4E80;
-    letter-spacing: -0.75px;
-    margin-bottom: 0.5rem;
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: #1e293b;
+    letter-spacing: -0.2px;
+    margin-bottom: 0.6rem;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 0.95rem;
+    color: #64748b;
+    margin-bottom: 2.5rem;
+    text-align: center;
 }
 
 .subtitle {

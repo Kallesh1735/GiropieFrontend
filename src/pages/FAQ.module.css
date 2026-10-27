@@ -1,0 +1,240 @@
+/* ==========================================================================
+   FAQ PAGE STYLES - GIROPie (Pixel-matched to screenshot)
+   ========================================================================== */
+
+.faqPage {
+    width: 100%;
+    min-height: 80vh;
+    background-color: #ffffff;
+    padding: 3.5rem 5% 6rem;
+}
+
+.container {
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   1. HEADER ROW: TITLE & SEARCH INPUT
+   ========================================================================== */
+.headerRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 1.5rem;
+}
+
+.pageTitle {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.searchWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #cbd5e1;
+    padding-bottom: 0.35rem;
+    width: 250px;
+    transition: border-color 0.25s ease;
+}
+
+.searchWrapper:focus-within {
+    border-color: #1C4E80;
+}
+
+.searchInput {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 0.95rem;
+    color: #1e293b;
+    padding-right: 1.5rem;
+}
+
+.searchInput::placeholder {
+    color: #3b82f6;
+    font-size: 0.95rem;
+}
+
+.searchIcon {
+    position: absolute;
+    right: 0;
+    color: #3b82f6;
+    font-size: 0.95rem;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   2. CATEGORY TABS (About GIROPie / Operational / Pricing)
+   ========================================================================== */
+.tabBar {
+    display: flex;
+    gap: 2.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 2.5rem;
+}
+
+.tabBtn {
+    background: transparent;
+    border: none;
+    padding: 0.65rem 0.5rem 0.85rem 0.5rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #1e293b;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.25s ease;
+}
+
+.tabBtn:hover {
+    color: #1C4E80;
+}
+
+/* Active Tab Underline matching screenshot */
+.activeTab {
+    color: #1C4E80;
+}
+
+.activeTab::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #0088cc;
+    border-radius: 2px 2px 0 0;
+}
+
+/* ==========================================================================
+   3. ACCORDION CARDS
+   ========================================================================== */
+.faqList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.accordionCard {
+    background: #ffffff;
+    border: 1px solid #94a3b8;
+    border-radius: 4px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+}
+
+.accordionCard:hover {
+    border-color: #64748b;
+}
+
+.questionRow {
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    gap: 1rem;
+}
+
+.questionText {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #1C4E80;
+    margin: 0;
+    line-height: 1.45;
+}
+
+.chevronIcon {
+    font-size: 1rem;
+    color: #1C4E80;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+}
+
+.chevronRotated {
+    transform: rotate(180deg);
+}
+
+/* Answer Body with smooth expansion */
+.answerRow {
+    padding: 0 1.5rem 1.35rem 1.5rem;
+    animation: answerExpand 0.22s ease-out;
+}
+
+@keyframes answerExpand {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.answerText {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #334155;
+}
+
+.answerText p {
+    margin: 0 0 0.85rem 0;
+    white-space: pre-line;
+}
+
+.answerText p:last-child {
+    margin-bottom: 0;
+}
+
+.placeholderAnswer {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.noResults {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #64748b;
+    font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   4. RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 768px) {
+    .headerRow {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .searchWrapper {
+        width: 100%;
+    }
+
+    .tabBar {
+        gap: 1.5rem;
+        overflow-x: auto;
+    }
+
+    .questionRow {
+        padding: 1rem 1.15rem;
+    }
+
+    .questionText {
+        font-size: 1.05rem;
+    }
+
+    .answerRow {
+        padding: 0 1.15rem 1.15rem 1.15rem;
+    }
+}

@@ -1,0 +1,1275 @@
+/* ==========================================================================
+   BLOG & INSIGHTS - PREMIUM FINTECH STYLES
+   Curated design with ambient gradients, glassmorphism, and micro-interactions
+   ========================================================================== */
+
+.blogPage {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #fafbfd;
+    padding: 2.5rem 5% 6rem;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   0. FLOATING READING PROGRESS BAR & AMBIENT ANIMATIONS
+   Provides real-time scroll feedback and gentle background life
+   ========================================================================== */
+.readingProgressBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #1C4E80 0%, #3A8DD5 50%, #F7931E 100%);
+    z-index: 9999;
+    transition: width 0.12s ease-out;
+    box-shadow: 0 0 10px rgba(247, 147, 30, 0.6);
+}
+
+/* Ambient Background Glows with continuous floating life */
+.bgGlow1 {
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: 550px;
+    height: 550px;
+    background: radial-gradient(circle, rgba(58, 141, 213, 0.09) 0%, rgba(255, 255, 255, 0) 70%);
+    pointer-events: none;
+    z-index: 0;
+    animation: floatGlow1 14s infinite ease-in-out alternate;
+}
+
+.bgGlow2 {
+    position: absolute;
+    top: 35%;
+    right: 5%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(247, 147, 30, 0.07) 0%, rgba(255, 255, 255, 0) 70%);
+    pointer-events: none;
+    z-index: 0;
+    animation: floatGlow2 16s infinite ease-in-out alternate;
+}
+
+@keyframes floatGlow1 {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(40px, -30px) scale(1.12);
+    }
+    100% {
+        transform: translate(-20px, 20px) scale(0.96);
+    }
+}
+
+@keyframes floatGlow2 {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(-35px, 25px) scale(1.1);
+    }
+    100% {
+        transform: translate(25px, -20px) scale(0.95);
+    }
+}
+
+.container {
+    max-width: 1120px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* ==========================================================================
+   1. HERO HEADER SECTION (Listing View)
+   ========================================================================== */
+.heroHeader {
+    text-align: center;
+    padding: 1.5rem 1rem 3rem;
+    max-width: 840px;
+    margin: 0 auto;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.45rem 1.15rem;
+    background: rgba(28, 78, 128, 0.07);
+    border: 1px solid rgba(28, 78, 128, 0.18);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1C4E80;
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.badgeDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #F7931E;
+    animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.35);
+        opacity: 0.6;
+    }
+}
+
+.heroTitle {
+    font-size: 2.85rem;
+    font-weight: 800;
+    color: #1C4E80;
+    line-height: 1.15;
+    margin: 0 0 1rem 0;
+    letter-spacing: -1px;
+}
+
+.heroHighlight {
+    color: #F7931E;
+    position: relative;
+    display: inline-block;
+}
+
+.heroSubtitle {
+    font-size: 1.15rem;
+    color: #64748b;
+    line-height: 1.65;
+    margin: 0 auto;
+    max-width: 680px;
+}
+
+/* ==========================================================================
+   2. FILTER TOOLBAR (Categories & Live Search)
+   ========================================================================== */
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.categoryGroup {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.categoryBtn {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    padding: 0.5rem 1.1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.categoryBtn:hover {
+    border-color: #3b82f6;
+    color: #1C4E80;
+    transform: translateY(-1px);
+}
+
+.categoryBtnActive {
+    background: #1C4E80;
+    border-color: #1C4E80;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(28, 78, 128, 0.2);
+}
+
+.categoryBtnActive:hover {
+    background: #153a60;
+    color: #ffffff;
+}
+
+.searchBox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-width: 260px;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 0.6rem 1rem 0.6rem 2.4rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 50px;
+    background: #ffffff;
+    font-size: 0.9rem;
+    color: #1e293b;
+    outline: none;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.searchInput:focus {
+    border-color: #1C4E80;
+    box-shadow: 0 0 0 3px rgba(28, 78, 128, 0.12);
+}
+
+.searchIcon {
+    position: absolute;
+    left: 0.95rem;
+    color: #94a3b8;
+    font-size: 0.9rem;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   3. FEATURED ARTICLE SPOTLIGHT (Hero Card)
+   ========================================================================== */
+.featuredCard {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
+    border: 1px solid rgba(58, 141, 213, 0.35);
+    border-radius: 16px;
+    padding: 2.75rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 16px 36px -12px rgba(28, 78, 128, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.featuredCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 48px -12px rgba(28, 78, 128, 0.14);
+    border-color: #3A8DD5;
+}
+
+.featuredTopGradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #1C4E80, #3A8DD5, #F7931E);
+}
+
+.featuredBadges {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+}
+
+.spotlightPill {
+    background: rgba(247, 147, 30, 0.12);
+    color: #c96e00;
+    border: 1px solid rgba(247, 147, 30, 0.3);
+    padding: 0.3rem 0.85rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.categoryTag {
+    background: rgba(28, 78, 128, 0.08);
+    color: #1C4E80;
+    padding: 0.3rem 0.85rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.metaMuted {
+    font-size: 0.88rem;
+    color: #64748b;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.featuredTitle {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #1e293b;
+    line-height: 1.25;
+    margin: 0 0 1rem 0;
+    letter-spacing: -0.5px;
+    transition: color 0.2s ease;
+}
+
+.featuredCard:hover .featuredTitle {
+    color: #1C4E80;
+}
+
+.featuredExcerpt {
+    font-size: 1.1rem;
+    color: #475569;
+    line-height: 1.7;
+    margin: 0 0 2rem 0;
+    max-width: 880px;
+}
+
+.featuredFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+}
+
+.authorBlock {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.authorAvatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.authorMeta {
+    display: flex;
+    flex-direction: column;
+}
+
+.authorName {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.authorRole {
+    font-size: 0.82rem;
+    color: #64748b;
+}
+
+.featuredCtaRow {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.readMoreBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #1C4E80;
+    color: #ffffff;
+    padding: 0.75rem 1.4rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(28, 78, 128, 0.25);
+}
+
+.readMoreBtn:hover {
+    background: #153a60;
+    transform: translateX(3px);
+    box-shadow: 0 6px 16px rgba(28, 78, 128, 0.35);
+}
+
+/* ==========================================================================
+   4. POSTS GRID (Regular Cards)
+   ========================================================================== */
+.sectionSubhead {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.3px;
+}
+
+.postsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 1.75rem;
+    margin-bottom: 4rem;
+}
+
+.postCard {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+.postCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 32px -8px rgba(28, 78, 128, 0.09);
+    border-color: #94a3b8;
+}
+
+.cardTopRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.cardTag {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    background: rgba(58, 141, 213, 0.1);
+    color: #1C4E80;
+}
+
+.cardTime {
+    font-size: 0.82rem;
+    color: #64748b;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.cardTitle {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #1e293b;
+    line-height: 1.35;
+    margin: 0 0 0.85rem 0;
+    transition: color 0.2s ease;
+}
+
+.postCard:hover .cardTitle {
+    color: #1C4E80;
+}
+
+.cardExcerpt {
+    font-size: 0.95rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0 0 1.5rem 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.cardDivider {
+    border: none;
+    border-top: 1px solid #f1f5f9;
+    margin: 0 0 1rem 0;
+}
+
+.cardFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.cardStats {
+    display: flex;
+    gap: 0.85rem;
+    align-items: center;
+}
+
+.statItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.likeBtn {
+    background: transparent;
+    border: none;
+    color: #64748b;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    cursor: pointer;
+    transition: transform 0.15s ease, color 0.15s ease;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+}
+
+.likeBtn:hover {
+    transform: scale(1.12);
+    color: #ef4444;
+}
+
+.heartLiked {
+    color: #ef4444 !important;
+}
+
+.noResults {
+    text-align: center;
+    padding: 4rem 1rem;
+    background: #ffffff;
+    border: 1px dashed #cbd5e1;
+    border-radius: 12px;
+    color: #64748b;
+    font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   5. SINGLE POST DETAIL VIEW (Editorial Layout)
+   ========================================================================== */
+.detailContainer {
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.detailNavRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.backBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 1.15rem;
+    background: #ffffff;
+    color: #1C4E80;
+    border: 1px solid #cbd5e1;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+}
+
+.backBtn:hover {
+    background: #1C4E80;
+    color: #ffffff;
+    border-color: #1C4E80;
+    transform: translateX(-3px);
+    box-shadow: 0 4px 12px rgba(28, 78, 128, 0.2);
+}
+
+.breadcrumbs {
+    font-size: 0.88rem;
+    color: #94a3b8;
+}
+
+.breadcrumbs span {
+    color: #1C4E80;
+    font-weight: 600;
+}
+
+.articleCard {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 3.5rem;
+    margin-bottom: 3.5rem;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.articleAccentStrip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #1C4E80, #3A8DD5, #F7931E);
+}
+
+.articleMetaHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.articlePills {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.articleTitle {
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.22;
+    margin: 0 0 1.75rem 0;
+    letter-spacing: -0.8px;
+}
+
+.authorMetaBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 0;
+    border-top: 1px solid #f1f5f9;
+    border-bottom: 1px solid #f1f5f9;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.authorInfoLeft {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.authorAvatarLg {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.authorDetails {
+    display: flex;
+    flex-direction: column;
+}
+
+.authorByline {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.authorPublishDate {
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.shareBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.shareBtn:hover {
+    background: #1C4E80;
+    color: #ffffff;
+    border-color: #1C4E80;
+}
+
+/* Key Takeaway Highlight Callout Box */
+.takeawayBox {
+    background: linear-gradient(135deg, rgba(28, 78, 128, 0.04) 0%, rgba(58, 141, 213, 0.08) 100%);
+    border-left: 4px solid #F7931E;
+    border-radius: 0 10px 10px 0;
+    padding: 1.5rem 1.75rem;
+    margin: 0 0 2.5rem 0;
+}
+
+.takeawayTitle {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #c96e00;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.takeawayText {
+    font-size: 1.05rem;
+    color: #1e293b;
+    line-height: 1.65;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Article Body Typography */
+.articleBody {
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: #334155;
+}
+
+.bodyParagraph {
+    margin: 0 0 1.6rem 0;
+}
+
+/* Numbered Section Headers (01, 02, 03) */
+.sectionCard {
+    margin: 2.25rem 0 1.25rem 0;
+    padding-left: 1.25rem;
+    border-left: 3px solid #3A8DD5;
+}
+
+.sectionHeading {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin: 0 0 0.65rem 0;
+    letter-spacing: -0.3px;
+}
+
+.placeholderBanner {
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 10px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    color: #64748b;
+    margin: 2rem 0;
+}
+
+.placeholderIcon {
+    font-size: 2rem;
+    color: #94a3b8;
+    margin-bottom: 0.75rem;
+}
+
+.placeholderBanner h4 {
+    font-size: 1.15rem;
+    color: #1e293b;
+    margin: 0 0 0.5rem 0;
+}
+
+.placeholderBanner p {
+    font-size: 0.92rem;
+    color: #64748b;
+    margin: 0;
+}
+
+/* Bottom Conversion Box Inside Article */
+.articleCtaBanner {
+    background: linear-gradient(135deg, #1C4E80 0%, #102e4d 100%);
+    border-radius: 12px;
+    padding: 2.5rem;
+    margin: 3rem 0 2rem 0;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    box-shadow: 0 12px 28px -6px rgba(28, 78, 128, 0.35);
+}
+
+.ctaTextGroup h4 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin: 0 0 0.5rem 0;
+    color: #ffffff;
+}
+
+.ctaTextGroup p {
+    font-size: 0.98rem;
+    color: #e2e8f0;
+    margin: 0;
+    max-width: 520px;
+}
+
+.ctaBtnPrimary {
+    background: #F7931E;
+    color: #ffffff;
+    font-weight: 700;
+    padding: 0.85rem 1.6rem;
+    border-radius: 8px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+    display: inline-block;
+    box-shadow: 0 4px 14px rgba(247, 147, 30, 0.4);
+}
+
+.ctaBtnPrimary:hover {
+    background: #e08215;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(247, 147, 30, 0.5);
+}
+
+/* Article Footer (Stats & Likes) */
+.articleFooterBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 1.5rem;
+    margin-top: 2rem;
+}
+
+.detailStatsGroup {
+    display: flex;
+    gap: 1.5rem;
+    color: #64748b;
+    font-size: 0.92rem;
+}
+
+.likeBtnLg {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 1.25rem;
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.likeBtnLg:hover {
+    background: #fee2e2;
+    border-color: #fca5a5;
+    color: #ef4444;
+    transform: scale(1.05);
+}
+
+.likeBtnLgActive {
+    background: #fee2e2;
+    border-color: #f87171;
+    color: #ef4444;
+}
+
+/* ==========================================================================
+   6. RECENT POSTS SECTION (Inside Detail View)
+   ========================================================================== */
+.recentSection {
+    margin-bottom: 3.5rem;
+}
+
+.recentHeaderRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.recentSectionTitle {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin: 0;
+}
+
+.seeAllLink {
+    background: transparent;
+    border: none;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0088cc;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    padding: 0;
+}
+
+.seeAllLink:hover {
+    color: #1C4E80;
+    text-decoration: underline;
+}
+
+.recentGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.recentCard {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.65rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    min-height: 230px;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+}
+
+.recentCard:hover {
+    transform: translateY(-4px);
+    border-color: #3A8DD5;
+    box-shadow: 0 14px 28px -6px rgba(28, 78, 128, 0.1);
+}
+
+.recentCardTitle {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e293b;
+    line-height: 1.4;
+    margin: 0 0 0.75rem 0;
+    transition: color 0.2s ease;
+}
+
+.recentCard:hover .recentCardTitle {
+    color: #1C4E80;
+}
+
+.recentCardExcerpt {
+    font-size: 0.88rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0 0 1.25rem 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.recentCardFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 0.85rem;
+    font-size: 0.82rem;
+    color: #64748b;
+}
+
+/* ==========================================================================
+   7. COMMENTS CARD (Interactive Live Stream)
+   Supports live in-page comments without browser alert popups
+   ========================================================================== */
+.commentsCard {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+}
+
+.commentsHeading {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin: 0 0 1.25rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.commentCountBadge {
+    font-size: 0.82rem;
+    background: rgba(28, 78, 128, 0.1);
+    color: #1C4E80;
+    padding: 0.2rem 0.65rem;
+    border-radius: 50px;
+    font-weight: 700;
+}
+
+.commentForm {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-bottom: 2rem;
+}
+
+.commentAuthorInput {
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+    color: #1e293b;
+    outline: none;
+    transition: all 0.25s ease;
+    font-family: inherit;
+    max-width: 300px;
+}
+
+.commentAuthorInput:focus {
+    border-color: #1C4E80;
+    box-shadow: 0 0 0 3px rgba(28, 78, 128, 0.1);
+}
+
+.commentInputWrapper {
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    background: #ffffff;
+    transition: all 0.25s ease;
+}
+
+.commentInputWrapper:focus-within {
+    border-color: #1C4E80;
+    box-shadow: 0 0 0 3px rgba(28, 78, 128, 0.1);
+}
+
+.commentTextarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 0.95rem;
+    color: #1e293b;
+    resize: vertical;
+    min-height: 80px;
+    background: transparent;
+    font-family: inherit;
+    line-height: 1.6;
+}
+
+.commentActions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.commentSubmitBtn {
+    background: #1C4E80;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.92rem;
+    padding: 0.65rem 1.5rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 10px rgba(28, 78, 128, 0.2);
+}
+
+.commentSubmitBtn:hover {
+    background: #153a60;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(28, 78, 128, 0.3);
+}
+
+/* Stream of In-Page Comments */
+.commentsList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 2rem;
+}
+
+.commentItem {
+    display: flex;
+    gap: 1.15rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    animation: commentSlideIn 0.35s ease-out;
+}
+
+@keyframes commentSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.commentAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1C4E80, #3A8DD5);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(28, 78, 128, 0.2);
+}
+
+.commentContent {
+    flex: 1;
+}
+
+.commentHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.4rem;
+}
+
+.commentAuthorName {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.commentDate {
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+.commentBodyText {
+    font-size: 0.95rem;
+    color: #334155;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.noCommentsText {
+    color: #94a3b8;
+    font-size: 0.92rem;
+    font-style: italic;
+    margin: 0;
+}
+
+/* Like Heart Spring Pop Animation */
+@keyframes heartPop {
+    0% {
+        transform: scale(1);
+    }
+    40% {
+        transform: scale(1.45);
+    }
+    70% {
+        transform: scale(0.88);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.heartPopped {
+    animation: heartPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Toast message for link copied */
+.toastNotice {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #1e293b;
+    color: #ffffff;
+    padding: 0.85rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    animation: slideUpToast 0.3s ease-out;
+}
+
+@keyframes slideUpToast {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   8. RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 960px) {
+    .recentGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .featuredCard {
+        padding: 2rem;
+    }
+
+    .featuredTitle {
+        font-size: 1.85rem;
+    }
+
+    .articleCard {
+        padding: 2.25rem 1.75rem;
+    }
+
+    .articleTitle {
+        font-size: 2rem;
+    }
+
+    .heroTitle {
+        font-size: 2.3rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .blogPage {
+        padding: 2rem 4% 4rem;
+    }
+
+    .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .searchBox {
+        min-width: 100%;
+    }
+
+    .postsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .featuredFooter {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .articleCtaBanner {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1.5rem;
+    }
+
+    .ctaBtnPrimary {
+        width: 100%;
+        text-align: center;
+    }
+}
