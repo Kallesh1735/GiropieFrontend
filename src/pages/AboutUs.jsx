@@ -10,11 +10,15 @@ import {
     FaLayerGroup,
     FaArrowsRotate,
     FaArrowTrendDown,
-    FaCheck
+    FaCheck,
+    FaYoutube,
+    FaFacebook,
+    FaXTwitter,
+    FaLinkedin
 } from 'react-icons/fa6';
-import missionBg from '../assets/mission-bg.jpg';
-import visionBg from '../assets/vision-bg.jpg';
-import valueBg from '../assets/value-bg.jpg';
+import missionImg from '../assets/Mission.avif';
+import visionImg from '../assets/Focus_edited.avif';
+import valueImg from '../assets/Brochure-PTAI.avif';
 import aboutHeroImg from '../assets/aboutpageimage.jpg';
 
 const AboutUs = () => {
@@ -154,7 +158,7 @@ const AboutUs = () => {
                     {/* Card 1: Mission */}
                     <div className={styles.pillarCard}>
                         <div className={styles.pillarImageFrame}>
-                            <img src={missionBg} alt="Mission" className={styles.pillarImage} />
+                            <img src={missionImg} alt="Mission" className={styles.pillarImage} />
                             <div className={`${styles.pillarIconBadge} ${styles.missionBadge}`}>
                                 <FaBullseye />
                             </div>
@@ -169,7 +173,7 @@ const AboutUs = () => {
                     {/* Card 2: Vision */}
                     <div className={styles.pillarCard}>
                         <div className={styles.pillarImageFrame}>
-                            <img src={visionBg} alt="Vision" className={styles.pillarImage} />
+                            <img src={visionImg} alt="Vision" className={styles.pillarImage} />
                             <div className={`${styles.pillarIconBadge} ${styles.visionBadge}`}>
                                 <FaEye />
                             </div>
@@ -184,7 +188,7 @@ const AboutUs = () => {
                     {/* Card 3: Value */}
                     <div className={styles.pillarCard}>
                         <div className={styles.pillarImageFrame}>
-                            <img src={valueBg} alt="Value" className={styles.pillarImage} />
+                            <img src={valueImg} alt="Value" className={styles.pillarImage} />
                             <div className={`${styles.pillarIconBadge} ${styles.valueBadge}`}>
                                 <FaHandshake />
                             </div>
@@ -284,6 +288,52 @@ const AboutUs = () => {
                     <p className={styles.privacyText}>
                         By submitting this form, I confirm and agree to storing and processing of my data by GIROPie as defined in the <Link to="/privacy">Privacy Policy</Link>*
                     </p>
+
+                    {/* Social Media Connect Bar */}
+                    <div className={styles.socialConnectBar}>
+                        <h3 className={styles.socialConnectTitle}>Connect with GIROPie</h3>
+                        <p className={styles.socialConnectSubtitle}>
+                            Follow us on social media for working capital insights, product releases, and news.
+                        </p>
+                        <div className={styles.socialConnectLinks}>
+                            <a
+                                href="https://www.linkedin.com/company/peppertreeai"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={`${styles.socialPill} ${styles.linkedin}`}
+                                aria-label="LinkedIn"
+                            >
+                                <FaLinkedin size={18} /> <span>LinkedIn</span>
+                            </a>
+                            <a
+                                href="https://x.com/PeppertreeAI"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={`${styles.socialPill} ${styles.twitter}`}
+                                aria-label="X (Twitter)"
+                            >
+                                <FaXTwitter size={17} /> <span>X (Twitter)</span>
+                            </a>
+                            <a
+                                href="https://www.youtube.com/@giropie"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={`${styles.socialPill} ${styles.youtube}`}
+                                aria-label="YouTube"
+                            >
+                                <FaYoutube size={18} /> <span>YouTube</span>
+                            </a>
+                            <a
+                                href="https://www.facebook.com/giropie/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={`${styles.socialPill} ${styles.facebook}`}
+                                aria-label="Facebook"
+                            >
+                                <FaFacebook size={18} /> <span>Facebook</span>
+                            </a>
+                        </div>
+                    </div>
                 </form>
             </section>
         </div>

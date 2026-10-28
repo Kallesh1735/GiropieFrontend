@@ -877,6 +877,95 @@
     color: #ef4444;
 }
 
+/* Social Share & Follow Bar */
+.socialShareBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.shareHeadingGroup,
+.followChannelGroup {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+}
+
+.shareBarLabel {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.shareButtonsGroup {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.socialShareBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.85rem;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.shareLinkedin {
+    background: #eef5fb;
+    color: #0A66C2;
+    border-color: #cbe0f4;
+}
+.shareLinkedin:hover {
+    background: #0A66C2;
+    color: #ffffff;
+}
+
+.shareTwitter {
+    background: #f1f5f9;
+    color: #0f172a;
+    border-color: #cbd5e1;
+}
+.shareTwitter:hover {
+    background: #000000;
+    color: #ffffff;
+}
+
+.shareFacebook {
+    background: #f0f6ff;
+    color: #1877F2;
+    border-color: #bfdbfe;
+}
+.shareFacebook:hover {
+    background: #1877F2;
+    color: #ffffff;
+}
+
+.shareYoutube {
+    background: #fef2f2;
+    color: #FF0000;
+    border-color: #fecaca;
+}
+.shareYoutube:hover {
+    background: #FF0000;
+    color: #ffffff;
+}
+
 /* ==========================================================================
    6. RECENT POSTS SECTION (Inside Detail View)
    ========================================================================== */

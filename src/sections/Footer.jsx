@@ -8,25 +8,40 @@ import sisfsLogo from '../assets/SISFS.avif';
 import finGlobeLogo from '../assets/363830_22611d70f35747eb83147a55d60a060d~mv2.avif';
 import { FaYoutube, FaFacebook, FaXTwitter, FaLinkedin } from 'react-icons/fa6';
 
+// ============================================================================
+// GLOBAL FOOTER COMPONENT - GIROPie
+// Organized into 5 easy-to-edit sections:
+// 1. Brand Identity & Registered Corporate Address
+// 2. Product Navigation Links
+// 3. Company Navigation Links
+// 4. Backed By Partner Badges
+// 5. Copyright & Official Social Media Channels
+// ============================================================================
+
 const Footer = () => {
     return (
         <footer className={styles.footer}>
             <div className={styles.container}>
 
                 <div className={styles.columns}>
-                    {/* Brand Column */}
+                    {/* ------------------------------------------------------
+                        1. BRAND COLUMN & CORPORATE ADDRESS
+                        Easy to edit: Update company address lines below.
+                       ------------------------------------------------------ */}
                     <div className={styles.brandColumn}>
                         <img src={logo} alt="GIROPie Logo" className={styles.footerLogo} />
 
                         <p>
                             PepperTree.AI Pvt. Ltd.<br />
-                            No 1138, Maruthi Complex, 3rd Floor,<br />
+                            No. 1138, Maruthi Complex, 3rd Floor,<br />
                             BEML Layout, 3rd Stage, Bangalore<br />
                             560098, Karnataka, India
                         </p>
                     </div>
 
-                    {/* Links Columns */}
+                    {/* ------------------------------------------------------
+                        2. PRODUCT LINKS COLUMN
+                       ------------------------------------------------------ */}
                     <div className={styles.column}>
                         <h4>Product</h4>
                         <ul>
@@ -45,6 +60,9 @@ const Footer = () => {
                         </ul>
                     </div>
 
+                    {/* ------------------------------------------------------
+                        3. COMPANY LINKS COLUMN
+                       ------------------------------------------------------ */}
                     <div className={styles.column}>
                         <h4>Company</h4>
                         <ul>
@@ -58,6 +76,9 @@ const Footer = () => {
                         </ul>
                     </div>
 
+                    {/* ------------------------------------------------------
+                        4. BACKED BY PARTNER BADGES COLUMN
+                       ------------------------------------------------------ */}
                     <div className={styles.column}>
                         <h4>Backed By</h4>
                         <div className={styles.backedByGrid}>
@@ -77,12 +98,14 @@ const Footer = () => {
                     </div>
                 </div>
 
-                {/* Bottom Bar */}
+                {/* ----------------------------------------------------------
+                    5. BOTTOM BAR: COPYRIGHT & OFFICIAL SOCIAL LINKS
+                   ---------------------------------------------------------- */}
                 <div className={styles.bottomBar}>
                     <p>© {new Date().getFullYear()} by PepperTree.AI Pvt. Ltd. All rights reserved.</p>
                     <div className={styles.socials}>
                         <a
-                            href="https://youtube.com"
+                            href="https://www.youtube.com/@giropie"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={`${styles.socialIcon} ${styles.youtube}`}
@@ -91,7 +114,7 @@ const Footer = () => {
                             <FaYoutube size={19} />
                         </a>
                         <a
-                            href="https://facebook.com"
+                            href="https://www.facebook.com/giropie/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={`${styles.socialIcon} ${styles.facebook}`}
@@ -100,7 +123,7 @@ const Footer = () => {
                             <FaFacebook size={19} />
                         </a>
                         <a
-                            href="https://twitter.com"
+                            href="https://x.com/PeppertreeAI"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={`${styles.socialIcon} ${styles.twitter}`}
@@ -109,7 +132,7 @@ const Footer = () => {
                             <FaXTwitter size={18} />
                         </a>
                         <a
-                            href="https://www.linkedin.com/company/peppertreeai/"
+                            href="https://www.linkedin.com/company/peppertreeai"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={`${styles.socialIcon} ${styles.linkedin}`}

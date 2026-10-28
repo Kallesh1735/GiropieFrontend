@@ -1,243 +1,275 @@
- /* ==========================================================================
+/* ==========================================================================
    1. MAIN SECTION LAYOUT
-   Responsible for 2-column split (Left: Tabs | Right: Checklist)
+   Responsible for 2-column split (Left: Role Tabs | Right: Onboarding Checklist)
    ========================================================================== */
- .onboardingSection {
-     padding: 2rem 5%;
-     background: #ffffff;
-     display: grid;
-     grid-template-columns: 1fr 1fr;
-     gap: 5rem;
-     max-width: 1200px;
-     margin: 0 auto;
-     align-items: center;
- }
+.onboardingSection {
+    padding: 4.5rem 5%;
+    background: #ffffff;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+}
 
- /* ==========================================================================
+/* ==========================================================================
    2. INTERACTIVE TABS (LEFT SIDE)
    Responsible for the tab bar navigation buttons and active pill styling
    ========================================================================== */
- .tabsContainer {
-     display: flex;
-     flex-direction: column;
- }
+.tabsContainer {
+    display: flex;
+    flex-direction: column;
+}
 
- .sectionTitle {
-     font-size: 2.2rem;
-     font-weight: 800;
-     color: var(--color-secondary);
-     margin-bottom: 2.5rem;
-     line-height: 1.2;
-     letter-spacing: -0.5px;
- }
+.sectionTitle {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--color-secondary);
+    margin-bottom: 2rem;
+    line-height: 1.25;
+    letter-spacing: -0.5px;
+}
 
- /* Background strip holding the tab buttons */
- .tabHeaders {
-     display: flex;
-     background: #f1f5f9;
-     padding: 0.4rem;
-     border-radius: 14px;
-     margin-bottom: 2rem;
-     overflow-x: auto;
-     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
- }
+/* Background strip holding the tab buttons */
+.tabHeaders {
+    display: flex;
+    background: #f1f5f9;
+    padding: 0.4rem;
+    border-radius: 14px;
+    margin-bottom: 1.75rem;
+    overflow-x: auto;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+}
 
- .tabBtn {
-     flex: 1;
-     padding: 0.8rem 1rem;
-     background: transparent;
-     border: none;
-     border-radius: 10px;
-     font-weight: 600;
-     font-size: 0.9rem;
-     color: #64748b;
-     cursor: pointer;
-     transition: all 0.3s ease;
-     white-space: nowrap;
- }
+.tabBtn {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+}
 
- /* Active tab selected pill */
- .activeTab {
-     background: #ffffff;
-     color: var(--color-primary);
-     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
- }
+/* Active tab selected pill */
+.activeTab {
+    background: #ffffff;
+    color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
 
- /* ==========================================================================
+/* ==========================================================================
    3. TAB CONTENT DISPLAY CARD
-   Responsible for the text card and fade-in transition when switching tabs
+   Responsible for the text card, role highlight pills, and fade-in transition
    ========================================================================== */
- .tabContent {
-     background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-     padding: 2.5rem;
-     border-radius: 20px;
-     border: 1px solid rgba(0, 0, 0, 0.04);
-     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-     min-height: 160px;
-     animation: fadeIn 0.4s ease-in-out;
-     position: relative;
- }
+.tabContent {
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    padding: 2.25rem;
+    border-radius: 20px;
+    border: 1px solid rgba(28, 78, 128, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    min-height: 210px;
+    animation: fadeIn 0.3s ease-out;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.35rem;
+}
 
- /* Subtle decorative watermark quote behind text */
- .tabContent::before {
-     content: '"';
-     position: absolute;
-     top: 10px;
-     left: 20px;
-     font-size: 6rem;
-     color: rgba(37, 131, 239, 0.05);
-     font-family: serif;
-     line-height: 1;
- }
+/* Subtle decorative watermark quote behind text */
+.tabContent::before {
+    content: '"';
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 6rem;
+    color: rgba(37, 131, 239, 0.05);
+    font-family: serif;
+    line-height: 1;
+}
 
- .tabContent p {
-     font-size: 1.15rem;
-     line-height: 1.7;
-     color: var(--color-secondary);
-     font-weight: 500;
-     position: relative;
-     z-index: 1;
- }
+.tabContent p {
+    font-size: 1.12rem;
+    line-height: 1.7;
+    color: var(--color-secondary);
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+    margin: 0;
+}
 
- @keyframes fadeIn {
-     from {
-         opacity: 0;
-         transform: translateY(5px);
-     }
+/* Key role takeaway pills */
+.highlightsRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    position: relative;
+    z-index: 1;
+}
 
-     to {
-         opacity: 1;
-         transform: translateY(0);
-     }
- }
+.highlightPill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: #eff6ff;
+    color: #1C4E80;
+    border: 1px solid #bfdbfe;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+}
 
- /* ==========================================================================
+.highlightCheck {
+    color: #F7931E;
+    font-size: 0.75rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
    4. ONBOARDING COPY & HEADINGS (RIGHT SIDE)
    Responsible for giant gradient headline and section subheadings
    ========================================================================== */
- .onboardRight {
-     padding-left: 1rem;
- }
+.onboardRight {
+    padding-left: 1rem;
+}
 
- /* Giant gradient text headline */
- .onboardRight h2 {
-     font-size: 3.5rem;
-     font-weight: 900;
-     background: linear-gradient(90deg, var(--color-accent), #fca5a5);
-     -webkit-background-clip: text;
-     -webkit-text-fill-color: transparent;
-     margin-bottom: 0.5rem;
-     letter-spacing: -1px;
- }
+/* Giant gradient text headline */
+.onboardRight h2 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: linear-gradient(90deg, var(--color-accent), #fca5a5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+}
 
- .onboardRight h3 {
-     font-size: 1.8rem;
-     color: var(--color-secondary);
-     margin-bottom: 2.5rem;
-     font-weight: 800;
- }
+.onboardRight h3 {
+    font-size: 1.8rem;
+    color: var(--color-secondary);
+    margin-bottom: 2.25rem;
+    font-weight: 800;
+}
 
- /* ==========================================================================
+/* ==========================================================================
    5. CHECKLIST ITEMS
-   Responsible for alignment of list items and green/orange check icons
+   Responsible for alignment of list items and check icons
    ========================================================================== */
- .stepList {
-     display: flex;
-     flex-direction: column;
-     gap: 1.2rem;
-     margin-bottom: 3rem;
- }
+.stepList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-bottom: 2.75rem;
+}
 
- .stepItem {
-     display: flex;
-     align-items: center;
-     gap: 1rem;
-     font-size: 1.15rem;
-     color: var(--text-main);
-     font-weight: 600;
- }
+.stepItem {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.15rem;
+    color: var(--text-main);
+    font-weight: 600;
+}
 
- .stepIcon {
-     color: var(--color-primary);
-     font-size: 1.4rem;
- }
+.stepIcon {
+    color: var(--color-primary);
+    font-size: 1.4rem;
+}
 
- /* ==========================================================================
+/* ==========================================================================
    6. ACTION BUTTONS (BOTTOM RIGHT)
-   Responsible for "Request a Demo" and "Contact Us" buttons
+   Responsible for "Book a Demo" and "Contact Us" buttons
    ========================================================================== */
- .btnGroup {
-     display: flex;
-     gap: 1.5rem;
- }
+.btnGroup {
+    display: flex;
+    gap: 1.5rem;
+}
 
- /* Orange pill button */
- .demoBtn {
-     background: var(--color-primary);
-     color: #fff;
-     border: none;
-     padding: 1rem 2rem;
-     border-radius: 50px;
-     font-weight: 500;
-     font-size: 1rem;
-     cursor: pointer;
-     transition: all 0.3s ease;
-     box-shadow: 0 8px 20px rgba(37, 131, 239, 0.25);
-     display: inline-flex;
-     align-items: center;
-     justify-content: center;
-     gap: 0.5rem;
-     text-decoration: none;
- }
+/* Orange pill button */
+.demoBtn {
+    background: var(--color-primary);
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(37, 131, 239, 0.25);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
 
- .demoBtn:hover {
-     transform: translateY(-3px);
-     box-shadow: 0 12px 25px rgba(37, 131, 239, 0.35);
- }
+.demoBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(37, 131, 239, 0.35);
+}
 
- /* Transparent outline button */
- .contactBtn {
-     background: transparent;
-     color: var(--color-secondary);
-     border: 2px solid rgba(0, 0, 0, 0.1);
-     padding: 1rem 2rem;
-     border-radius: 50px;
-     font-weight: 500;
-     font-size: 1rem;
-     cursor: pointer;
-     transition: all 0.3s ease;
-     display: inline-flex;
-     align-items: center;
-     justify-content: center;
-     text-decoration: none;
- }
+/* Transparent outline button */
+.contactBtn {
+    background: transparent;
+    color: var(--color-secondary);
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
 
- .contactBtn:hover {
-     border-color: var(--color-secondary);
-     background: var(--color-secondary);
-     color: #fff;
- }
+.contactBtn:hover {
+    border-color: var(--color-secondary);
+    background: var(--color-secondary);
+    color: #fff;
+}
 
- /* ==========================================================================
+/* ==========================================================================
    7. RESPONSIVE DESIGN (TABLET & MOBILE)
    ========================================================================== */
- @media (max-width: 968px) {
-     .onboardingSection {
-         grid-template-columns: 1fr;
-         gap: 3rem;
-         padding: 4rem 5%;
-     }
+@media (max-width: 968px) {
+    .onboardingSection {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 4rem 5%;
+    }
 
-     .onboardRight {
-         padding-left: 0;
-         text-align: center;
-     }
+    .onboardRight {
+        padding-left: 0;
+        text-align: center;
+    }
 
-     .stepItem {
-         justify-content: center;
-     }
+    .stepItem {
+        justify-content: center;
+    }
 
-     .btnGroup {
-         justify-content: center;
-     }
- }
+    .btnGroup {
+        justify-content: center;
+    }
+}

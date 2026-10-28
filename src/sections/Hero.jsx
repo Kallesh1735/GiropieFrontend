@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import styles from './Hero.module.css';
 import TrueCostModal from '../components/TrueCostModal';
 
+// ============================================================================
+// SECTION 1: HERO SLIDER ASSETS
+// Easy to edit: Add or swap platform dashboard preview slides in the array below.
+// ============================================================================
 import slide1 from '../assets/slide1.png';
 import slide2 from '../assets/slide2.png';
 import slide3 from '../assets/slide3.png';
@@ -10,12 +14,15 @@ import slide4 from '../assets/slide4.png';
 
 const slides = [slide1, slide2, slide3, slide4];
 
+// ============================================================================
+// SECTION 2: HERO COMPONENT (HOME PAGE TOP SECTION)
+// ============================================================================
 const Hero = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
     const [isCostModalOpen, setIsCostModalOpen] = useState(false);
 
-    // Auto-sliding logic with hover pause
+    // Auto-advance dashboard slides every 3 seconds (pauses when user hovers)
     useEffect(() => {
         if (isPaused) return;
 
@@ -28,10 +35,13 @@ const Hero = () => {
 
     return (
         <section className={styles.heroContainer}>
-            {/* Background glowing orbs */}
+            {/* Ambient background glow orbs */}
             <div className={styles.glowOrb1}></div>
             <div className={styles.glowOrb2}></div>
 
+            {/* --------------------------------------------------------------
+                2.1 UPPER HERO: BADGE, HEADLINE, SUBTITLE & TRUE COST CTA
+               -------------------------------------------------------------- */}
             <div className={styles.content}>
                 <div className={styles.badge}>Next-Gen Invoice Automation</div>
 
@@ -43,7 +53,7 @@ const Hero = () => {
                     Uncover hidden operational costs behind every invoice and reduce them by up to 20% with invoice-to-cash automation.
                 </p>
 
-                {/* Discover Your True Cost Per Invoice Action Button */}
+                {/* Triggers the 4-step True Cost Per Invoice Modal */}
                 <button
                     type="button"
                     className={styles.discoverBtn}
@@ -53,9 +63,11 @@ const Hero = () => {
                 </button>
             </div>
 
-            {/* Split Section: Slider (Left) & Data (Right) */}
+            {/* --------------------------------------------------------------
+                2.2 LOWER HERO: INTERACTIVE SLIDER (LEFT) & VALUE PROP (RIGHT)
+               -------------------------------------------------------------- */}
             <div className={styles.heroBottom}>
-                {/* Left Side: Interactive Slider with Hover Pause & Dot Controls */}
+                {/* Left Column: Dashboard Carousel & DSO Caption */}
                 <div className={styles.sliderWrapper}>
                     <div
                         className={styles.sliderContainer}
@@ -69,7 +81,7 @@ const Hero = () => {
                             className={styles.sliderImage}
                         />
 
-                        {/* Interactive Dot Indicators */}
+                        {/* Interactive Slide Dot Indicators */}
                         <div className={styles.sliderDots}>
                             {slides.map((_, idx) => (
                                 <button
@@ -83,13 +95,16 @@ const Hero = () => {
                         </div>
                     </div>
 
-                    {/* DSO Reduction Caption matching screenshot 4 */}
+                    {/* DSO Reduction Caption & Footnote */}
                     <div className={styles.sliderCaption}>
                         Reduce DSO By 5-10 Days* in a Credit Cycle
+                        <span className={styles.dsoFootnote}>
+                            *Based on scheduled Pay-by-Date &amp; automated mandate collection workflows
+                        </span>
                     </div>
                 </div>
 
-                {/* Right Side: Re-added Data */}
+                {/* Right Column: Collection Account Overview & Read More Link */}
                 <div className={styles.bottomInfo}>
                     <h3>Get your <span>Collection Account</span> through GIROPie.</h3>
 
@@ -101,14 +116,16 @@ const Hero = () => {
                         GIROPie gives your customers the flexibility to choose and manage when to pay, while you gain <span>real-time visibility</span> and control over your collection and cash flow.
                     </p>
 
-                    {/* Read More button leads to What We Do / Shared Invoice Layer in About Us */}
+                    {/* Scrolls directly to the "What We Do" section on the About Us page */}
                     <Link to="/about#what-we-do" className={styles.readMoreLink}>
                         Read More &rarr;
                     </Link>
                 </div>
             </div>
 
-            {/* True Cost Analysis & Savings Calculator Modal */}
+            {/* --------------------------------------------------------------
+                2.3 TRUE COST ANALYSIS & SAVINGS CALCULATOR MODAL
+               -------------------------------------------------------------- */}
             <TrueCostModal
                 isOpen={isCostModalOpen}
                 onClose={() => setIsCostModalOpen(false)}

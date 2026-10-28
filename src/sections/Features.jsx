@@ -1,7 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Features.module.css';
-import { FaChartLine, FaFileInvoiceDollar, FaBoltLightning, FaArrowsRotate, FaCheckDouble, FaHandshake } from 'react-icons/fa6';
+import {
+    FaChartLine,
+    FaFileInvoiceDollar,
+    FaBoltLightning,
+    FaArrowsRotate,
+    FaCheckDouble,
+    FaHandshake,
+    FaArrowRight
+} from 'react-icons/fa6';
 
+// ============================================================================
+// SECTION 1: HOME PAGE FEATURE CARDS DATA
+// Easy to edit: Modify card titles, descriptions, or icons below.
+// ============================================================================
 const featureData = [
     {
         title: "Real-Time Cash Flow Position",
@@ -35,15 +48,20 @@ const featureData = [
     }
 ];
 
+// ============================================================================
+// SECTION 2: HOME PAGE FEATURES GRID COMPONENT
+// ============================================================================
 const Features = () => {
     return (
         <section className={styles.featuresSection}>
+            {/* Section Header */}
             <div className={styles.header}>
                 <div className={styles.badge}>Platform Features</div>
                 <h2>Powering Smarter Cash Flow</h2>
                 <p>Everything you need to automate your invoice-to-cash process.</p>
             </div>
 
+            {/* 6-Card Feature Grid */}
             <div className={styles.grid}>
                 {featureData.map((feature, index) => (
                     <div key={index} className={styles.card}>
@@ -54,6 +72,13 @@ const Features = () => {
                         <p className={styles.cardDesc}>{feature.desc}</p>
                     </div>
                 ))}
+            </div>
+
+            {/* Footer CTA linking to the detailed /features page */}
+            <div className={styles.exploreCtaRow}>
+                <Link to="/features" className={styles.exploreBtn}>
+                    Explore All Platform Features <FaArrowRight />
+                </Link>
             </div>
         </section>
     );

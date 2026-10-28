@@ -1,15 +1,16 @@
 /* ==========================================================================
    1. MAIN HERO CONTAINER
-   Responsible for full-screen layout, spacing, and base canvas background
+   Responsible for full-width layout, spacing, and base canvas background.
+   NOTE: Uses width: 100% (instead of 100vw) to avoid horizontal scrollbar shift.
    ========================================================================== */
 .heroContainer {
     position: relative;
-    width: 100vw;
+    width: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 3rem 5% 2rem;
+    padding: 3rem 5% 3.5rem;
     overflow: hidden;
     background-color: var(--bg-main);
 }
@@ -68,9 +69,7 @@
     text-align: center;
     max-width: 900px;
     margin: 0 auto 0.25rem auto;
-    /* <-- Changed from 4rem to 1rem */
 }
-
 
 /* Small pill badge above the main title */
 .badge {
@@ -109,16 +108,16 @@
     margin: 0 auto;
 }
 
-/* Discover Your True Cost Per Invoice button matching screenshot 4 */
+/* Discover Your True Cost Per Invoice button */
 .discoverBtn {
     display: inline-block;
-    margin-top: 1.25rem;
-    padding: 0.75rem 1.85rem;
+    margin-top: 1.35rem;
+    padding: 0.8rem 1.95rem;
     background: linear-gradient(135deg, #8ba0d8 0%, #687bb8 100%);
     color: #ffffff;
     border: none;
     border-radius: 50px;
-    font-size: 0.95rem;
+    font-size: 0.96rem;
     font-weight: 600;
     cursor: pointer;
     box-shadow: 0 6px 16px rgba(104, 123, 184, 0.35);
@@ -145,8 +144,16 @@
     color: #1e293b;
     text-align: center;
     letter-spacing: -0.2px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
 }
 
+.dsoFootnote {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #64748b;
+}
 
 /* ==========================================================================
    4. CALL TO ACTION BUTTONS
@@ -202,13 +209,11 @@
     grid-template-columns: 1.2fr 1fr;
     gap: 4rem;
     max-width: 1200px;
-    margin: 5rem auto 0;
-    /* <-- Changed from 4rem auto 0 to 1.5rem auto 0 */
+    margin: 2.5rem auto 0;
     align-items: center;
     position: relative;
     z-index: 2;
 }
-
 
 /* ==========================================================================
    6. SLIDER SHOWCASE (LEFT SIDE)

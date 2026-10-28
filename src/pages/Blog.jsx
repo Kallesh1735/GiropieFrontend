@@ -13,7 +13,11 @@ import {
     FaShareNodes,
     FaCheck,
     FaLightbulb,
-    FaPenNib
+    FaPenNib,
+    FaLinkedin,
+    FaXTwitter,
+    FaFacebook,
+    FaYoutube
 } from 'react-icons/fa6';
 
 // Official GIROPie Logo Icon for editorial avatar
@@ -584,6 +588,64 @@ const Blog = () => {
                                         {(activePost.initialLikes || 0) + (likedPosts[activePost.id] ? 1 : 0)} Likes
                                     </span>
                                 </button>
+                            </div>
+
+                            {/* Social Share & Follow Bar */}
+                            <div className={styles.socialShareBar}>
+                                <div className={styles.shareHeadingGroup}>
+                                    <span className={styles.shareBarLabel}>Share this article:</span>
+                                    <div className={styles.shareButtonsGroup}>
+                                        <a
+                                            href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className={`${styles.socialShareBtn} ${styles.shareLinkedin}`}
+                                            aria-label="Share on LinkedIn"
+                                        >
+                                            <FaLinkedin /> LinkedIn
+                                        </a>
+                                        <a
+                                            href={`https://x.com/intent/tweet?text=${encodeURIComponent(activePost.title)}&url=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className={`${styles.socialShareBtn} ${styles.shareTwitter}`}
+                                            aria-label="Share on X"
+                                        >
+                                            <FaXTwitter /> X
+                                        </a>
+                                        <a
+                                            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className={`${styles.socialShareBtn} ${styles.shareFacebook}`}
+                                            aria-label="Share on Facebook"
+                                        >
+                                            <FaFacebook /> Facebook
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div className={styles.followChannelGroup}>
+                                    <span className={styles.shareBarLabel}>Follow GIROPie:</span>
+                                    <a
+                                        href="https://www.youtube.com/@giropie"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={`${styles.socialShareBtn} ${styles.shareYoutube}`}
+                                        aria-label="Watch on YouTube"
+                                    >
+                                        <FaYoutube /> YouTube
+                                    </a>
+                                    <a
+                                        href="https://www.linkedin.com/company/peppertreeai"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={`${styles.socialShareBtn} ${styles.shareLinkedin}`}
+                                        aria-label="Follow on LinkedIn"
+                                    >
+                                        <FaLinkedin /> Follow
+                                    </a>
+                                </div>
                             </div>
                         </article>
 

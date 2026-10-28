@@ -1,18 +1,21 @@
 import React from 'react';
 import styles from './FeaturesPage.module.css';
 import featureHeroImg from '../assets/faeture page.jpg';
+import endToEndArApImg from '../assets/end to end ar ap.avif';
+import dynamicCollabImg from '../assets/dynamic collabration.avif';
+import liveCashFlowImg from '../assets/live cash flow dashbaord.avif';
+import onTheGoImg from '../assets/on the go.avif';
+import embeddedSupplyChainImg from '../assets/embeded supply chain.avif';
 import {
-    FaCalendarCheck,
-    FaArrowsRotate,
-    FaChartLine,
-    FaMagnifyingGlassDollar,
-    FaCoins,
     FaLinkSlash,
     FaCalendarXmark,
     FaCommentsDollar,
     FaArrowRight
 } from 'react-icons/fa6';
 
+// ============================================================================
+// FEATURES PAGE COMPONENT - GIROPie
+// ============================================================================
 const FeaturesPage = () => {
     return (
         <div className={styles.featuresPage}>
@@ -74,18 +77,16 @@ const FeaturesPage = () => {
                             <FaCommentsDollar />
                         </div>
                         <span className={`${styles.gapTag} ${styles.tagBlue}`}>03 • Operational Drag</span>
-                        <h3 className={styles.gapTitle}>Manual Chasing & Disputes</h3>
+                        <h3 className={styles.gapTitle}>Manual Chasing &amp; Disputes</h3>
                         <p className={styles.gapText}>
                             Teams spend significant time chasing payments, managing disputes, approvals, and reconciliation across fragmented systems.
                         </p>
                     </div>
                 </div>
-
-
             </section>
 
             {/* ==============================================================
-                SECTION 3: CORE CAPABILITIES (5 DETAILED CARDS)
+                SECTION 3: CORE CAPABILITIES (5 DETAILED CARDS WITH BRAND GRAPHICS)
                 ============================================================== */}
             <section className={styles.capabilitiesSection}>
                 <div className={styles.sectionHeader}>
@@ -99,8 +100,12 @@ const FeaturesPage = () => {
                 <div className={styles.featuresList}>
                     {/* Feature 1 */}
                     <div className={styles.featureCard}>
-                        <div className={`${styles.featureIconBox} ${styles.iconOrange}`}>
-                            <FaCalendarCheck />
+                        <div className={styles.featureImgContainer}>
+                            <img
+                                src={endToEndArApImg}
+                                alt="End-to-End AR/AP Automation"
+                                className={styles.featureGraphic}
+                            />
                         </div>
                         <div className={styles.featureTitleWrapper}>
                             <span className={styles.categoryTag}>Automation</span>
@@ -113,22 +118,30 @@ const FeaturesPage = () => {
 
                     {/* Feature 2 */}
                     <div className={styles.featureCard}>
-                        <div className={`${styles.featureIconBox} ${styles.iconBlue}`}>
-                            <FaArrowsRotate />
+                        <div className={styles.featureImgContainer}>
+                            <img
+                                src={dynamicCollabImg}
+                                alt="Dynamic Invoice Collaboration & Pay-By-Date Tracking"
+                                className={styles.featureGraphic}
+                            />
                         </div>
                         <div className={styles.featureTitleWrapper}>
                             <span className={styles.categoryTag}>Collaboration</span>
-                            <h3 className={styles.featureTitle}>Dynamic Invoice Collaboration & Pay-By-Date Tracking</h3>
+                            <h3 className={styles.featureTitle}>Dynamic Invoice Collaboration &amp; Pay-By-Date Tracking</h3>
                         </div>
                         <p className={styles.featureDesc}>
-                            Enables customers to set invoice-level 'Pay-by-Dates' visible to suppliers from the outset. Ensures commitment-based payments, reduces disputes, and avoids unintentional delays across supply chain partners.
+                            Enables customers to set invoice-level &apos;Pay-by-Dates&apos; visible to suppliers from the outset. Ensures commitment-based payments, reduces disputes, and avoids unintentional delays across supply chain partners.
                         </p>
                     </div>
 
                     {/* Feature 3 */}
                     <div className={styles.featureCard}>
-                        <div className={`${styles.featureIconBox} ${styles.iconCyan}`}>
-                            <FaChartLine />
+                        <div className={styles.featureImgContainer}>
+                            <img
+                                src={liveCashFlowImg}
+                                alt="Live Cash-Flow Dashboard with AR/AP Aging"
+                                className={styles.featureGraphic}
+                            />
                         </div>
                         <div className={styles.featureTitleWrapper}>
                             <span className={styles.categoryTag}>Intelligence</span>
@@ -141,8 +154,12 @@ const FeaturesPage = () => {
 
                     {/* Feature 4 */}
                     <div className={styles.featureCard}>
-                        <div className={`${styles.featureIconBox} ${styles.iconNavy}`}>
-                            <FaMagnifyingGlassDollar />
+                        <div className={styles.featureImgContainer}>
+                            <img
+                                src={onTheGoImg}
+                                alt="On-the-Go, Invoice-Level Reconciliation"
+                                className={styles.featureGraphic}
+                            />
                         </div>
                         <div className={styles.featureTitleWrapper}>
                             <span className={styles.categoryTag}>Reconciliation</span>
@@ -155,8 +172,12 @@ const FeaturesPage = () => {
 
                     {/* Feature 5 */}
                     <div className={styles.featureCard}>
-                        <div className={`${styles.featureIconBox} ${styles.iconGold}`}>
-                            <FaCoins />
+                        <div className={styles.featureImgContainer}>
+                            <img
+                                src={embeddedSupplyChainImg}
+                                alt="Embedded Supply Chain Finance Options"
+                                className={styles.featureGraphic}
+                            />
                         </div>
                         <div className={styles.featureTitleWrapper}>
                             <span className={styles.categoryTag}>Liquidity</span>

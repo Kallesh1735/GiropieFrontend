@@ -4,7 +4,13 @@ import styles from './Pricing.module.css';
 import pricingHeroImg from '../assets/pricing page.png';
 import { FaCircleCheck, FaArrowRight, FaCalendarDays } from 'react-icons/fa6';
 
+// ============================================================================
+// SECTION 1: PRICING PLANS CONFIGURATION DATA
+// Easy to edit: Modify plan titles, pricing, badges, or feature bullet points
+// under 'micro', 'smb', 'growth', or 'enterprise' below.
+// ============================================================================
 const plansData = {
+    // --- PLAN 1: MICRO BUSINESSES ---
     micro: {
         audience: 'For Micro Businesses',
         title: 'Micro Plan',
@@ -29,6 +35,8 @@ const plansData = {
             'Payment Orchestration'
         ]
     },
+
+    // --- PLAN 2: SMALL & MEDIUM BUSINESSES (SMB) ---
     smb: {
         audience: 'For Small & Medium Businesses',
         title: 'SMB Plan',
@@ -44,6 +52,8 @@ const plansData = {
             'Dedicated Account Manager*'
         ]
     },
+
+    // --- PLAN 3: GROWTH BUSINESSES ---
     growth: {
         audience: 'For Growing Businesses',
         title: 'Growth Plan',
@@ -60,6 +70,8 @@ const plansData = {
             'ERP/Accounting Integration*'
         ]
     },
+
+    // --- PLAN 4: LARGE ENTERPRISES ---
     enterprise: {
         audience: 'For Large Corporations',
         title: 'Enterprise Plan',
@@ -79,6 +91,9 @@ const plansData = {
     }
 };
 
+// ============================================================================
+// SECTION 2: PRICING PAGE COMPONENT
+// ============================================================================
 const Pricing = () => {
     const [activePlan, setActivePlan] = useState('micro');
     const current = plansData[activePlan];
@@ -89,9 +104,9 @@ const Pricing = () => {
             <div className={styles.bgGlow1}></div>
             <div className={styles.bgGlow2}></div>
 
-            {/* ==============================================================
-                SECTION 1: HERO BANNER IMAGE
-                ============================================================== */}
+            {/* --------------------------------------------------------------
+                2.1 HERO BANNER IMAGE
+               -------------------------------------------------------------- */}
             <section className={styles.heroBanner}>
                 <img
                     src={pricingHeroImg}
@@ -100,31 +115,35 @@ const Pricing = () => {
                 />
             </section>
 
-            {/* ==============================================================
-                SECTION 2: INTERACTIVE PRICING TABS & CARD
-                ============================================================== */}
+            {/* --------------------------------------------------------------
+                2.2 INTERACTIVE PRICING TABS & PLAN DISPLAY CARD
+               -------------------------------------------------------------- */}
             <section className={styles.pricingContainer}>
                 {/* Segmented Tab Bar */}
                 <div className={styles.tabBar}>
                     <button
+                        type="button"
                         className={`${styles.tabButton} ${activePlan === 'micro' ? styles.activeTab : ''}`}
                         onClick={() => setActivePlan('micro')}
                     >
                         Micro
                     </button>
                     <button
+                        type="button"
                         className={`${styles.tabButton} ${activePlan === 'smb' ? styles.activeTab : ''}`}
                         onClick={() => setActivePlan('smb')}
                     >
                         SMB
                     </button>
                     <button
+                        type="button"
                         className={`${styles.tabButton} ${activePlan === 'growth' ? styles.activeTab : ''}`}
                         onClick={() => setActivePlan('growth')}
                     >
                         Growth
                     </button>
                     <button
+                        type="button"
                         className={`${styles.tabButton} ${activePlan === 'enterprise' ? styles.activeTab : ''}`}
                         onClick={() => setActivePlan('enterprise')}
                     >
@@ -132,9 +151,9 @@ const Pricing = () => {
                     </button>
                 </div>
 
-                {/* Active Plan Display Card */}
-                <div className={styles.planCard}>
-                    {/* Left Side: Features */}
+                {/* Active Plan Display Card (key={activePlan} triggers smooth fade animation) */}
+                <div key={activePlan} className={styles.planCard}>
+                    {/* Left Column: Plan Features List */}
                     <div className={styles.planInfo}>
                         <span className={styles.planAudience}>{current.audience}</span>
                         <h2 className={styles.planTitle}>{current.title}</h2>
@@ -149,7 +168,7 @@ const Pricing = () => {
                         </ul>
                     </div>
 
-                    {/* Right Side: Pricing Pod */}
+                    {/* Right Column: Pricing Pod & CTA */}
                     <div className={styles.priceBox}>
                         <span className={styles.offerBadge}>{current.badge}</span>
 
@@ -189,15 +208,15 @@ const Pricing = () => {
                 </div>
             </section>
 
-            {/* ==============================================================
-                SECTION 3: CONSULTATION CALL TO ACTION
-                ============================================================== */}
+            {/* --------------------------------------------------------------
+                2.3 CONSULTATION CALL TO ACTION
+               -------------------------------------------------------------- */}
             <section className={styles.consultationSection}>
                 <div className={styles.consultationCard}>
                     <h2 className={styles.consultationTitle}>Not sure which plan suits your requirement?</h2>
                     <div className={styles.accentBar}></div>
                     <p className={styles.consultationText}>
-                        Every business has unique invoice volumes, payment cycles, and operational workflows. Tell us a little about your business, and we'll recommend the plan that best fits your needs.
+                        Every business has unique invoice volumes, payment cycles, and operational workflows. Tell us a little about your business, and we&apos;ll recommend the plan that best fits your needs.
                     </p>
                     <a
                         href="https://calendly.com/giropie/giropie-demo"

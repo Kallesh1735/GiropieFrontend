@@ -330,6 +330,7 @@
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
     position: sticky;
     top: 6rem;
+    scroll-margin-top: 95px;
 }
 
 .applyTitle {

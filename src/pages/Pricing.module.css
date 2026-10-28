@@ -110,18 +110,20 @@
 
 /* ==========================================================================
    4. ACTIVE PLAN DISPLAY CARD (BALANCED 2-COLUMN LAYOUT)
+   NOTE: min-height prevents jarring card height jumps when switching plans
    ========================================================================== */
 .planCard {
     background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 24px;
     padding: 3.5rem 3.5rem;
+    min-height: 440px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
     display: grid;
     grid-template-columns: 1.4fr 1fr;
     gap: 3.5rem;
-    align-items: start;
-    animation: fadeIn 0.35s ease-in-out;
+    align-items: center;
+    animation: fadeIn 0.32s ease-out;
 }
 
 @keyframes fadeIn {
@@ -347,7 +349,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.8rem;
-    background: linear-gradient(135deg, #a855f7, #9333ea); /* Modern Purple as in screenshot */
+    background: linear-gradient(135deg, #a855f7, #9333ea);
     color: #ffffff;
     padding: 1.1rem 2.8rem;
     border-radius: 50px;
@@ -371,6 +373,7 @@
         grid-template-columns: 1fr;
         gap: 2.5rem;
         padding: 2.5rem 2rem;
+        min-height: auto;
     }
 
     .priceBox {

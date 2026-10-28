@@ -437,15 +437,18 @@ const PrivacyPolicy = () => {
                     </p>
                 </div>
 
-                {/* 23. Grievance Redressal */}
+                {/* ----------------------------------------------------------
+                    23. GRIEVANCE REDRESSAL & CORPORATE CONTACT DETAILS
+                    Easy to edit: Keep corporate address synced with Footer.jsx
+                   ---------------------------------------------------------- */}
                 <div className={styles.contentSection}>
                     <h2 className={styles.sectionHeading}>
                         <span className={styles.headingNumber}>23.</span> Grievance Redressal
                     </h2>
                     <div className={styles.contactBox}>
                         <p><strong>Grievance Officer:</strong> Krishna Kumar B S</p>
-                        <p><strong>Peppertree.AI Pvt. Ltd.</strong></p>
-                        <p>No. 1139, Maruthi Complex, 3rd Floor,</p>
+                        <p><strong>PepperTree.AI Pvt. Ltd.</strong></p>
+                        <p>No. 1138, Maruthi Complex, 3rd Floor,</p>
                         <p>BEML Layout, 3rd Stage, Raja Rajeshwari Nagar,</p>
                         <p>Bengaluru &ndash; 560098, Karnataka, India</p>
                         <p>Email: <a href="mailto:legalquery@peppertree.ai" style={{ color: '#1C4E80', fontWeight: '700' }}>legalquery@peppertree.ai</a></p>

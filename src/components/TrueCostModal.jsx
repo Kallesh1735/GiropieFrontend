@@ -11,7 +11,12 @@ import {
     FaCheck
 } from 'react-icons/fa6';
 
-// All 24 inputs organized exactly as provided by user
+// ============================================================================
+// SECTION 1: SPEND MAPPING INPUT DEFINITIONS (24 FIELDS)
+// Easy to edit: Update labels, suffixes ('₹' or '%'), or hover tooltips below.
+// ============================================================================
+
+// Accounts Receivable (AR) — Inputs 1 to 12
 const AR_FIELDS = [
     { id: 'ar_invoices_per_month', num: 1, label: 'Avg. number of invoices per month', suffix: '', tooltip: 'Total volume of customer credit sales invoices generated and dispatched per month' },
     { id: 'ar_invoice_avg_value', num: 2, label: 'Average invoice value (₹)', suffix: '₹', tooltip: 'Mean monetary value across your customer invoices' },
@@ -27,6 +32,7 @@ const AR_FIELDS = [
     { id: 'ar_current_dso', num: 12, label: 'Current achieved DSO (days)', suffix: '', tooltip: 'Days Sales Outstanding: average number of days taken to collect payment post-invoice' }
 ];
 
+// Accounts Payable (AP) — Inputs 13 to 19
 const AP_FIELDS = [
     { id: 'ap_bills_per_month', num: 13, label: 'Avg. Number of bills processed per month', suffix: '', tooltip: 'Total supplier and vendor bills received and processed per month' },
     { id: 'ap_bill_avg_value', num: 14, label: 'Average bill value (₹)', suffix: '₹', tooltip: 'Mean monetary value of vendor bills received' },
@@ -37,6 +43,7 @@ const AP_FIELDS = [
     { id: 'ap_delayed_penalties_month', num: 19, label: 'Avg. Delayed payment penalties per month (₹)', suffix: '₹', tooltip: 'Penalties or lost early-payment discounts due to delayed vendor settlement' }
 ];
 
+// Working Capital (WC) — Inputs 20 to 24
 const WC_FIELDS = [
     { id: 'wc_overdue_invoices', num: 20, label: 'Number of overdue invoices', suffix: '', tooltip: 'Number of customer invoices currently pending beyond agreed credit terms' },
     { id: 'wc_overdue_avg_value', num: 21, label: 'Avg. Value of overdue invoices (₹)', suffix: '₹', tooltip: 'Average ticket size of invoices currently in overdue status' },
@@ -44,6 +51,7 @@ const WC_FIELDS = [
     { id: 'wc_od_loan_per_month', num: 23, label: 'Avg. OD/Loan facility used per month (₹)', suffix: '₹', tooltip: 'Average working capital overdraft (OD) or line of credit balance drawn each month' },
     { id: 'wc_od_utilization_pct', num: 24, label: 'Utilization % of OD/Loan used towards AR delays', suffix: '%', tooltip: 'Portion of short-term borrowing incurred specifically to bridge delayed receivables' }
 ];
+// Initial empty state for all 24 inputs (no pre-filled dummy values)
 const EMPTY_SPEND = {
     ar_invoices_per_month: '',
     ar_invoice_avg_value: '',
@@ -146,9 +154,11 @@ const TrueCostModal = ({ isOpen, onClose }) => {
         setActiveTab('ar');
     };
 
-    // --- DUMMY / DYNAMIC CALCULATION ---
-    // User requested: "real calculation how it should calculate i will give u but for now keep it dummy only"
-    // Screenshot 1 displays: "₹260950"
+    // ========================================================================
+    // SECTION 3: TRUE COST CALCULATION ENGINE
+    // NOTE FOR FUTURE EDIT: Replace the formula inside calculateDisplayCost()
+    // when the final production calculation formula is provided.
+    // ========================================================================
     const calculateDisplayCost = () => {
         const arInvoices = Number(spendData.ar_invoices_per_month) || 2500;
         const arFinanceHours = (arInvoices * (Number(spendData.ar_finance_time_per_invoice) || 12)) / 60;
@@ -254,7 +264,10 @@ const TrueCostModal = ({ isOpen, onClose }) => {
                     )}
                     {step === 2 && (
                         <h2 className={styles.modalHeading}>
-                            The Following Inputs Are Critical To Mapping Your Current Spend Don't Have All The Details Right Now ?? No Problem — Fill In What You Can And Return Later To Complete The Rest
+                            The Following Inputs Are Critical To Mapping Your Current Spend
+                            <span className={styles.modalSubHeadingLine}>
+                                Don&apos;t Have All The Details Right Now ?? No Problem — Fill In What You Can And Return Later To Complete The Rest
+                            </span>
                         </h2>
                     )}
                 </div>

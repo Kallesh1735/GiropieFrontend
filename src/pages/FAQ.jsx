@@ -1,9 +1,25 @@
 import React, { useState } from 'react';
 import styles from './FAQ.module.css';
-import { FaChevronDown, FaMagnifyingGlass } from 'react-icons/fa6';
+import { FaChevronDown, FaMagnifyingGlass, FaCalculator } from 'react-icons/fa6';
+import TrueCostModal from '../components/TrueCostModal';
 
-// All 19 FAQ Questions across the 3 tabs matching your screenshots
+// ============================================================================
+// SECTION 1: FAQ CATEGORY LABELS
+// Easy to edit: Map category keys ('about', 'operational', 'pricing') to display titles.
+// ============================================================================
+const CATEGORY_LABELS = {
+    about: 'About GIROPie',
+    operational: 'Operational',
+    pricing: 'Pricing'
+};
+
+// ============================================================================
+// SECTION 2: FAQ QUESTIONS & ANSWERS DATABASE
+// Easy to edit: Add, modify, or reorder questions inside 'about', 'operational', or 'pricing'.
+// Use double newlines (\n\n) inside answer strings to create separate paragraphs.
+// ============================================================================
 const faqData = {
+    // --- TAB 1: ABOUT GIROPIE ---
     about: [
         {
             id: 'about-1',
@@ -38,6 +54,8 @@ This flexible model allows suppliers to gradually onboard buyers while still ben
             answer: 'Payments are executed through regulated banking infrastructure after the supplier initiates collection.'
         }
     ],
+
+    // --- TAB 2: OPERATIONAL ---
     operational: [
         {
             id: 'op-1',
@@ -77,102 +95,90 @@ This flexible model allows suppliers to gradually onboard buyers while still ben
         {
             id: 'op-8',
             question: 'Do buyers need to join GIROPie for the platform to work?',
-            answer: 'Yes. Supplier and Buyer collaboration is crucial for real-time cash flow management. However, GIROPie operates in both Linked and Unlinked modes where Buyer may not connect with a supplier. Also, a Suppliers can manage invoices and send invoice-level auto payment requests (Bank mandate) even if buyers are not actively using the platform.'
+            answer: 'Yes. Supplier and Buyer collaboration is crucial for real-time cash flow management. However, GIROPie operates in both Linked and Unlinked modes where a Buyer may not connect with a supplier. Also, suppliers can manage invoices and send invoice-level auto payment requests (Bank mandate) even if buyers are not actively using the platform.'
         }
     ],
+
+    // --- TAB 3: PRICING ---
     pricing: [
         {
             id: 'price-1',
             question: 'Why is GIROPie priced per invoice?',
-            answer: `GIROPie pricing is aligned with the operational work required to manage trade credit invoices
-            Each invoice on GIROPie may involve multiple operational processes such as payment scheduling, dispute management, reconciliation tracking, and settlement execution.Pricing per invoice ensures that organizations pay only for the operational workflows they actually use.
-            This model also allows GIROPie to scale naturally with the growth of a business`
+            answer: `GIROPie pricing is aligned with the operational work required to manage trade credit invoices.
+
+Each invoice on GIROPie may involve multiple operational processes such as payment scheduling, dispute management, reconciliation tracking, and settlement execution. Pricing per invoice ensures that organizations pay only for the operational workflows they actually use.
+
+This model also allows GIROPie to scale naturally with the growth of a business.`
         },
         {
             id: 'price-2',
             question: 'What operational cost does GIROPie replace?',
-
-            answer: `Managing credit invoices manually often involves hidden operational costs such as
-
+            answer: `Managing credit invoices manually often involves hidden operational costs such as:
 
 • payment follow-ups
-
 • reconciliation checks
-
 • dispute coordination
-
 • communication between sales and finance teams
-
 • manual tracking of payment dates
-
 
 In many distribution businesses, the operational cost of managing a credit invoice can exceed ₹100–₹250 per invoice. GIROPie helps reduce these costs by automating the invoice lifecycle and payment collection workflow.`
         },
         {
             id: 'price-3',
             question: 'Does GIROPie pricing depend on transaction value?',
-
             answer: `GIROPie primarily follows a per-invoice pricing model, because the operational effort required to manage invoices is largely independent of invoice value.
-
 
 However, for certain businesses that prefer a value-based structure, GIROPie may also offer pricing linked to transaction value.`
         },
         {
             id: 'price-4',
             question: 'Can pricing be customized for large distributors?',
-
             answer: `Yes.
-
 
 GIROPie offers customized pricing models for organizations with high invoice volumes or complex distribution networks. These may include:
 
-
 • enterprise platform plans
-
 • volume-based pricing
-
 • industry-specific pricing structures
-
 • integration-based pricing
-
 
 Our team works with organizations to design a pricing model that aligns with their operational scale and growth plans.`
         },
         {
             id: 'price-5',
             question: 'Is there a minimum platform fee?',
-
             answer: `Yes.
 
-
 GIROPie typically operates with a monthly platform usage fee combined with invoice processing charges. The platform fee covers infrastructure, security, integrations, and platform maintenance.
-
 
 Specific pricing structures are defined based on the organization’s scale and implementation scope.`
         },
         {
             id: 'price-6',
             question: 'Does GIROPie charge buyers?',
-
-            answer: `No. If GIROPie is implemented and used for Payable Management by a user/company/retail/dealer, as invited and Linked with a supplier... the Buyer is not charged.
-
+            answer: `No. If GIROPie is implemented and used for Payable Management by a user, company, retailer, or dealer — as invited and Linked with a supplier — the Buyer is not charged.
 
 GIROPie charges for Receivables Management only.`
         },
         {
             id: 'price-7',
             question: 'Want to estimate your operational savings?',
-
-            answer: `Use the GIROPie Cost per Invoice Calculator on the Home page to see how much manual finance effort your organization can save.`
+            answer: `Use the GIROPie Cost per Invoice Calculator to see how much manual finance effort your organization can save.`,
+            hasCalculatorCta: true
         }
     ]
 };
 
+// ============================================================================
+// SECTION 3: FAQ PAGE COMPONENT
+// ============================================================================
 const FAQ = () => {
     const [activeTab, setActiveTab] = useState('about');
     const [searchQuery, setSearchQuery] = useState('');
-    // By default, the first question in the active tab is open (as seen in your screenshot)
+    // First question in the default tab starts expanded
     const [openItems, setOpenItems] = useState({ 'about-1': true });
+    // Controls the True Cost Calculator modal when triggered from price-7
+    const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
 
     const toggleAccordion = (id) => {
         setOpenItems((prev) => ({
@@ -181,19 +187,47 @@ const FAQ = () => {
         }));
     };
 
-    // Filter questions based on the active tab and search query
-    const currentQuestions = (faqData[activeTab] || []).filter((item) => {
-        if (!searchQuery.trim()) return true;
-        const q = item.question.toLowerCase();
-        const a = item.answer.toLowerCase();
-        const s = searchQuery.toLowerCase();
-        return q.includes(s) || a.includes(s);
-    });
+    // ========================================================================
+    // CROSS-TAB SEARCH LOGIC:
+    // - If searchQuery is empty: Show questions for the currently selected tab.
+    // - If searchQuery has text: Search across ALL 3 categories so users find
+    //   answers even if they are on a different tab.
+    // ========================================================================
+    const isSearching = searchQuery.trim().length > 0;
+
+    const getDisplayedQuestions = () => {
+        if (!isSearching) {
+            return (faqData[activeTab] || []).map((item) => ({
+                ...item,
+                categoryKey: activeTab
+            }));
+        }
+
+        const query = searchQuery.toLowerCase().trim();
+        const allCategories = Object.keys(faqData);
+        const matches = [];
+
+        allCategories.forEach((catKey) => {
+            faqData[catKey].forEach((item) => {
+                const inQuestion = item.question.toLowerCase().includes(query);
+                const inAnswer = item.answer.toLowerCase().includes(query);
+                if (inQuestion || inAnswer) {
+                    matches.push({ ...item, categoryKey: catKey });
+                }
+            });
+        });
+
+        return matches;
+    };
+
+    const currentQuestions = getDisplayedQuestions();
 
     return (
         <div className={styles.faqPage}>
             <div className={styles.container}>
-                {/* Header Row: Title & Search */}
+                {/* ----------------------------------------------------------
+                    1. HEADER ROW: PAGE TITLE & GLOBAL SEARCH INPUT
+                   ---------------------------------------------------------- */}
                 <div className={styles.headerRow}>
                     <h1 className={styles.pageTitle}>Frequently asked questions</h1>
 
@@ -204,18 +238,22 @@ const FAQ = () => {
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className={styles.searchInput}
+                            aria-label="Search frequently asked questions"
                         />
                         <FaMagnifyingGlass className={styles.searchIcon} />
                     </div>
                 </div>
 
-                {/* Category Navigation Tabs */}
+                {/* ----------------------------------------------------------
+                    2. CATEGORY NAVIGATION TABS
+                   ---------------------------------------------------------- */}
                 <div className={styles.tabBar}>
                     <button
                         type="button"
-                        className={`${styles.tabBtn} ${activeTab === 'about' ? styles.activeTab : ''}`}
+                        className={`${styles.tabBtn} ${!isSearching && activeTab === 'about' ? styles.activeTab : ''}`}
                         onClick={() => {
                             setActiveTab('about');
+                            setSearchQuery('');
                             setOpenItems((prev) => ({ ...prev, 'about-1': true }));
                         }}
                     >
@@ -224,33 +262,49 @@ const FAQ = () => {
 
                     <button
                         type="button"
-                        className={`${styles.tabBtn} ${activeTab === 'operational' ? styles.activeTab : ''}`}
-                        onClick={() => setActiveTab('operational')}
+                        className={`${styles.tabBtn} ${!isSearching && activeTab === 'operational' ? styles.activeTab : ''}`}
+                        onClick={() => {
+                            setActiveTab('operational');
+                            setSearchQuery('');
+                        }}
                     >
                         Operational
                     </button>
 
                     <button
                         type="button"
-                        className={`${styles.tabBtn} ${activeTab === 'pricing' ? styles.activeTab : ''}`}
-                        onClick={() => setActiveTab('pricing')}
+                        className={`${styles.tabBtn} ${!isSearching && activeTab === 'pricing' ? styles.activeTab : ''}`}
+                        onClick={() => {
+                            setActiveTab('pricing');
+                            setSearchQuery('');
+                        }}
                     >
                         Pricing
                     </button>
                 </div>
 
-                {/* FAQ Accordion List */}
+                {/* ----------------------------------------------------------
+                    3. ACCORDION QUESTIONS LIST
+                   ---------------------------------------------------------- */}
                 <div className={styles.faqList}>
                     {currentQuestions.length > 0 ? (
                         currentQuestions.map((item) => {
-                            const isOpen = !!openItems[item.id];
+                            // Auto-expand matched items during an active search
+                            const isOpen = isSearching ? true : !!openItems[item.id];
                             return (
                                 <div key={item.id} className={styles.accordionCard}>
                                     <div
                                         className={styles.questionRow}
                                         onClick={() => toggleAccordion(item.id)}
                                     >
-                                        <h3 className={styles.questionText}>{item.question}</h3>
+                                        <div className={styles.questionTitleGroup}>
+                                            <h3 className={styles.questionText}>{item.question}</h3>
+                                            {isSearching && (
+                                                <span className={styles.categoryBadge}>
+                                                    {CATEGORY_LABELS[item.categoryKey]}
+                                                </span>
+                                            )}
+                                        </div>
                                         <FaChevronDown
                                             className={`${styles.chevronIcon} ${isOpen ? styles.chevronRotated : ''}`}
                                         />
@@ -263,6 +317,17 @@ const FAQ = () => {
                                                     {item.answer.split('\n\n').map((para, pIdx) => (
                                                         <p key={pIdx}>{para}</p>
                                                     ))}
+
+                                                    {/* Interactive True Cost Calculator Button for Question price-7 */}
+                                                    {item.hasCalculatorCta && (
+                                                        <button
+                                                            type="button"
+                                                            className={styles.calculatorCtaBtn}
+                                                            onClick={() => setIsCalculatorOpen(true)}
+                                                        >
+                                                            <FaCalculator /> Discover Your True Cost Per Invoice
+                                                        </button>
+                                                    )}
                                                 </div>
                                             ) : (
                                                 <p className={styles.placeholderAnswer}>
@@ -276,11 +341,19 @@ const FAQ = () => {
                         })
                     ) : (
                         <div className={styles.noResults}>
-                            No matching questions found for "{searchQuery}". Try a different search term.
+                            No matching questions found for &ldquo;{searchQuery}&rdquo;. Try a different search term.
                         </div>
                     )}
                 </div>
             </div>
+
+            {/* --------------------------------------------------------------
+                4. TRUE COST CALCULATOR MODAL (Triggered from Pricing FAQ #7)
+               -------------------------------------------------------------- */}
+            <TrueCostModal
+                isOpen={isCalculatorOpen}
+                onClose={() => setIsCalculatorOpen(false)}
+            />
         </div>
     );
 };
