@@ -51,6 +51,7 @@ function App() {
 
             {/* Legal & Compliance Routes */}
             <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
             {/* 404 Catch-All Route for unmatched URLs */}
             <Route path="*" element={<NotFound />} />
