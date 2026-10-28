@@ -17,7 +17,7 @@ const plansData = {
         price: '₹ 999',
         originalPrice: '₹ 1,499',
         period: '/month',
-        badge: 'Limited-Time Launch Offer',
+        badge: 'Choose Your Plan',
         subtext: 'Platform Subscription + Usage-based transaction charges',
         note: '*Excluding applicable taxes. Transparent pricing with no hidden fees.',
         actionType: 'trial',
@@ -192,7 +192,7 @@ const Pricing = () => {
                                 rel="noopener noreferrer"
                                 className={`${styles.actionBtn} ${styles.primaryActionBtn}`}
                             >
-                                Start 14-Day Free Trial <FaArrowRight />
+                                Start Your Trial<FaArrowRight />
                             </a>
                         ) : (
                             <Link
