@@ -7,6 +7,8 @@
     background-color: #f0f4f9;
     /* Soft contrast background */
     position: relative;
+    width: 100%;
+    overflow: hidden;
 }
 
 /* ==========================================================================
