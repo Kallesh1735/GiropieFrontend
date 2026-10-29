@@ -135,29 +135,31 @@ const Navbar = () => {
                     </li>
                 </ul>
 
-                {/* Desktop CTA Button */}
-                <a
-                    href="https://live.giropie.com/signup"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.trialBtn}
-                    style={{ textDecoration: 'none' }}
-                >
-                    Start Your Trial &gt;
-                </a>
+                {/* Right Actions: CTA Button (Visible on Desktop & Mobile) + Mobile Hamburger */}
+                <div className={styles.navRightActions}>
+                    <a
+                        href="https://live.giropie.com/signup"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.trialBtn}
+                        style={{ textDecoration: 'none' }}
+                    >
+                        Start Your Trial &gt;
+                    </a>
 
-                {/* Mobile Hamburger Toggle Button */}
-                <button
-                    type="button"
-                    className={`${styles.mobileToggle} ${isMobileMenuOpen ? styles.toggleActive : ''}`}
-                    onClick={() => setIsMobileMenuOpen(prev => !prev)}
-                    aria-label="Toggle navigation menu"
-                    aria-expanded={isMobileMenuOpen}
-                >
-                    <span className={styles.hamburgerBar}></span>
-                    <span className={styles.hamburgerBar}></span>
-                    <span className={styles.hamburgerBar}></span>
-                </button>
+                    {/* Mobile Hamburger Toggle Button */}
+                    <button
+                        type="button"
+                        className={`${styles.mobileToggle} ${isMobileMenuOpen ? styles.toggleActive : ''}`}
+                        onClick={() => setIsMobileMenuOpen(prev => !prev)}
+                        aria-label="Toggle navigation menu"
+                        aria-expanded={isMobileMenuOpen}
+                    >
+                        <span className={styles.hamburgerBar}></span>
+                        <span className={styles.hamburgerBar}></span>
+                        <span className={styles.hamburgerBar}></span>
+                    </button>
+                </div>
             </nav>
 
             {/* Mobile Navigation Drawer */}

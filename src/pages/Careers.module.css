@@ -8,7 +8,7 @@
     min-height: 100vh;
     background-color: #f8fafc;
     overflow-x: hidden;
-    padding-top: 1rem;
+    padding-top: 5rem;
     font-family: inherit;
     color: #0f172a;
 }
@@ -789,6 +789,10 @@
 }
 
 @media (max-width: 768px) {
+    .careersPage {
+        padding-top: 4rem;
+    }
+
     .heroSection {
         padding: 1rem 4% 1.5rem;
     }

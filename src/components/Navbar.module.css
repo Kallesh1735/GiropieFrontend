@@ -1,15 +1,18 @@
 /* ==========================================================================
    1. NAVBAR WRAPPER & POSITIONING
-   Navbar sits at the top of the page and scrolls naturally with the content
+   Floats seamlessly over the top of every page canvas so background colors
+   and ambient glows extend all the way to the top edge (0px) with zero cut line.
    ========================================================================== */
 .navbarWrapper {
-    position: relative;
-    margin-top: 1.5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1.35rem 5% 0;
     z-index: 100;
     display: flex;
     justify-content: center;
     width: 100%;
-    padding: 0 5%;
 }
 
 /* ==========================================================================
@@ -102,9 +105,15 @@
 }
 
 /* ==========================================================================
-   5. NAVBAR CTA BUTTON ("Start Your Trial")
-   Responsible for pill button shape, colors, and lift elevation
+   5. NAVBAR CTA BUTTON ("Start Your Trial") & RIGHT ACTIONS GROUP
+   Responsible for pill button shape, colors, lift elevation, and mobile pairing
    ========================================================================== */
+.navRightActions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
 .trialBtn {
     padding: 0.5rem 1.5rem;
     background: var(--color-secondary);
@@ -112,6 +121,8 @@
     border: none;
     border-radius: 50px;
     font-weight: 600;
+    font-size: 0.92rem;
+    white-space: nowrap;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(28, 78, 128, 0.15);
@@ -388,8 +399,7 @@
    RESPONSIVE BREAKPOINTS
    ========================================================================== */
 @media (max-width: 1024px) {
-    .navLinks,
-    .trialBtn {
+    .navLinks {
         display: none !important;
     }
 
@@ -398,6 +408,63 @@
     }
 
     .navbar {
-        padding: 0.55rem 1.25rem;
+        padding: 0.45rem 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbarWrapper {
+        padding: 0.85rem 4% 0;
+    }
+
+    .navbar {
+        padding: 0.38rem 0.65rem 0.38rem 0.85rem;
+        border-width: 1.5px;
+        box-shadow: 0 8px 28px rgba(28, 78, 128, 0.1);
+    }
+
+    .logoImg {
+        height: 27px;
+        display: block;
+    }
+
+    .navRightActions {
+        gap: 0.55rem;
+    }
+
+    .trialBtn {
+        padding: 0.4rem 0.85rem;
+        font-size: 0.76rem;
+        font-weight: 700;
+        box-shadow: 0 3px 10px rgba(28, 78, 128, 0.18);
+    }
+
+    .mobileToggle {
+        width: 24px;
+        height: 19px;
+        margin-right: 0.15rem;
+    }
+
+    .hamburgerBar {
+        height: 2px;
+    }
+
+    .toggleActive .hamburgerBar:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+    }
+
+    .toggleActive .hamburgerBar:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+    }
+}
+
+@media (max-width: 380px) {
+    .logoImg {
+        height: 23px;
+    }
+
+    .trialBtn {
+        padding: 0.36rem 0.7rem;
+        font-size: 0.7rem;
     }
 }

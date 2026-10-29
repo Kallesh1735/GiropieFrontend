@@ -8,7 +8,7 @@
     background-color: #f0f4f9;
     /* Matching the soft grayish-blue tone */
     overflow-x: hidden;
-    padding: 1.5rem 0 5rem;
+    padding: 5.5rem 0 5rem;
 }
 
 /* Ambient Floating Glow Lights */
@@ -426,7 +426,7 @@
 
 @media (max-width: 768px) {
     .featuresPage {
-        padding: 1rem 0 3.5rem;
+        padding: 4.35rem 0 3.5rem;
     }
 
     .heroBanner {
@@ -434,7 +434,14 @@
     }
 
     .heroImage {
-        border-radius: 12px;
+        min-height: 108px;
+        object-fit: cover;
+        object-position: 82% center;
+        border-radius: 16px;
+        background: #0d1e38;
+        padding: 4px;
+        border: 1.5px solid rgba(58, 141, 213, 0.3);
+        box-shadow: 0 12px 28px rgba(28, 78, 128, 0.14);
     }
 
     .gapSection {

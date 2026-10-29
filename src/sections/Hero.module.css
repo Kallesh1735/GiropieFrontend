@@ -10,7 +10,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 3rem 5% 3.5rem;
+    padding: 6.75rem 5% 3.5rem;
     overflow: hidden;
     background-color: var(--bg-main);
 }
@@ -342,7 +342,7 @@
 @media (max-width: 968px) {
     .heroContainer {
         min-height: auto;
-        padding: 2.5rem 5% 3rem;
+        padding: 6rem 5% 3rem;
     }
 
     .heroBottom {
@@ -360,13 +360,14 @@
 /* Mobile view: reduce heading size and stack buttons vertically */
 @media (max-width: 768px) {
     .heroContainer {
-        padding: 1.75rem 4% 2.5rem;
+        padding: 4.85rem 4% 2.5rem;
     }
 
     .glowOrb1,
     .glowOrb2 {
-        width: 260px;
-        height: 260px;
+        width: 280px;
+        height: 280px;
+        top: -40px;
         left: -60px;
         right: -60px;
     }

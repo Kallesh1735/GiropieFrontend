@@ -15,7 +15,7 @@
     width: 100%;
     min-height: 80vh;
     background-color: #ffffff;
-    padding: 3.5rem 5% 6rem;
+    padding: 6.75rem 5% 6rem;
 }
 
 .container {
@@ -262,7 +262,7 @@
    ========================================================================== */
 @media (max-width: 768px) {
     .faqPage {
-        padding: 2rem 4% 3.5rem;
+        padding: 5rem 4% 3.5rem;
     }
 
     .headerRow {

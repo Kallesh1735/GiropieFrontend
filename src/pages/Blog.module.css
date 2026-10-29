@@ -7,7 +7,7 @@
     width: 100%;
     min-height: 100vh;
     background-color: #fafbfd;
-    padding: 2.5rem 5% 6rem;
+    padding: 6.25rem 5% 6rem;
     position: relative;
     overflow-x: hidden;
 }
@@ -1330,7 +1330,7 @@
 
 @media (max-width: 640px) {
     .blogPage {
-        padding: 1.5rem 4% 3.5rem;
+        padding: 4.85rem 4% 3.5rem;
     }
 
     .heroTitle {
