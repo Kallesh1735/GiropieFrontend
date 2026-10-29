@@ -291,6 +291,7 @@
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
+    min-width: 0;
 }
 
 .solutionCard {
@@ -331,6 +332,7 @@
     position: sticky;
     top: 6rem;
     scroll-margin-top: 95px;
+    min-width: 0;
 }
 
 .applyTitle {
@@ -452,6 +454,7 @@
     overflow: hidden;
     margin-top: 2rem;
 }
+
 .tabsSliderWrapper {
     position: relative;
     display: flex;
@@ -501,6 +504,7 @@
     -ms-overflow-style: none;
     padding: 0.3rem 0.2rem;
     flex: 1;
+    min-width: 0;
     cursor: grab;
     user-select: none;
 }
@@ -557,18 +561,6 @@
     animation: fadeIn 0.3s ease-in-out;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(6px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 /* ==========================================================================
    6. RESPONSIVE DESIGN (TABLETS & MOBILE)
    ========================================================================== */
@@ -580,16 +572,26 @@
 
     .solutionsGrid {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 2.5rem;
     }
 
     .applyCard {
         position: static;
     }
 
+    /* Seamless 2-part card on mobile/tablet: banner graphic on top, CTA bar attached below */
     .heroImageWrapper {
+        display: flex;
+        flex-direction: column;
         aspect-ratio: auto;
-        min-height: 200px;
+        min-height: auto;
+        border-radius: 18px;
+    }
+
+    .heroImage {
+        height: auto;
+        max-height: 220px;
+        object-fit: cover;
     }
 
     .heroOverlayContent {
@@ -597,35 +599,134 @@
         transform: none;
         text-align: center;
         align-items: center;
-        margin-top: 1rem;
-        background: #1c4e80;
+        margin-top: 0;
+        background: linear-gradient(135deg, #0f172a 0%, #1c4e80 100%);
+        border: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 0 0 18px 18px;
+        padding: 1.35rem 1.25rem;
         max-width: 100%;
         width: 100%;
+        box-shadow: none;
     }
 
     .heroTitle {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
         white-space: normal;
     }
 }
 
 @media (max-width: 768px) {
+    .gofundzPage {
+        padding: 1rem 0 3.5rem;
+    }
+
+    .heroBanner {
+        padding: 0.75rem 4% 1.5rem;
+    }
+
+    .introText {
+        margin: 1rem auto 2.5rem;
+        padding: 0 4%;
+        font-size: 1.02rem;
+        line-height: 1.65;
+    }
+
+    .importanceSection,
+    .solutionsSection,
+    .supportSection {
+        padding: 0 4%;
+        margin-bottom: 3rem;
+    }
+
+    .supportSection {
+        margin-bottom: 0;
+    }
+
+    .sectionTitle {
+        font-size: 1.75rem;
+        margin-bottom: 1.75rem;
+    }
+
     .pillarsGrid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
+    }
+
+    .pillarCard {
+        height: 200px;
+        padding: 1.25rem 1rem;
+    }
+
+    .pillarTitle {
+        font-size: 1.02rem;
+    }
+
+    .solutionCard {
+        padding: 1.35rem 1.25rem;
+    }
+
+    .solutionTitle {
+        font-size: 1.12rem;
+    }
+
+    .solutionDesc {
+        font-size: 0.95rem;
+    }
+
+    .applyCard {
+        padding: 1.85rem 1.35rem;
+        border-radius: 18px;
+    }
+
+    .applyTitle {
+        font-size: 1.45rem;
+        margin-bottom: 1.35rem;
     }
 
     .formRow {
         grid-template-columns: 1fr;
     }
 
-    .sectionTitle {
-        font-size: 1.8rem;
+    .tabsSliderWrapper {
+        padding: 0.5rem;
+        gap: 0.4rem;
+    }
+
+    .tabSlideBtn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+    }
+
+    .industryTab {
+        padding: 0.7rem 1.15rem;
+        font-size: 0.86rem;
+    }
+
+    .industryContent {
+        padding: 1.65rem 1.25rem;
+        font-size: 1rem;
+        line-height: 1.65;
+        min-height: auto;
     }
 }
 
 @media (max-width: 480px) {
     .pillarsGrid {
         grid-template-columns: 1fr;
+    }
+
+    .pillarCard {
+        height: 180px;
+    }
+
+    .heroTitle {
+        font-size: 1.3rem;
+    }
+
+    .applyNowBtn {
+        width: 100%;
+        justify-content: center;
     }
 }

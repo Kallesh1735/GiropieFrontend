@@ -261,10 +261,18 @@
    5. RESPONSIVE BREAKPOINTS
    ========================================================================== */
 @media (max-width: 768px) {
+    .faqPage {
+        padding: 2rem 4% 3.5rem;
+    }
+
     .headerRow {
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
+    }
+
+    .pageTitle {
+        font-size: 1.6rem;
     }
 
     .searchWrapper {
@@ -272,8 +280,18 @@
     }
 
     .tabBar {
-        gap: 1.5rem;
+        gap: 1.25rem;
         overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .tabBar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tabBtn {
+        white-space: nowrap;
+        font-size: 0.95rem;
     }
 
     .questionRow {
@@ -281,10 +299,16 @@
     }
 
     .questionText {
-        font-size: 1.05rem;
+        font-size: 1rem;
+        padding-right: 0.75rem;
     }
 
     .answerRow {
         padding: 0 1.15rem 1.15rem 1.15rem;
+    }
+
+    .calculatorCtaBtn {
+        width: 100%;
+        justify-content: center;
     }
 }

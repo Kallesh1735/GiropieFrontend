@@ -883,11 +883,47 @@
         width: 100%;
     }
 
+    /* Anchor tooltip to right edge on mobile so it never overflows off-screen */
+    .floatingTooltip {
+        left: auto;
+        right: -6px;
+        transform: none;
+        width: 215px;
+    }
+
+    .tooltipArrow {
+        left: auto;
+        right: 12px;
+        transform: none;
+    }
+
+    .confettiCostCard {
+        min-height: 210px;
+        padding: 2rem 1rem;
+    }
+
+    .costMainValue {
+        font-size: 2.15rem;
+    }
+
+    .thankYouActions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .demoLinkBtn,
+    .editInputsBtn,
+    .closeModalActionBtn {
+        width: 100%;
+        justify-content: center;
+    }
+
     .centeredNavBtnRow {
-        gap: 1rem;
+        gap: 0.85rem;
     }
 
     .indigoBtn {
-        padding: 0.65rem 1.75rem;
+        padding: 0.65rem 1.5rem;
+        flex: 1;
     }
 }

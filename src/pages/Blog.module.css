@@ -407,7 +407,7 @@
 
 .postsGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
     gap: 1.75rem;
     margin-bottom: 4rem;
 }
@@ -1330,35 +1330,88 @@
 
 @media (max-width: 640px) {
     .blogPage {
-        padding: 2rem 4% 4rem;
+        padding: 1.5rem 4% 3.5rem;
+    }
+
+    .heroTitle {
+        font-size: 1.85rem;
     }
 
     .toolbar {
         flex-direction: column;
         align-items: stretch;
+        gap: 1rem;
     }
 
     .searchBox {
         min-width: 100%;
     }
 
-    .postsGrid {
-        grid-template-columns: 1fr;
+    .featuredCard {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .featuredTitle {
+        font-size: 1.45rem;
     }
 
     .featuredFooter {
         flex-direction: column;
         align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .featuredCtaRow {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .postsGrid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .postCard {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .articleCard {
+        padding: 1.5rem 1.15rem;
+    }
+
+    .articleTitle {
+        font-size: 1.55rem;
     }
 
     .articleCtaBanner {
         flex-direction: column;
         text-align: center;
-        padding: 2rem 1.5rem;
+        padding: 1.75rem 1.25rem;
     }
 
     .ctaBtnPrimary {
         width: 100%;
         text-align: center;
+    }
+
+    .commentsCard {
+        padding: 1.5rem 1.15rem;
+    }
+
+    .commentAuthorInput {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .commentSubmitBtn {
+        width: 100%;
+    }
+
+    .toastNotice {
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+        justify-content: center;
     }
 }

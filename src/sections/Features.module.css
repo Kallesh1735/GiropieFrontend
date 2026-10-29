@@ -52,11 +52,11 @@
 
 /* ==========================================================================
    3. RESPONSIVE GRID LAYOUT
-   Responsible for arranging the feature cards (min 320px wide per card)
+   Responsible for arranging the feature cards (fluid min-width prevents mobile overflow)
    ========================================================================== */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
     gap: 2.5rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -165,4 +165,60 @@
     background: #F7931E;
     transform: translateY(-2px);
     box-shadow: 0 10px 24px rgba(247, 147, 30, 0.3);
+}
+
+/* ==========================================================================
+   7. RESPONSIVE DESIGN (TABLETS & PHONES)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .featuresSection {
+        padding: 3rem 4%;
+    }
+
+    .header {
+        margin-bottom: 2rem;
+    }
+
+    .badge {
+        margin-bottom: 1rem;
+        font-size: 0.78rem;
+    }
+
+    .header h2 {
+        font-size: 2rem;
+        line-height: 1.25;
+        letter-spacing: -0.5px;
+    }
+
+    .header p {
+        font-size: 1.02rem;
+        line-height: 1.55;
+    }
+
+    .grid {
+        gap: 1.5rem;
+    }
+
+    .card {
+        padding: 1.75rem 1.5rem;
+    }
+
+    .iconWrapper {
+        margin-bottom: 1.25rem;
+    }
+
+    .exploreCtaRow {
+        margin-top: 2.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h2 {
+        font-size: 1.7rem;
+    }
+
+    .exploreBtn {
+        width: 100%;
+        justify-content: center;
+    }
 }
