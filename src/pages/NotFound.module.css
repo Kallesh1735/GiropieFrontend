@@ -124,9 +124,16 @@
     transform: translateY(-2px);
 }
 
+@media (max-width: 768px) {
+    .notFoundPage {
+        padding: 5.25rem 4% 3.5rem;
+    }
+}
+
 @media (max-width: 600px) {
     .container {
         padding: 2.5rem 1.5rem;
+        width: 100%;
     }
 
     .errorCode {
@@ -139,5 +146,11 @@
 
     .btnGroup {
         flex-direction: column;
+    }
+
+    .homeBtn,
+    .contactBtn {
+        width: 100%;
+        justify-content: center;
     }
 }

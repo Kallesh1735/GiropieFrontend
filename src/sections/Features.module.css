@@ -25,12 +25,13 @@
 
 /* Pill badge above section title */
 .badge {
-    background: rgba(37, 131, 239, 0.1);
-    color: var(--color-primary);
-    padding: 0.4rem 1.2rem;
+    background: rgba(28, 78, 128, 0.08);
+    border: 1px solid rgba(28, 78, 128, 0.18);
+    color: #1C4E80;
+    padding: 0.42rem 1.2rem;
     border-radius: 50px;
     font-weight: 700;
-    font-size: 0.85rem;
+    font-size: 0.84rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 1.5rem;
@@ -101,8 +102,9 @@
     width: 55px;
     height: 55px;
     border-radius: 14px;
-    background: rgba(37, 131, 239, 0.1);
-    color: var(--color-primary);
+    background: linear-gradient(135deg, rgba(28, 78, 128, 0.1), rgba(58, 141, 213, 0.16));
+    border: 1px solid rgba(28, 78, 128, 0.14);
+    color: #1C4E80;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -111,12 +113,13 @@
     transition: all 0.3s ease;
 }
 
-/* On card hover: icon turns solid orange, rotates slightly, and scales up */
+/* On card hover: icon turns deep brand orange, rotates slightly, and scales up */
 .card:hover .iconWrapper {
-    background: var(--color-primary);
+    background: #C25E00;
+    border-color: #C25E00;
     color: #fff;
     transform: scale(1.1) rotate(-5deg);
-    box-shadow: 0 10px 20px rgba(37, 131, 239, 0.3);
+    box-shadow: 0 10px 20px rgba(194, 94, 0, 0.25);
 }
 
 /* Card title */
@@ -164,9 +167,9 @@
 }
 
 .exploreBtn:hover {
-    background: #F7931E;
+    background: #C25E00;
     transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(247, 147, 30, 0.3);
+    box-shadow: 0 10px 24px rgba(194, 94, 0, 0.28);
 }
 
 /* ==========================================================================

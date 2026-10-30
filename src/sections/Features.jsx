@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Features.module.css';
 import {
@@ -42,8 +41,8 @@ const featureData = [
         icon: <FaCheckDouble />
     },
     {
-        title: "Trade Finance Solutions",
-        desc: "Connect eligible invoices to financing and trade-credit solutions when additional liquidity is required.",
+        title: "Trade finance (coming soon)",
+        desc: "Connect eligible invoices to working capital and trade-credit options through regulated lending partners as capabilities roll out.",
         icon: <FaHandshake />
     }
 ];

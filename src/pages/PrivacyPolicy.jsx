@@ -1,8 +1,7 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './LegalPage.module.css';
 import logo from '../assets/giropie-logo.png';
-import { FaShieldHalved, FaHouse } from 'react-icons/fa6';
+import { FaHouse } from 'react-icons/fa6';
 
 const PrivacyPolicy = () => {
     return (
@@ -448,7 +447,7 @@ const PrivacyPolicy = () => {
                     <div className={styles.contactBox}>
                         <p><strong>Grievance Officer:</strong> Krishna Kumar B S</p>
                         <p><strong>PepperTree.AI Pvt. Ltd.</strong></p>
-                        <p>No. 1138, Maruthi Complex, 3rd Floor,</p>
+                        <p>No. 1139, Maruthi Complex, 3rd Floor,</p>
                         <p>BEML Layout, 3rd Stage, Raja Rajeshwari Nagar,</p>
                         <p>Bengaluru &ndash; 560098, Karnataka, India</p>
                         <p>Email: <a href="mailto:legalquery@peppertree.ai" style={{ color: '#1C4E80', fontWeight: '700' }}>legalquery@peppertree.ai</a></p>

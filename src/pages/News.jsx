@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import styles from './News.module.css';
 import {
     FaChevronLeft,
@@ -13,13 +13,13 @@ import {
 } from 'react-icons/fa6';
 
 // Images imported from assets
+// NOTE: Institution logos requiring written permission (IIT Madras, Startup Karnataka)
+// use built-in vector icons until written logo permission is on file.
 import grassrootImg from '../assets/grassroot-innovation.png';
-import iitMadrasImg from '../assets/E-Cell IIT Madras.png';
 import nasscomImg from '../assets/NASSCOM startups.png';
 import velTechImg from '../assets/Vel Tech TBI.png';
 import microsoftImg from '../assets/microsoft startup.png';
 import ramaiahImg from '../assets/Ramaiah Evolute.png';
-import startupKarnatakaImg from '../assets/Startup KarnatakaBG.avif';
 
 // All news items provided by user
 const newsData = [
@@ -54,7 +54,7 @@ const newsData = [
         sliderTitle: "E-Cell IIT Madras",
         sliderOrg: "Runner-Up in FinTech",
         sliderCategory: "Bootcamp 2024",
-        image: iitMadrasImg,
+        image: null,
         icon: <FaBuildingColumns className={styles.slideVisualIcon} />
     },
     {
@@ -96,7 +96,7 @@ const newsData = [
         sliderTitle: "Karnataka Startupcell",
         sliderOrg: "Elevate 2021 Runner Up",
         sliderCategory: "Idea2PoC Finalist",
-        image: startupKarnatakaImg,
+        image: null,
         icon: <FaAward className={styles.slideVisualIcon} />
     },
     {

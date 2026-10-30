@@ -1,0 +1,704 @@
+/* ==========================================================================
+   SHARED P1 PAGES DESIGN SYSTEM (P1Pages.module.css)
+   Clean, uncluttered layout primitives for:
+     - /how-it-works, /why-mandates, /distributors, /logistics, /trust, /contact
+   Brand Palette: #1C4E80 (Navy) + Accessible #B45309/#C25E00 (Orange)
+   Mobile-tested at 390px wide (including sideways-scrollable tables per Tech #11)
+   ========================================================================== */
+
+.pageWrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #f0f5fc 0%, #fafbfd 38%, #ffffff 100%);
+    overflow-x: hidden;
+    padding: 6.75rem 0 5rem;
+}
+
+/* Ambient Blue & Warm Orange Glows (Applies automatically across all 6 P1 pages) */
+.pageWrapper::before,
+.pageWrapper::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(130px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.pageWrapper::before {
+    width: 560px;
+    height: 560px;
+    background: rgba(58, 141, 213, 0.12);
+    top: 2%;
+    left: -140px;
+}
+
+.pageWrapper::after {
+    width: 520px;
+    height: 520px;
+    background: rgba(247, 147, 30, 0.09);
+    top: 36%;
+    right: -140px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 5%;
+    position: relative;
+    z-index: 1;
+}
+
+/* 1. Page Hero Block */
+.heroSection {
+    text-align: center;
+    max-width: 840px;
+    margin: 0 auto 3.5rem;
+}
+
+.eyebrowBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.48rem;
+    padding: 0.38rem 1rem;
+    border-radius: 999px;
+    background: rgba(28, 78, 128, 0.08);
+    border: 1px solid rgba(28, 78, 128, 0.2);
+    color: #1C4E80;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    margin-bottom: 1.15rem;
+}
+
+.eyebrowDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #F7931E;
+    animation: pulseEyebrow 2s infinite ease-in-out;
+}
+
+@keyframes pulseEyebrow {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.32); opacity: 0.6; }
+}
+
+.heroTitle {
+    font-size: clamp(2rem, 4vw, 3.05rem);
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.16;
+    letter-spacing: -0.7px;
+    margin: 0 0 1.1rem;
+}
+
+.heroHighlight {
+    color: var(--color-primary-text, #B45309);
+}
+
+.heroSubtitle {
+    font-size: 1.12rem;
+    line-height: 1.68;
+    color: #475569;
+    margin: 0 auto 1.85rem;
+    max-width: 720px;
+}
+
+.heroActions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+}
+
+.primaryCta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    padding: 0.92rem 1.9rem;
+    border-radius: 999px;
+    background: #1C4E80;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 10px 24px rgba(28, 78, 128, 0.22);
+    transition: all 0.25s ease;
+}
+
+.primaryCta:hover {
+    background: #153b61;
+    transform: translateY(-2px);
+}
+
+.secondaryCta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.9rem 1.75rem;
+    border-radius: 999px;
+    background: #ffffff;
+    border: 1.5px solid #1C4E80;
+    color: #1C4E80;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.secondaryCta:hover {
+    background: rgba(28, 78, 128, 0.06);
+    transform: translateY(-2px);
+}
+
+/* 2. Section Blocks & Headers */
+.sectionBlock {
+    margin-bottom: 4rem;
+}
+
+.sectionHeader {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 2.25rem;
+}
+
+.sectionTitle {
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+    font-weight: 800;
+    color: #1C4E80;
+    margin: 0 0 0.65rem;
+    letter-spacing: -0.4px;
+}
+
+.sectionLead {
+    font-size: 1.04rem;
+    line-height: 1.65;
+    color: #475569;
+    margin: 0;
+}
+
+/* 3. Responsive Card Grids (2-col, 3-col, 4-col) */
+.gridTwo {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.gridThree {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.gridFour {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.35rem;
+}
+
+.infoCard {
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at top right, rgba(58, 141, 213, 0.05), transparent 62%), #ffffff;
+    border: 1px solid rgba(28, 78, 128, 0.13);
+    border-radius: 20px;
+    padding: 1.95rem 1.7rem;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.045);
+    display: flex;
+    flex-direction: column;
+    gap: 0.72rem;
+    min-width: 0;
+    transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+}
+
+.infoCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #1C4E80 0%, #3A8DD5 60%, #F7931E 100%);
+    opacity: 0.85;
+    transition: opacity 0.28s ease;
+}
+
+.infoCard:hover {
+    transform: translateY(-5px);
+    border-color: rgba(28, 78, 128, 0.3);
+    box-shadow: 0 18px 38px rgba(28, 78, 128, 0.1);
+}
+
+.infoCard:hover::before {
+    opacity: 1;
+}
+
+.stepNumberBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    background: linear-gradient(135deg, #1C4E80 0%, #3A8DD5 100%);
+    color: #ffffff;
+    font-size: 0.96rem;
+    font-weight: 800;
+    box-shadow: 0 6px 16px rgba(28, 78, 128, 0.22);
+}
+
+.iconPod {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #1C4E80 0%, #3A8DD5 100%);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    box-shadow: 0 8px 18px rgba(28, 78, 128, 0.2);
+    transition: transform 0.28s ease, background 0.28s ease;
+}
+
+.infoCard:hover .iconPod {
+    transform: scale(1.07) rotate(-3deg);
+    background: linear-gradient(135deg, #c25e00 0%, #F7931E 100%);
+}
+
+.cardTag {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-primary-text, #B45309);
+}
+
+.cardTitle {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0;
+    line-height: 1.32;
+}
+
+.cardText {
+    font-size: 0.96rem;
+    line-height: 1.65;
+    color: #475569;
+    margin: 0;
+}
+
+.checkList {
+    list-style: none;
+    padding: 0;
+    margin: 0.35rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.checkList li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.94rem;
+    line-height: 1.5;
+    color: #334155;
+}
+
+.checkIcon {
+    color: #10b981;
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+}
+
+/* 4. Sideways-Scrollable Comparison Table (Tech Fix #11: smooth horizontal scroll on 390px) */
+.mobileSwipeHint {
+    display: none;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #64748b;
+    text-align: right;
+    margin-bottom: 0.5rem;
+}
+
+.tableScrollWrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    background: #ffffff;
+    border: 1px solid rgba(28, 78, 128, 0.14);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+}
+
+.comparisonTable {
+    width: 100%;
+    min-width: 620px;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.comparisonTable th {
+    background: #1C4E80;
+    color: #ffffff;
+    font-size: 0.92rem;
+    font-weight: 700;
+    padding: 1rem 1.25rem;
+}
+
+.comparisonTable td {
+    padding: 1rem 1.25rem;
+    border-top: 1px solid #e2e8f0;
+    font-size: 0.95rem;
+    color: #334155;
+    line-height: 1.55;
+    vertical-align: top;
+}
+
+.comparisonTable tr:nth-child(even) td {
+    background: #f8fafc;
+}
+
+.comparisonTable td:first-child {
+    font-weight: 700;
+    color: #0f172a;
+    width: 28%;
+}
+
+/* 5. Neutral Compliance / Exception Callout Box */
+.calloutCard {
+    background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+    border: 1px solid rgba(28, 78, 128, 0.18);
+    border-left: 5px solid #1C4E80;
+    border-radius: 18px;
+    padding: 1.85rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.calloutTitle {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #1C4E80;
+    margin: 0;
+}
+
+.calloutText {
+    font-size: 0.98rem;
+    line-height: 1.68;
+    color: #334155;
+    margin: 0;
+}
+
+/* 6. Bottom Dark Navy CTA Banner */
+.bottomCtaBanner {
+    background: linear-gradient(135deg, #0d2542 0%, #1C4E80 100%);
+    color: #ffffff;
+    border-radius: 24px;
+    padding: 3rem 2.25rem;
+    text-align: center;
+    box-shadow: 0 20px 46px rgba(28, 78, 128, 0.22);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.bottomCtaBanner h2 {
+    font-size: clamp(1.55rem, 2.8vw, 2.15rem);
+    font-weight: 800;
+    margin: 0;
+}
+
+.bottomCtaBanner p {
+    font-size: 1.05rem;
+    color: #cbd5e1;
+    max-width: 620px;
+    margin: 0 0 0.5rem;
+    line-height: 1.6;
+}
+
+.bannerOrangeBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    padding: 0.95rem 2.1rem;
+    border-radius: 999px;
+    background: #c25e00;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.bannerOrangeBtn:hover {
+    background: #a34e00;
+    transform: translateY(-2px);
+}
+
+.bannerGhostBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.92rem 1.9rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1.5px solid rgba(255, 255, 255, 0.38);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.bannerGhostBtn:hover {
+    background: rgba(255, 255, 255, 0.22);
+    transform: translateY(-2px);
+}
+
+/* 7. Contact & Demo Split Layout (/contact) */
+.contactSplitGrid {
+    display: grid;
+    grid-template-columns: 0.95fr 1.15fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.contactSideStack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.contactFormCard {
+    background: #ffffff;
+    border: 1px solid rgba(28, 78, 128, 0.14);
+    border-radius: 22px;
+    padding: 2.25rem 2rem;
+    box-shadow: 0 14px 36px rgba(15, 23, 42, 0.05);
+}
+
+.formGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.15rem;
+}
+
+.fullSpan {
+    grid-column: 1 / -1;
+}
+
+.fieldGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.fieldLabel {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.textInput {
+    width: 100%;
+    padding: 0.82rem 1rem;
+    border-radius: 10px;
+    border: 1.5px solid #cbd5e1;
+    background: #f8fafc;
+    font-size: 0.96rem;
+    color: #0f172a;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.textInput:focus {
+    background: #ffffff;
+    border-color: #1C4E80;
+    outline: none;
+}
+
+.honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.submitBtn {
+    width: 100%;
+    padding: 0.92rem 1.75rem;
+    border-radius: 12px;
+    border: none;
+    background: #1C4E80;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.submitBtn:hover:not(:disabled) {
+    background: #c25e00;
+    transform: translateY(-2px);
+}
+
+.submitBtn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.statusSuccess {
+    grid-column: 1 / -1;
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    color: #065f46;
+    border-radius: 12px;
+    padding: 0.95rem 1.2rem;
+    font-size: 0.94rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.statusError {
+    grid-column: 1 / -1;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+    border-radius: 12px;
+    padding: 0.95rem 1.2rem;
+    font-size: 0.94rem;
+    font-weight: 600;
+}
+
+.privacyHint {
+    grid-column: 1 / -1;
+    font-size: 0.82rem;
+    color: #64748b;
+    line-height: 1.5;
+    margin: 0.25rem 0 0;
+}
+
+.privacyHint a {
+    color: #1C4E80;
+    font-weight: 600;
+}
+
+/* 8. Responsive Breakpoints (<= 968px, <= 768px, 390px Phones) */
+@media (max-width: 968px) {
+    .gridFour {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gridThree {
+        grid-template-columns: 1fr;
+    }
+
+    .contactSplitGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .pageWrapper {
+        padding: 4.9rem 0 3.25rem;
+    }
+
+    .container {
+        padding: 0 4%;
+    }
+
+    .heroSection {
+        margin-bottom: 2.2rem;
+    }
+
+    .heroSubtitle {
+        font-size: 0.98rem;
+    }
+
+    .gridTwo,
+    .gridFour {
+        grid-template-columns: 1fr;
+        gap: 1.15rem;
+    }
+
+    .sectionBlock {
+        margin-bottom: 2.6rem;
+    }
+
+    .infoCard {
+        padding: 1.5rem 1.3rem;
+        border-radius: 18px;
+    }
+
+    .mobileSwipeHint {
+        display: block;
+    }
+
+    .tableScrollWrap {
+        border-radius: 14px;
+    }
+
+    .comparisonTable {
+        min-width: 540px;
+    }
+
+    .comparisonTable th,
+    .comparisonTable td {
+        padding: 0.85rem 0.95rem;
+        font-size: 0.88rem;
+    }
+
+    .calloutCard {
+        padding: 1.35rem 1.25rem;
+    }
+
+    .bottomCtaBanner {
+        padding: 2.2rem 1.25rem;
+        border-radius: 18px;
+    }
+
+    .contactFormCard {
+        padding: 1.5rem 1.2rem;
+    }
+
+    .textInput {
+        font-size: 1rem; /* Prevents iOS Safari auto-zoom on input focus */
+    }
+
+    .formGrid {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .heroActions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .primaryCta,
+    .secondaryCta,
+    .bannerOrangeBtn,
+    .bannerGhostBtn {
+        width: 100%;
+    }
+}
+

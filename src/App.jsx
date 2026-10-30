@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import './index.css';
 
@@ -17,7 +16,13 @@ import Home from './pages/Home';
 import AboutUs from './pages/AboutUs';
 import FeaturesPage from './pages/FeaturesPage';
 import Pricing from './pages/Pricing';
-import GOFundZ from './pages/GOFundZ';
+import HowItWorks from './pages/HowItWorks';
+import WhyMandates from './pages/WhyMandates';
+import Distributors from './pages/Distributors';
+import Logistics from './pages/Logistics';
+import Trust from './pages/Trust';
+import Contact from './pages/Contact';
+// NOTE (P0 #10): GOFundZ standalone page is parked until product & compliance wording is approved; /gofundz redirects to /features#trade-finance
 import Careers from './pages/Careers';
 import News from './pages/News';
 import FAQ from './pages/FAQ';
@@ -39,12 +44,11 @@ const ConditionalNavbar = () => {
 };
 
 // ============================================================================
-// SECTION 4: MAIN APPLICATION & ROUTING TABLE
-// Easy to edit: Add or modify application routes inside <Routes> below.
+// SECTION 4: ROUTER-AGNOSTIC APP SHELL (Shared by BrowserRouter & SSR StaticRouter)
 // ============================================================================
-function App() {
+export function AppShell() {
   return (
-    <Router>
+    <>
       <ScrollToTop />
       <BackToTop />
       <div className="app-container">
@@ -52,12 +56,19 @@ function App() {
 
         <main>
           <Routes>
-            {/* Core Marketing Pages */}
+            {/* Core Marketing & P1 Solution Pages */}
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<AboutUs />} />
+            <Route path="/how-it-works" element={<HowItWorks />} />
             <Route path="/features" element={<FeaturesPage />} />
+            <Route path="/why-mandates" element={<WhyMandates />} />
+            <Route path="/distributors" element={<Distributors />} />
+            <Route path="/logistics" element={<Logistics />} />
+            <Route path="/trust" element={<Trust />} />
             <Route path="/pricing" element={<Pricing />} />
-            <Route path="/gofundz" element={<GOFundZ />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/gofundz" element={<Navigate to="/features#trade-finance" replace />} />
+            <Route path="/trade-finance-solutions" element={<Navigate to="/features#trade-finance" replace />} />
             <Route path="/careers" element={<Careers />} />
 
             {/* Resources & Content Pages */}
@@ -72,9 +83,6 @@ function App() {
             <Route path="/resources/blog/:slug" element={<Blog />} />
             <Route path="/post/:slug" element={<Blog />} />
 
-            {/* Contact Redirect -> Scrolls directly to About Us #contact form */}
-            <Route path="/contact" element={<Navigate to="/about#contact" replace />} />
-
             {/* Legal & Compliance Routes */}
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
@@ -86,6 +94,17 @@ function App() {
 
         <Footer />
       </div>
+    </>
+  );
+}
+
+// ============================================================================
+// SECTION 5: BROWSER CLIENT ENTRY
+// ============================================================================
+function App() {
+  return (
+    <Router>
+      <AppShell />
     </Router>
   );
 }

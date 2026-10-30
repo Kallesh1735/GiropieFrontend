@@ -1,11 +1,10 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import styles from './Careers.module.css';
 import careersBanner from '../assets/careers-banner.jpg';
 import {
     FaArrowRight,
     FaBriefcase,
     FaLocationDot,
-    FaClock,
     FaChevronDown,
     FaChevronUp,
     FaCloudArrowUp,

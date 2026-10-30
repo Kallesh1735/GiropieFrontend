@@ -84,7 +84,7 @@
 }
 
 .heroTitleHighlight {
-    color: #F7931E;
+    color: #C25E00;
 }
 
 .heroSubtitle {
@@ -210,7 +210,7 @@
     right: 0;
     height: 4px;
     background: linear-gradient(90deg, #1C4E80, #3A8DD5, #F7931E);
-    opacity: 0;
+    opacity: 0.85;
     transition: opacity 0.3s ease;
 }
 

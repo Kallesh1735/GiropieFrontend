@@ -63,8 +63,8 @@
 /* Active tab selected pill */
 .activeTab {
     background: #ffffff;
-    color: var(--color-primary);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    color: #1C4E80;
+    box-shadow: 0 4px 12px rgba(28, 78, 128, 0.09);
 }
 
 /* ==========================================================================
@@ -160,8 +160,9 @@
 .onboardRight h2 {
     font-size: 3.5rem;
     font-weight: 900;
-    background: linear-gradient(90deg, var(--color-accent), #fca5a5);
+    background: linear-gradient(95deg, #1C4E80 0%, #2563eb 52%, #C25E00 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 0.5rem;
     letter-spacing: -1px;
@@ -195,7 +196,7 @@
 }
 
 .stepIcon {
-    color: var(--color-primary);
+    color: #C25E00;
     font-size: 1.4rem;
 }
 
@@ -208,18 +209,18 @@
     gap: 1.5rem;
 }
 
-/* Orange pill button */
+/* Primary navy pill button */
 .demoBtn {
-    background: var(--color-primary);
+    background: #1C4E80;
     color: #fff;
     border: none;
     padding: 1rem 2rem;
     border-radius: 50px;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 20px rgba(37, 131, 239, 0.25);
+    box-shadow: 0 8px 20px rgba(28, 78, 128, 0.22);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -228,8 +229,9 @@
 }
 
 .demoBtn:hover {
+    background: #C25E00;
     transform: translateY(-3px);
-    box-shadow: 0 12px 25px rgba(37, 131, 239, 0.35);
+    box-shadow: 0 12px 25px rgba(194, 94, 0, 0.28);
 }
 
 /* Transparent outline button */

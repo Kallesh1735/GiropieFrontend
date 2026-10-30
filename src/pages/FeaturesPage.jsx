@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './FeaturesPage.module.css';
 import featureHeroImg from '../assets/faeture page.jpg';
 import endToEndArApImg from '../assets/end to end ar ap.avif';
@@ -167,21 +166,24 @@ const FeaturesPage = () => {
                         </p>
                     </div>
 
-                    {/* Feature 5 */}
-                    <div className={styles.featureCard}>
+                    {/* Feature 5 (P0 #10: GOFundZ represented under Features as "Trade finance (coming soon)") */}
+                    <div id="trade-finance" className={styles.featureCard}>
                         <div className={styles.featureImgContainer}>
                             <img
                                 src={embeddedSupplyChainImg}
-                                alt="Embedded Supply Chain Finance Options"
+                                alt="Trade finance (coming soon)"
                                 className={styles.featureGraphic}
                             />
                         </div>
                         <div className={styles.featureTitleWrapper}>
-                            <span className={styles.categoryTag}>Liquidity</span>
-                            <h3 className={styles.featureTitle}>Embedded Supply Chain Finance Options</h3>
+                            <div className={styles.categoryBadgeRow}>
+                                <span className={styles.categoryTag}>Liquidity</span>
+                                <span className={styles.comingSoonPill}>Coming Soon</span>
+                            </div>
+                            <h3 className={styles.featureTitle}>Trade finance (coming soon)</h3>
                         </div>
                         <p className={styles.featureDesc}>
-                            Access invoice discounting, factoring, and payables finance directly within the platform. Ideal for suppliers or stockists needing cash flow relief, without impacting buyer payment schedules.
+                            Connect eligible invoices to working capital, invoice discounting, and supply chain finance options through regulated lending partners—designed to unlock liquidity without disrupting buyer payment schedules.
                         </p>
                     </div>
                 </div>
@@ -189,15 +191,25 @@ const FeaturesPage = () => {
                 {/* Bottom Call to Action */}
                 <div className={styles.ctaBox}>
                     <h2>Ready to Automate Your Cash Flow Operations?</h2>
-                    <p>Get started with GIROPie today and experience real-time invoice-to-cash execution.</p>
-                    <a
-                        href="https://live.giropie.com/signup"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.ctaButton}
-                    >
-                        Start Your Free Trial <FaArrowRight />
-                    </a>
+                    <p>Get started with GIROPie today and experience connected invoice-to-cash execution.</p>
+                    <div className={styles.ctaBtnGroup}>
+                        <a
+                            href="https://calendly.com/giropie/giropie-demo"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.ctaButton}
+                        >
+                            Book a 30-minute demo <FaArrowRight />
+                        </a>
+                        <a
+                            href="https://live.giropie.com/signup"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.ctaSecondaryButton}
+                        >
+                            Start your trial <FaArrowRight />
+                        </a>
+                    </div>
                 </div>
             </section>
         </div>

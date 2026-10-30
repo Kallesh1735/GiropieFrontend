@@ -1,0 +1,140 @@
+/* ==========================================================================
+   UPI MDR BANNER STYLES (P0 #5)
+   Uses GIROPie #1C4E80 Navy & #F7931E Orange accent pairing (Tech #13)
+   ========================================================================== */
+.bannerSection {
+    width: 100%;
+    padding: 0 5% 2.5rem;
+    background-color: var(--bg-main);
+    position: relative;
+    z-index: 2;
+}
+
+.bannerCard {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #1C4E80 0%, #123456 100%);
+    border-radius: 18px;
+    padding: 1.65rem 2.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    box-shadow: 0 14px 34px rgba(28, 78, 128, 0.18);
+    border-left: 5px solid #F7931E;
+}
+
+.leftContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.55rem;
+    min-width: 0;
+}
+
+.updatePill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(247, 147, 30, 0.18);
+    color: #FDBA74;
+    border: 1px solid rgba(247, 147, 30, 0.35);
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.textBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.headline {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.3;
+    letter-spacing: -0.3px;
+    margin: 0;
+}
+
+.subline {
+    font-size: 0.96rem;
+    color: #e2e8f0;
+    line-height: 1.55;
+    margin: 0;
+    max-width: 760px;
+}
+
+.ctaLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    background: #F7931E;
+    color: #0f172a;
+    font-weight: 800;
+    font-size: 0.95rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: all 0.25s ease;
+    box-shadow: 0 6px 16px rgba(247, 147, 30, 0.3);
+}
+
+.ctaLink:hover {
+    background: #ffa336;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(247, 147, 30, 0.4);
+}
+
+.arrowIcon {
+    font-size: 0.85rem;
+    transition: transform 0.2s ease;
+}
+
+.ctaLink:hover .arrowIcon {
+    transform: translateX(3px);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (TABLETS & MOBILE <= 390px)
+   ========================================================================== */
+@media (max-width: 900px) {
+    .bannerCard {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.25rem;
+        padding: 1.5rem 1.5rem;
+    }
+
+    .ctaLink {
+        width: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .bannerSection {
+        padding: 0 4% 2rem;
+    }
+
+    .bannerCard {
+        padding: 1.35rem 1.2rem;
+        border-radius: 16px;
+    }
+
+    .headline {
+        font-size: 1.15rem;
+    }
+
+    .subline {
+        font-size: 0.9rem;
+    }
+}
+

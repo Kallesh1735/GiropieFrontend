@@ -280,6 +280,7 @@
     grid-template-columns: 88px 300px 1fr;
     align-items: center;
     gap: 2rem;
+    scroll-margin-top: 95px;
     transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
@@ -324,12 +325,33 @@
     gap: 0.5rem;
 }
 
+.categoryBadgeRow {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
 .categoryTag {
     font-size: 0.75rem;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: var(--color-primary);
+    color: var(--color-primary-text, #B45309);
+}
+
+.comingSoonPill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background: rgba(28, 78, 128, 0.09);
+    border: 1px solid rgba(28, 78, 128, 0.2);
+    color: var(--color-secondary);
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
 }
 
 .featureTitle {
@@ -379,25 +401,54 @@
     max-width: 600px;
 }
 
+.ctaBtnGroup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
 .ctaButton {
     display: inline-flex;
     align-items: center;
     gap: 0.8rem;
-    background: var(--color-primary);
+    background: #c25e00;
     color: #ffffff;
-    padding: 1rem 2.8rem;
+    padding: 1rem 2.4rem;
     border-radius: 50px;
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     text-decoration: none;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 25px rgba(247, 147, 30, 0.35);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.22);
 }
 
 .ctaButton:hover {
     transform: translateY(-3px);
-    background: var(--color-primary-hover);
-    box-shadow: 0 12px 30px rgba(247, 147, 30, 0.45);
+    background: #a34e00;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.ctaSecondaryButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1.5px solid rgba(255, 255, 255, 0.38);
+    color: #ffffff;
+    padding: 0.95rem 2.2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.ctaSecondaryButton:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.22);
+    border-color: #ffffff;
 }
 
 /* ==========================================================================
@@ -426,7 +477,7 @@
 
 @media (max-width: 768px) {
     .featuresPage {
-        padding: 4.15rem 0 3rem;
+        padding: 4.3rem 0 3rem;
     }
 
     .heroBanner {
@@ -520,7 +571,13 @@
         font-size: 1.1rem;
     }
 
-    .ctaButton {
+    .ctaBtnGroup {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .ctaButton,
+    .ctaSecondaryButton {
         width: 100%;
         justify-content: center;
         padding: 0.9rem 1.5rem;

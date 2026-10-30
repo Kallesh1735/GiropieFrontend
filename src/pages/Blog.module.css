@@ -138,7 +138,7 @@
 }
 
 .heroHighlight {
-    color: #F7931E;
+    color: #C25E00;
     position: relative;
     display: inline-block;
 }
@@ -415,7 +415,7 @@
 .postCard {
     background: #ffffff;
     border: 1px solid #e2e8f0;
-    border-radius: 12px;
+    border-radius: 14px;
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -423,7 +423,19 @@
     cursor: pointer;
     transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     position: relative;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(28, 78, 128, 0.04);
+}
+
+.postCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3.5px;
+    background: linear-gradient(90deg, #1C4E80 0%, #3A8DD5 55%, #F7931E 100%);
+    opacity: 0.85;
 }
 
 .postCard:hover {
@@ -1328,31 +1340,58 @@
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
     .blogPage {
-        padding: 4.85rem 4% 3.5rem;
+        padding: 4.75rem 4% 3.5rem;
+    }
+
+    .heroHeader {
+        padding: 0.15rem 0 1.65rem;
+    }
+
+    .badge {
+        font-size: 0.78rem;
+        padding: 0.35rem 0.9rem;
+        margin-bottom: 0.9rem;
     }
 
     .heroTitle {
-        font-size: 1.85rem;
+        font-size: 1.9rem;
+    }
+
+    .heroSubtitle {
+        font-size: 1rem;
     }
 
     .toolbar {
         flex-direction: column;
         align-items: stretch;
         gap: 1rem;
+        margin-bottom: 1.75rem;
     }
 
     .searchBox {
         min-width: 100%;
     }
 
+    .searchInput,
+    .commentAuthorInput,
+    .commentTextarea {
+        font-size: 1rem;
+    }
+
     .featuredCard {
         padding: 1.5rem 1.25rem;
+        margin-bottom: 2rem;
     }
 
     .featuredTitle {
         font-size: 1.45rem;
+    }
+
+    .featuredExcerpt {
+        font-size: 0.98rem;
+        margin-bottom: 1.35rem;
     }
 
     .featuredFooter {
@@ -1382,6 +1421,11 @@
 
     .articleTitle {
         font-size: 1.55rem;
+    }
+
+    .articleBody {
+        font-size: 1rem;
+        line-height: 1.75;
     }
 
     .articleCtaBanner {

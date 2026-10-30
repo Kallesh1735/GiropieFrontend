@@ -1,23 +1,20 @@
 /* ==========================================================================
    1. MAIN HERO CONTAINER
    Responsible for full-width layout, spacing, and base canvas background.
-   NOTE: Uses width: 100% (instead of 100vw) to avoid horizontal scrollbar shift.
    ========================================================================== */
 .heroContainer {
     position: relative;
     width: 100%;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 6.75rem 5% 3.5rem;
+    padding: 6.25rem 5% 3.25rem;
     overflow: hidden;
     background-color: var(--bg-main);
 }
 
 /* ==========================================================================
    2. AMBIENT GLOW ORBS & FLOATING ANIMATION
-   Responsible for creating the subtle, moving fintech background glow
    ========================================================================== */
 .glowOrb1,
 .glowOrb2 {
@@ -25,109 +22,215 @@
     border-radius: 50%;
     filter: blur(100px);
     z-index: 0;
-    opacity: 0.15;
+    opacity: 0.14;
+    pointer-events: none;
     animation: float 10s infinite ease-in-out alternate;
 }
 
-/* Top-left primary colored glow orb */
 .glowOrb1 {
-    width: 600px;
-    height: 600px;
+    width: 560px;
+    height: 560px;
     background: var(--color-primary);
     top: -100px;
-    left: -150px;
+    left: -140px;
 }
 
-/* Bottom-right accent colored glow orb */
 .glowOrb2 {
-    width: 500px;
-    height: 500px;
+    width: 480px;
+    height: 480px;
     background: var(--color-accent);
-    bottom: 20%;
+    bottom: 18%;
     right: -100px;
     animation-delay: -5s;
 }
 
-/* Gentle hovering motion for background orbs */
 @keyframes float {
     0% {
         transform: translate(0, 0) scale(1);
     }
-
     100% {
-        transform: translate(50px, 30px) scale(1.1);
+        transform: translate(45px, 25px) scale(1.08);
     }
 }
 
 /* ==========================================================================
-   3. HERO CONTENT & TYPOGRAPHY
-   Responsible for the centered badge, main heading, and paragraph text
+   3. HERO CONTENT, PATENT BADGE & TYPOGRAPHY (P0 #1, #2, #3)
    ========================================================================== */
 .content {
     position: relative;
     z-index: 1;
     text-align: center;
-    max-width: 900px;
-    margin: 0 auto 0.25rem auto;
+    max-width: 880px;
+    margin: 0 auto;
 }
 
-/* Small pill badge above the main title */
-.badge {
-    display: inline-block;
-    padding: 0.5rem 1.2rem;
-    background: rgba(28, 78, 128, 0.05);
-    color: var(--color-secondary);
+/* Verified "Patented in India" Badge (Visible above the fold on 1440px) */
+.patentBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 1.15rem;
+    background: rgba(28, 78, 128, 0.07);
+    color: #1C4E80;
     border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    border: 1px solid rgba(28, 78, 128, 0.1);
+    font-size: 0.88rem;
+    font-weight: 700;
+    margin-bottom: 1.15rem;
+    border: 1px solid rgba(28, 78, 128, 0.2);
+    text-decoration: none;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 10px rgba(28, 78, 128, 0.06);
+}
+
+.patentBadge:hover {
+    background: rgba(28, 78, 128, 0.12);
+    border-color: #1C4E80;
+    transform: translateY(-1px);
+}
+
+.patentIcon {
+    color: #B85600;
+    font-size: 0.95rem;
 }
 
 /* Main bold H1 headline */
 .content h1 {
-    font-size: 4.5rem;
+    font-size: 3.75rem;
     font-weight: 800;
-    line-height: 1.1;
+    line-height: 1.12;
     color: var(--text-main);
-    margin-bottom: 1.5rem;
-    letter-spacing: -1.5px;
+    margin-bottom: 1.15rem;
+    letter-spacing: -1.4px;
 }
 
-/* Brand colored word highlight inside the H1 */
+/* WCAG AA >= 4.5:1 accessible deep brand orange on white backgrounds */
 .content h1 span {
-    color: var(--color-primary);
+    color: #C25E00;
 }
 
-/* Descriptive paragraph below the headline */
+/* Descriptive subhead below the headline */
 .content p {
-    font-size: 1.25rem;
+    font-size: 1.18rem;
     line-height: 1.6;
-    color: var(--text-muted);
-    max-width: 700px;
-    margin: 0 auto;
+    color: #475569;
+    max-width: 720px;
+    margin: 0 auto 1.65rem;
 }
 
-/* Discover Your True Cost Per Invoice button */
-.discoverBtn {
-    display: inline-block;
-    margin-top: 1.35rem;
-    padding: 0.8rem 1.95rem;
-    background: linear-gradient(135deg, #8ba0d8 0%, #687bb8 100%);
-    color: #ffffff;
-    border: none;
+/* ==========================================================================
+   4. CALL TO ACTION BUTTONS (P0 #1 & Tech #8)
+   ========================================================================== */
+.buttonGroup {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.primaryBtn,
+.secondaryBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.9rem 1.85rem;
     border-radius: 50px;
-    font-size: 0.96rem;
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 1rem;
     cursor: pointer;
-    box-shadow: 0 6px 16px rgba(104, 123, 184, 0.35);
+    text-decoration: none;
     transition: all 0.25s ease;
 }
 
-.discoverBtn:hover {
+/* Primary CTA: "Book a 30-minute demo" */
+.primaryBtn {
     background: #1C4E80;
+    color: #ffffff;
+    border: 2px solid #1C4E80;
+    box-shadow: 0 8px 22px rgba(28, 78, 128, 0.22);
+}
+
+.primaryBtn:hover {
+    background: #153b61;
+    border-color: #153b61;
     transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(28, 78, 128, 0.3);
+    box-shadow: 0 12px 26px rgba(28, 78, 128, 0.3);
+}
+
+/* Secondary CTA: "Start your trial" */
+.secondaryBtn {
+    background: #ffffff;
+    color: #1C4E80;
+    border: 2px solid rgba(28, 78, 128, 0.25);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.secondaryBtn:hover {
+    border-color: #1C4E80;
+    background: rgba(28, 78, 128, 0.04);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   5. SIX-ITEM PROOF STRIP (P0 #4)
+   Single clean horizontal bar on 1440px desktop; wraps gracefully on mobile.
+   ========================================================================== */
+.proofStrip {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    margin: 1.85rem auto 0;
+    padding: 0.85rem 1.35rem;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(28, 78, 128, 0.14);
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(28, 78, 128, 0.05);
+    scroll-margin-top: 90px;
+}
+
+.proofList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.65rem 1.35rem;
+}
+
+.proofItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.42rem;
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: #1e293b;
+    white-space: nowrap;
+}
+
+.proofCheckIcon {
+    color: #1C4E80;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+/* ==========================================================================
+   6. TWO-COLUMN SPLIT SECTION (LOWER HERO)
+   ========================================================================== */
+.heroBottom {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3.5rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 2.5rem auto 0;
+    align-items: center;
+    position: relative;
+    z-index: 2;
 }
 
 .sliderWrapper {
@@ -138,96 +241,14 @@
     min-width: 0;
 }
 
-.sliderCaption {
-    margin-top: 1.15rem;
-    font-size: 0.98rem;
-    font-weight: 700;
-    color: #1e293b;
-    text-align: center;
-    letter-spacing: -0.2px;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-}
-
-.dsoFootnote {
-    font-size: 0.78rem;
-    font-weight: 500;
-    color: #64748b;
-}
-
-/* ==========================================================================
-   4. CALL TO ACTION BUTTONS
-   Responsible for button alignment, hover elevations, and click styling
-   ========================================================================== */
-.buttonGroup {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-}
-
-.primaryBtn,
-.secondaryBtn {
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 1.05rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-/* Filled Primary Action Button ("Start Your Trial") */
-.primaryBtn {
-    background: var(--color-secondary);
-    color: #fff;
-    border: none;
-    box-shadow: 0 10px 20px rgba(28, 78, 128, 0.2);
-}
-
-.primaryBtn:hover {
-    background: var(--color-secondary-hover);
-    transform: translateY(-2px);
-}
-
-/* Outlined Secondary Button ("Discover True Cost") */
-.secondaryBtn {
-    background: transparent;
-    color: var(--color-secondary);
-    border: 1px solid var(--border-light);
-}
-
-.secondaryBtn:hover {
-    border-color: var(--color-secondary);
-    background: rgba(28, 78, 128, 0.04);
-}
-
-/* ==========================================================================
-   5. TWO-COLUMN SPLIT SECTION (LOWER HERO)
-   Responsible for positioning Slider Showcase on Left and Info on Right
-   ========================================================================== */
-.heroBottom {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 4rem;
-    max-width: 1200px;
-    margin: 2.5rem auto 0;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-}
-
-/* ==========================================================================
-   6. SLIDER SHOWCASE (LEFT SIDE)
-   Responsible for the glass card container and smooth image transitions
-   ========================================================================== */
 .sliderContainer {
     width: 100%;
     border-radius: 16px;
     padding: 10px 10px 12px 10px;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.55);
     backdrop-filter: blur(20px);
-    border: 3px solid rgba(60, 145, 230, 0.6);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+    border: 2.5px solid rgba(60, 145, 230, 0.55);
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.08);
     overflow: hidden;
     position: relative;
     display: flex;
@@ -274,22 +295,37 @@
     animation: fadeTransition 0.5s ease-in-out;
 }
 
-/* Smooth fade & scale when the slider changes image */
 @keyframes fadeTransition {
     from {
         opacity: 0;
         transform: scale(0.98);
     }
-
     to {
         opacity: 1;
         transform: scale(1);
     }
 }
 
+.sliderCaption {
+    margin-top: 1.1rem;
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: #1e293b;
+    text-align: center;
+    letter-spacing: -0.2px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.dsoFootnote {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #475569;
+}
+
 /* ==========================================================================
    7. INFORMATION / COPY SECTION (RIGHT SIDE)
-   Responsible for headings, descriptions, and the Read More link
    ========================================================================== */
 .bottomInfo {
     text-align: left;
@@ -301,55 +337,56 @@
     font-weight: 800;
     color: var(--color-secondary);
     line-height: 1.3;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
     letter-spacing: -0.5px;
 }
 
-/* Orange highlight in the subheading */
 .bottomInfo h3 span {
-    color: var(--color-primary);
+    color: #C25E00;
 }
 
 .bottomInfo p {
-    font-size: 1.15rem;
+    font-size: 1.12rem;
     color: var(--text-main);
     line-height: 1.7;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
 }
 
+/* WCAG AA >= 4.5:1 contrast for body text highlight */
 .bottomInfo p span {
-    color: var(--color-primary);
-    font-weight: 600;
+    color: #B45309;
+    font-weight: 700;
 }
 
 .readMoreLink {
-    font-weight: 600;
+    font-weight: 700;
     color: var(--color-secondary);
     text-decoration: underline;
     text-underline-offset: 6px;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     transition: color 0.3s ease;
 }
 
 .readMoreLink:hover {
-    color: var(--color-primary);
+    color: #B45309;
 }
 
 /* ==========================================================================
    8. RESPONSIVE DESIGN (TABLETS & MOBILE)
    ========================================================================== */
-/* Tablet view: stack slider and text vertically */
 @media (max-width: 968px) {
     .heroContainer {
-        min-height: auto;
-        padding: 6rem 5% 3rem;
+        padding: 5.75rem 5% 3rem;
+    }
+
+    .content h1 {
+        font-size: 2.9rem;
     }
 
     .heroBottom {
         grid-template-columns: 1fr;
         gap: 2.5rem;
         margin-top: 2rem;
-        width: 100%;
     }
 
     .bottomInfo {
@@ -357,10 +394,9 @@
     }
 }
 
-/* Mobile view: reduce heading size and stack buttons vertically */
 @media (max-width: 768px) {
     .heroContainer {
-        padding: 4.85rem 4% 2.5rem;
+        padding: 4.65rem 4% 2.5rem;
     }
 
     .glowOrb1,
@@ -372,34 +408,60 @@
         right: -60px;
     }
 
-    .badge {
+    .patentBadge {
         font-size: 0.8rem;
-        padding: 0.4rem 1rem;
-        margin-bottom: 1rem;
+        padding: 0.38rem 0.95rem;
+        margin-bottom: 0.9rem;
     }
 
     .content h1 {
-        font-size: 2.4rem;
+        font-size: 2.25rem;
         line-height: 1.18;
         letter-spacing: -0.8px;
-        margin-bottom: 1rem;
+        margin-bottom: 0.95rem;
     }
 
     .content p {
-        font-size: 1.05rem;
+        font-size: 1rem;
         line-height: 1.55;
-    }
-
-    .discoverBtn {
-        width: 100%;
-        max-width: 340px;
-        padding: 0.85rem 1.25rem;
-        font-size: 0.92rem;
+        margin-bottom: 1.35rem;
     }
 
     .buttonGroup {
         flex-direction: column;
         width: 100%;
+        gap: 0.75rem;
+    }
+
+    .primaryBtn,
+    .secondaryBtn {
+        width: 100%;
+        max-width: 340px;
+        padding: 0.85rem 1.35rem;
+        font-size: 0.95rem;
+    }
+
+    .proofStrip {
+        margin-top: 1.5rem;
+        padding: 0.85rem 1rem;
+    }
+
+    .proofList {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.55rem 0.75rem;
+        text-align: left;
+    }
+
+    .proofItem {
+        font-size: 0.78rem;
+        white-space: normal;
+        align-items: flex-start;
+        line-height: 1.3;
+    }
+
+    .proofCheckIcon {
+        margin-top: 0.15rem;
     }
 
     .bottomInfo h3 {
@@ -410,18 +472,32 @@
     .bottomInfo p {
         font-size: 1rem;
         line-height: 1.6;
-        margin-bottom: 1.25rem;
+        margin-bottom: 1.15rem;
     }
 }
 
 @media (max-width: 480px) {
     .content h1 {
-        font-size: 1.95rem;
+        font-size: 1.9rem;
         letter-spacing: -0.5px;
     }
 
     .content p {
-        font-size: 0.96rem;
+        font-size: 0.95rem;
+    }
+
+    .primaryBtn,
+    .secondaryBtn {
+        max-width: 100%;
+    }
+
+    .proofList {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .proofItem {
+        font-size: 0.82rem;
     }
 
     .sliderContainer {

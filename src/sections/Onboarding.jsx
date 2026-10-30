@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Onboarding.module.css';
 import { FaCircleCheck, FaArrowRight, FaCheck } from 'react-icons/fa6';
@@ -128,7 +128,7 @@ const Onboarding = () => {
                     >
                         Book a Demo <FaArrowRight />
                     </a>
-                    <Link to="/about#contact" className={styles.contactBtn}>
+                    <Link to="/contact" className={styles.contactBtn}>
                         Contact Us
                     </Link>
                 </div>

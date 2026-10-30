@@ -1,48 +1,78 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { getMetaForPath, getJsonLdForPath, resolveSiteUrl } from '../seo/siteMeta';
+import { trackPageView } from '../utils/analytics';
+
+function upsertMetaTag(attrName, attrValue, content) {
+    let el = document.head.querySelector(`meta[${attrName}="${attrValue}"]`);
+    if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute(attrName, attrValue);
+        document.head.appendChild(el);
+    }
+    el.setAttribute('content', content);
+}
+
+function upsertCanonicalLink(href) {
+    let link = document.head.querySelector('link[rel="canonical"]');
+    if (!link) {
+        link = document.createElement('link');
+        link.setAttribute('rel', 'canonical');
+        document.head.appendChild(link);
+    }
+    link.setAttribute('href', href);
+}
+
+function syncJsonLd(jsonLdObj) {
+    const existing = document.getElementById('giropie-jsonld');
+    if (!jsonLdObj) {
+        if (existing) existing.remove();
+        return;
+    }
+    const script = existing || document.createElement('script');
+    script.id = 'giropie-jsonld';
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(jsonLdObj);
+    if (!existing) {
+        document.head.appendChild(script);
+    }
+}
 
 /**
- * ScrollToTop Component
- * Ensures every page navigation in the SPA starts at the very top (x=0, y=0),
- * resolving the issue where navigating to another page or navigating back
- * retains previous scroll positions midway or at the bottom.
+ * ScrollToTop & Client SEO Synchronizer
+ * Resets scroll position on route navigation, syncs unique <title>,
+ * <meta name="description">, OpenGraph/Twitter tags, and JSON-LD schema,
+ * and records GA4 page_view events.
  */
-const PAGE_TITLES = {
-    '/': 'GIROPie | Connected Invoice-to-Cash & Working Capital Automation',
-    '/about': 'About Us | GIROPie',
-    '/features': 'Platform Features & Capabilities | GIROPie',
-    '/pricing': 'Transparent Pricing Plans | GIROPie',
-    '/gofundz': 'GOFundZ Trade Finance Solutions | GIROPie',
-    '/careers': 'Careers & Opportunities | GIROPie',
-    '/news': 'News & Recognitions | GIROPie',
-    '/resources/news': 'News & Recognitions | GIROPie',
-    '/faq': 'Frequently Asked Questions | GIROPie',
-    '/resources/faq': 'Frequently Asked Questions | GIROPie',
-    '/blog': 'Blog & Industry Insights | GIROPie',
-    '/resources/blog': 'Blog & Industry Insights | GIROPie',
-    '/contact': 'Contact Us | GIROPie',
-    '/privacy': 'Privacy Policy | GIROPie'
-};
-
 const ScrollToTop = () => {
     const { pathname, hash } = useLocation();
 
     useEffect(() => {
-        // Prevent browser's default scroll restoration from conflicting with SPA routing
         if ('scrollRestoration' in window.history) {
             window.history.scrollRestoration = 'manual';
         }
 
-        // Dynamically update document title per route
-        if (pathname === '/about' && hash === '#contact') {
-            document.title = 'Contact Us | GIROPie';
-        } else if (pathname.startsWith('/blog/') || pathname.startsWith('/post/')) {
-            document.title = 'Blog & Insights | GIROPie';
-        } else {
-            document.title = PAGE_TITLES[pathname] || 'GIROPie | Connected Invoice-to-Cash & Working Capital Automation';
-        }
+        const siteUrl = resolveSiteUrl();
+        const meta = getMetaForPath(pathname, hash);
+        const canonicalUrl = `${siteUrl}${meta.canonicalPath === '/' ? '/' : meta.canonicalPath}`;
+        const ogImageUrl = `${siteUrl}/og-share.png`;
 
-        // If there's an anchor hash (e.g. #contact, #apply-portal), scroll to it smoothly
+        document.title = meta.title;
+        upsertMetaTag('name', 'description', meta.description);
+        upsertMetaTag('property', 'og:title', meta.title);
+        upsertMetaTag('property', 'og:description', meta.description);
+        upsertMetaTag('property', 'og:type', meta.ogType || 'website');
+        upsertMetaTag('property', 'og:url', canonicalUrl);
+        upsertMetaTag('property', 'og:image', ogImageUrl);
+        upsertMetaTag('name', 'twitter:card', 'summary_large_image');
+        upsertMetaTag('name', 'twitter:title', meta.title);
+        upsertMetaTag('name', 'twitter:description', meta.description);
+        upsertMetaTag('name', 'twitter:image', ogImageUrl);
+        upsertCanonicalLink(canonicalUrl);
+
+        syncJsonLd(getJsonLdForPath(pathname, siteUrl));
+        trackPageView(`${pathname}${hash || ''}`, meta.title);
+
         if (hash) {
             const timer = setTimeout(() => {
                 const targetElement = document.querySelector(hash);
@@ -53,7 +83,6 @@ const ScrollToTop = () => {
             return () => clearTimeout(timer);
         }
 
-        // Instantly reset scroll to top of window and root document when navigating without a hash
         window.scrollTo({
             top: 0,
             left: 0,

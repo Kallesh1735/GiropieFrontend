@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './TrueCostModal.module.css';
 import logo from '../assets/giropie-logo.png';
@@ -147,11 +147,6 @@ const TrueCostModal = ({ isOpen, onClose }) => {
     const handleSubmit = (e) => {
         if (e) e.preventDefault();
         setStep(4); // Move to confirmation
-    };
-
-    const handleReset = () => {
-        setStep(1);
-        setActiveTab('ar');
     };
 
     // ========================================================================

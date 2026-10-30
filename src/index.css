@@ -1,9 +1,10 @@
 :root {
   /* Primary GIROPie Brand Colors */
-  --color-primary: #F7931E; /* The Orange */
+  --color-primary: #F7931E; /* Brand Orange (buttons/accents on dark or white text) */
   --color-primary-hover: #e08317;
+  --color-primary-text: #B45309; /* Accessible Orange Text on Light Surfaces (>= 5.0:1 WCAG AA) */
   
-  --color-secondary: #1C4E80; /* The Deep Blue */
+  --color-secondary: #1C4E80; /* Brand Navy */
   --color-secondary-hover: #153b61;
 
   --color-accent: #3A8DD5; /* Light Blue/Cyan */
@@ -88,9 +89,14 @@ a[role="button"]:active {
   transition: transform 0.08s ease;
 }
 
-/* Focus rings for accessibility */
+/* Visible keyboard focus outlines across light & dark surfaces (Tech Fix #12) */
 button:focus-visible,
-a:focus-visible {
-  outline: 2px solid var(--color-primary);
+a:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2.5px solid var(--color-secondary) !important;
+  box-shadow: 0 0 0 4px rgba(247, 147, 30, 0.38);
   outline-offset: 3px;
 }

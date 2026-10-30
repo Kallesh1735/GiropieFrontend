@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './AboutUs.module.css';
+import { trackEvent } from '../utils/analytics';
 import flowDiagram from '../assets/GIROPie-Flow Diagram.avif';
 import {
     FaBullseye,
@@ -21,16 +22,110 @@ import visionImg from '../assets/Focus_edited.avif';
 import valueImg from '../assets/Brochure-PTAI.avif';
 import aboutHeroImg from '../assets/aboutpageimage.jpg';
 
+// ============================================================================
+// FOUNDERS CONFIGURATION DATA (P0 #6)
+// Easy to edit: Once client headshot files are supplied in src/assets/, import
+// them above and assign them to `photo` below, or update the two-line bios.
+// ============================================================================
+const FOUNDERS_DATA = [
+    {
+        id: 'manjunatha-ns',
+        name: 'Manjunatha NS',
+        title: 'Founder and CEO',
+        initials: 'MN',
+        photo: null,
+        bio: 'Leads product architecture, patented invoice-to-cash workflows, and enterprise partnerships at GIROPie, drawing on extensive experience across commercial operations and B2B finance.'
+    },
+    {
+        id: 'hemalatha-bs',
+        name: 'Hemalatha BS',
+        title: 'Founder',
+        initials: 'HB',
+        photo: null,
+        bio: 'Guides corporate governance, operational execution, and financial controls at PepperTree.AI, focused on dependable receivable automation for Indian MSMEs and distributors.'
+    }
+];
+
+// Confirmation text shown after contact form submission (Tech Fix #9)
+const CONTACT_CONFIRMATION_TEXT =
+    'Thank you — we have received your details and our team will reach out within one business day.';
+
 const AboutUs = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitError, setSubmitError] = useState('');
+    const [confirmationMsg, setConfirmationMsg] = useState(CONTACT_CONFIRMATION_TEXT);
+    const formStartedAtRef = useRef(0);
 
-    const handleFormSubmit = (e) => {
+    useEffect(() => {
+        formStartedAtRef.current = Date.now();
+    }, []);
+
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
-        setIsSubmitted(true);
-        e.target.reset();
-        setTimeout(() => {
-            setIsSubmitted(false);
-        }, 7000);
+        if (isSubmitting) return;
+
+        const form = e.currentTarget;
+        const formData = new FormData(form);
+        const payload = {
+            company: (formData.get('company') || '').toString().trim(),
+            firstName: (formData.get('firstName') || '').toString().trim(),
+            lastName: (formData.get('lastName') || '').toString().trim(),
+            email: (formData.get('email') || '').toString().trim(),
+            phone: (formData.get('phone') || '').toString().trim(),
+            website_url: (formData.get('website_url') || '').toString().trim(),
+            elapsedMs: formStartedAtRef.current ? Date.now() - formStartedAtRef.current : 0,
+            pagePath: typeof window !== 'undefined' ? window.location.pathname : '/about'
+        };
+
+        setIsSubmitting(true);
+        setSubmitError('');
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            const contentType = response.headers.get('content-type') || '';
+            const isJson = contentType.includes('application/json');
+            const data = isJson ? await response.json() : null;
+
+            if (!response.ok) {
+                // Allow local `vite` dev server testing when `/api/contact` is not mounted
+                if (import.meta.env.DEV && response.status === 404) {
+                    console.info('[GIROPie Dev] Contact payload validated locally:', payload);
+                } else {
+                    throw new Error(
+                        (data && data.error) ||
+                            'Unable to submit your inquiry right now. Please try again shortly.'
+                    );
+                }
+            }
+
+            if (data && data.message) {
+                setConfirmationMsg(data.message);
+            } else {
+                setConfirmationMsg(CONTACT_CONFIRMATION_TEXT);
+            }
+
+            trackEvent('contact_form_submit', {
+                form_id: 'about_contact_form',
+                page_path: payload.pagePath
+            });
+
+            setIsSubmitted(true);
+            form.reset();
+            formStartedAtRef.current = Date.now();
+            setTimeout(() => {
+                setIsSubmitted(false);
+            }, 9000);
+        } catch (err) {
+            setSubmitError(err.message || 'Unable to submit form. Please try again.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -51,7 +146,7 @@ const AboutUs = () => {
                 <div className={styles.heroImageContainer}>
                     <img
                         src={aboutHeroImg}
-                        alt="Know your True Cost per Invoice and take control of receivables and payables with real-time insights - Powered by GIROPie"
+                        alt="About GIROPie - Connected Invoice-to-Cash and Receivables Automation Platform"
                         className={styles.heroImage}
                     />
                 </div>
@@ -84,20 +179,44 @@ const AboutUs = () => {
                     </p>
                 </div>
 
-                {/* Part 2: The Team */}
+                {/* Part 2: The Team — Two Founder Cards (P0 #6) */}
                 <div className={styles.teamCard}>
                     <div className={styles.storyHeader}>
                         <h2 className={styles.storyTitle}>The team</h2>
                         <div className={styles.teamTitleUnderline}></div>
                     </div>
 
-                    <p className={styles.storyText}>
-                        Our leadership team brings together decades of experience across commercial operations, trade finance, enterprise workflows, and business process management across Indian and global markets.
-                    </p>
+                    <div className={styles.foundersGrid}>
+                        {FOUNDERS_DATA.map((founder) => (
+                            <article key={founder.id} className={styles.founderCard}>
+                                <div className={styles.founderPhotoWrap}>
+                                    {founder.photo ? (
+                                        <img
+                                            src={founder.photo}
+                                            alt={`${founder.name}, ${founder.title}`}
+                                            className={styles.founderPhoto}
+                                        />
+                                    ) : (
+                                        <div
+                                            className={styles.founderAvatarFallback}
+                                            role="img"
+                                            aria-label={`${founder.name}, ${founder.title}`}
+                                        >
+                                            <span>{founder.initials}</span>
+                                        </div>
+                                    )}
+                                </div>
 
-                    <p className={styles.storyText}>
-                        This deep operational understanding drives GIROPie's approach to simplifying how businesses manage collections, payments, reconciliation, and working capital execution.
-                    </p>
+                                <div className={styles.founderDetails}>
+                                    <div className={styles.founderHeadingRow}>
+                                        <h3 className={styles.founderName}>{founder.name}</h3>
+                                        <span className={styles.founderRoleBadge}>{founder.title}</span>
+                                    </div>
+                                    <p className={styles.founderBio}>{founder.bio}</p>
+                                </div>
+                            </article>
+                        ))}
+                    </div>
                 </div>
             </section>
 
@@ -211,21 +330,43 @@ const AboutUs = () => {
                     Powering the future of cash flow visibility and invoice automation for MSMEs.
                 </p>
 
-                <form className={styles.formGrid} onSubmit={handleFormSubmit}>
+                <form className={styles.formGrid} onSubmit={handleFormSubmit} noValidate={false}>
+                    {/* Hidden Honeypot Field for Automated Spam Bot Protection (Tech Fix #9) */}
+                    <div className={styles.honeypotField} aria-hidden="true">
+                        <label htmlFor="contact-website-url">Website</label>
+                        <input
+                            id="contact-website-url"
+                            name="website_url"
+                            type="text"
+                            tabIndex={-1}
+                            autoComplete="off"
+                        />
+                    </div>
+
                     {/* In-page Success Notice Banner */}
                     {isSubmitted && (
-                        <div className={styles.successNotice}>
+                        <div className={styles.successNotice} role="status" aria-live="polite">
                             <FaCheck className={styles.successIcon} />
-                            <span>Thank you! Your message has been received. Our team will get back to you shortly.</span>
+                            <span>{confirmationMsg}</span>
+                        </div>
+                    )}
+
+                    {/* Validation / Delivery Error Banner */}
+                    {submitError && (
+                        <div className={styles.errorNotice} role="alert">
+                            <span>{submitError}</span>
                         </div>
                     )}
 
                     {/* My Company */}
                     <div className={`${styles.formGroup} ${styles.fullWidth}`}>
-                        <label className={styles.formLabel}>My company *</label>
+                        <label htmlFor="contact-company" className={styles.formLabel}>My company *</label>
                         <input
+                            id="contact-company"
+                            name="company"
                             type="text"
                             required
+                            autoComplete="organization"
                             placeholder="Enter your company name"
                             className={styles.formInput}
                         />
@@ -233,10 +374,13 @@ const AboutUs = () => {
 
                     {/* First Name */}
                     <div className={styles.formGroup}>
-                        <label className={styles.formLabel}>First name *</label>
+                        <label htmlFor="contact-first-name" className={styles.formLabel}>First name *</label>
                         <input
+                            id="contact-first-name"
+                            name="firstName"
                             type="text"
                             required
+                            autoComplete="given-name"
                             placeholder="Enter first name"
                             className={styles.formInput}
                         />
@@ -244,9 +388,12 @@ const AboutUs = () => {
 
                     {/* Last Name */}
                     <div className={styles.formGroup}>
-                        <label className={styles.formLabel}>Last name</label>
+                        <label htmlFor="contact-last-name" className={styles.formLabel}>Last name</label>
                         <input
+                            id="contact-last-name"
+                            name="lastName"
                             type="text"
+                            autoComplete="family-name"
                             placeholder="Enter last name"
                             className={styles.formInput}
                         />
@@ -254,10 +401,13 @@ const AboutUs = () => {
 
                     {/* Email */}
                     <div className={styles.formGroup}>
-                        <label className={styles.formLabel}>Email *</label>
+                        <label htmlFor="contact-email" className={styles.formLabel}>Email *</label>
                         <input
+                            id="contact-email"
+                            name="email"
                             type="email"
                             required
+                            autoComplete="email"
                             placeholder="name@company.com"
                             className={styles.formInput}
                         />
@@ -265,12 +415,15 @@ const AboutUs = () => {
 
                     {/* Phone */}
                     <div className={styles.formGroup}>
-                        <label className={styles.formLabel}>Phone *</label>
+                        <label htmlFor="contact-phone" className={styles.formLabel}>Phone *</label>
                         <div className={styles.phoneInputWrapper}>
                             <span className={styles.countryFlag}>🇮🇳</span>
                             <input
+                                id="contact-phone"
+                                name="phone"
                                 type="tel"
                                 required
+                                autoComplete="tel"
                                 placeholder="98765 43210"
                                 className={styles.phoneInput}
                             />
@@ -279,8 +432,12 @@ const AboutUs = () => {
 
                     {/* Submit Button */}
                     <div className={styles.submitBtnWrapper}>
-                        <button type="submit" className={styles.submitBtn}>
-                            Submit
+                        <button
+                            type="submit"
+                            className={styles.submitBtn}
+                            disabled={isSubmitting}
+                        >
+                            {isSubmitting ? 'Submitting...' : 'Submit'}
                         </button>
                     </div>
 

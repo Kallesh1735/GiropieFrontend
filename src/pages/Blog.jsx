@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import styles from './Blog.module.css';
 import {
     FaArrowLeft,
@@ -279,9 +279,6 @@ const Blog = () => {
     const [selectedCategory, setSelectedCategory] = useState('All');
     const [searchQuery, setSearchQuery] = useState('');
 
-    // Active Post Selection (supports route parameter or direct click)
-    const [selectedPostId, setSelectedPostId] = useState(slug || null);
-
     // Track Likes
     const [likedPosts, setLikedPosts] = useState({});
     const [poppedPostId, setPoppedPostId] = useState(null);
@@ -289,43 +286,24 @@ const Blog = () => {
     // Reading Progress Bar tracker for single article view
     const [readingProgress, setReadingProgress] = useState(0);
 
-    // Preloaded initial comments map per post
-    const [commentsByPost, setCommentsByPost] = useState({
-        'streamlining-your-finances-with-invoice-to-cash-i2c-automation': [
-            {
-                id: 'c-init-1',
-                author: 'Anand R.',
-                initials: 'AR',
-                date: 'Nov 12, 2023',
-                text: 'Automating customer invoicing and AR reconciliation has genuinely transformed our working capital cycle. Great read!'
-            }
-        ]
-    });
+    // Comments map per post (initialized empty — zero unverified customer quotes)
+    const [commentsByPost, setCommentsByPost] = useState({});
     const [commentText, setCommentText] = useState('');
     const [commentAuthor, setCommentAuthor] = useState('');
 
     // Toast notification state
     const [showToast, setShowToast] = useState(false);
 
-    // Sync state with URL parameter
-    useEffect(() => {
-        if (slug) {
-            setSelectedPostId(slug);
-        } else {
-            setSelectedPostId(null);
-        }
-    }, [slug]);
-
-    const activePost = blogPostsData.find(
-        (p) => p.slug === selectedPostId || p.id === selectedPostId
-    );
+    const activePost = slug
+        ? blogPostsData.find((p) => p.slug === slug || p.id === slug)
+        : null;
+    const shareUrl = activePost
+        ? `https://www.giropie.com/blog/${activePost.slug}`
+        : 'https://www.giropie.com/blog';
 
     // Calculate reading scroll progress dynamically when viewing an article
     useEffect(() => {
-        if (!activePost) {
-            setReadingProgress(0);
-            return;
-        }
+        if (!activePost) return undefined;
 
         const handleScroll = () => {
             const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -333,11 +311,17 @@ const Blog = () => {
             if (scrollHeight > 0) {
                 const percent = Math.min(100, Math.max(0, (scrollTop / scrollHeight) * 100));
                 setReadingProgress(percent);
+            } else {
+                setReadingProgress(0);
             }
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
+        const rafId = window.requestAnimationFrame(handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.cancelAnimationFrame(rafId);
+        };
     }, [activePost]);
 
     // Category options derived from data
@@ -377,20 +361,18 @@ const Blog = () => {
 
     // Open single post detail
     const handleOpenPost = (postSlug) => {
-        setSelectedPostId(postSlug);
         navigate(`/blog/${postSlug}`);
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     // Back to listing
     const handleBackToList = () => {
-        setSelectedPostId(null);
         navigate('/blog');
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     // Share link handler with toast
-    const handleSharePost = (post) => {
+    const handleSharePost = () => {
         const url = window.location.href;
         if (navigator.clipboard) {
             navigator.clipboard.writeText(url);
@@ -478,7 +460,7 @@ const Blog = () => {
 
                                 <button
                                     type="button"
-                                    onClick={() => handleSharePost(activePost)}
+                                    onClick={handleSharePost}
                                     className={styles.shareBtn}
                                 >
                                     <FaShareNodes /> Share
@@ -596,7 +578,7 @@ const Blog = () => {
                                     <span className={styles.shareBarLabel}>Share this article:</span>
                                     <div className={styles.shareButtonsGroup}>
                                         <a
-                                            href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`}
+                                            href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl || `https://www.giropie.com/blog/${activePost.slug}`)}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className={`${styles.socialShareBtn} ${styles.shareLinkedin}`}
@@ -605,7 +587,7 @@ const Blog = () => {
                                             <FaLinkedin /> LinkedIn
                                         </a>
                                         <a
-                                            href={`https://x.com/intent/tweet?text=${encodeURIComponent(activePost.title)}&url=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`}
+                                            href={`https://x.com/intent/tweet?text=${encodeURIComponent(activePost.title)}&url=${encodeURIComponent(shareUrl || `https://www.giropie.com/blog/${activePost.slug}`)}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className={`${styles.socialShareBtn} ${styles.shareTwitter}`}
@@ -614,7 +596,7 @@ const Blog = () => {
                                             <FaXTwitter /> X
                                         </a>
                                         <a
-                                            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`}
+                                            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl || `https://www.giropie.com/blog/${activePost.slug}`)}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className={`${styles.socialShareBtn} ${styles.shareFacebook}`}

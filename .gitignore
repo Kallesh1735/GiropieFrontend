@@ -15,6 +15,7 @@ dist-ssr
 # Environment variables & secrets (Never commit secrets to Git)
 .env
 .env.*
+!.env.example
 *.env
 .env.local
 .env.development.local

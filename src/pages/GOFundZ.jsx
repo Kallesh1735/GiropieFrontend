@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import styles from './GOFundZ.module.css';
 import gofundzHeroImg from '../assets/gofundz-banner-clean.jpg';
 import handshakeImg from '../assets/Business Handshake.avif';

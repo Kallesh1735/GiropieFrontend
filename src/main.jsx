@@ -1,10 +1,24 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+import { StrictMode } from 'react';
+import { createRoot, hydrateRoot } from 'react-dom/client';
+import './index.css';
+import App from './App.jsx';
+import { initAnalytics } from './utils/analytics.js';
 
-createRoot(document.getElementById('root')).render(
+initAnalytics();
+
+const rootElement = document.getElementById('root');
+const currentPath = (window.location.pathname || '/').replace(/\/+$/, '') || '/';
+const prerenderedRoute = rootElement?.getAttribute('data-prerendered-route');
+
+const appNode = (
   <StrictMode>
     <App />
-  </StrictMode>,
-)
+  </StrictMode>
+);
+
+if (rootElement && rootElement.hasChildNodes() && prerenderedRoute === currentPath) {
+  hydrateRoot(rootElement, appNode);
+} else if (rootElement) {
+  rootElement.innerHTML = '';
+  createRoot(rootElement).render(appNode);
+}

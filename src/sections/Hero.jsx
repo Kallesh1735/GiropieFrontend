@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Hero.module.css';
-import TrueCostModal from '../components/TrueCostModal';
+import { FaShieldHalved, FaCalendarDays, FaArrowRight, FaCircleCheck } from 'react-icons/fa6';
 
 // ============================================================================
 // SECTION 1: HERO SLIDER ASSETS
@@ -15,12 +15,24 @@ import slide4 from '../assets/slide4.png';
 const slides = [slide1, slide2, slide3, slide4];
 
 // ============================================================================
-// SECTION 2: HERO COMPONENT (HOME PAGE TOP SECTION)
+// SECTION 2: PROOF STRIP ITEMS (P0 #4)
+// NOTE: None link to unpublished pages. Keep all 6 proof items visible.
+// ============================================================================
+const PROOF_ITEMS = [
+    'Patented in India',
+    'TallyPrime integrated',
+    'Easebuzz payment partner',
+    'Built on NPCI eMandate and NACH',
+    'Runner-up NSA 5.0',
+    'ElevateNXT Deeptech'
+];
+
+// ============================================================================
+// SECTION 3: HERO COMPONENT (HOME PAGE TOP SECTION)
 // ============================================================================
 const Hero = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
-    const [isCostModalOpen, setIsCostModalOpen] = useState(false);
 
     // Auto-advance dashboard slides every 3 seconds (pauses when user hovers)
     useEffect(() => {
@@ -40,31 +52,64 @@ const Hero = () => {
             <div className={styles.glowOrb2}></div>
 
             {/* --------------------------------------------------------------
-                2.1 UPPER HERO: BADGE, HEADLINE, SUBTITLE & TRUE COST CTA
+                3.1 UPPER HERO: PATENT BADGE, H1, SUBHEAD & PRIMARY CTAS
+                NOTE (P0 #3): Patent number must NOT appear on the home page;
+                badge links to /trust where patent & architecture details live.
                -------------------------------------------------------------- */}
             <div className={styles.content}>
-                <div className={styles.badge}>Next-Gen Invoice Automation</div>
+                <Link to="/trust" className={styles.patentBadge}>
+                    <FaShieldHalved className={styles.patentIcon} />
+                    <span>Patented in India</span>
+                </Link>
 
                 <h1>
-                    The Real-Time Cash Flow <br /> Engine for <span>Businesses</span>
+                    Get paid on the due date, <span>without chasing.</span>
                 </h1>
 
                 <p>
-                    Uncover hidden operational costs behind every invoice and reduce them by up to 20% with invoice-to-cash automation.
+                    Connect invoices with buyer-approved Pay-by-Dates and automated bank mandate collections—built alongside your existing TallyPrime and ERP workflows.
                 </p>
 
-                {/* Triggers the 4-step True Cost Per Invoice Modal */}
-                <button
-                    type="button"
-                    className={styles.discoverBtn}
-                    onClick={() => setIsCostModalOpen(true)}
-                >
-                    Discover Your True Cost Per Invoice
-                </button>
+                {/* Primary & Secondary Hero Actions (P0 #1 & Tech #8) */}
+                <div className={styles.buttonGroup}>
+                    <a
+                        href="https://calendly.com/giropie/giropie-demo"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.primaryBtn}
+                    >
+                        <FaCalendarDays /> Book a 30-minute demo
+                    </a>
+
+                    <a
+                        href="https://live.giropie.com/signup"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.secondaryBtn}
+                    >
+                        Start your trial <FaArrowRight />
+                    </a>
+                </div>
             </div>
 
             {/* --------------------------------------------------------------
-                2.2 LOWER HERO: INTERACTIVE SLIDER (LEFT) & VALUE PROP (RIGHT)
+                3.2 CREDIBILITY & PROOF STRIP (P0 #3 & #4)
+                Positioned directly below the hero copy so both the Patent Badge
+                and all 6 proof items are visible without scrolling at 1440px.
+               -------------------------------------------------------------- */}
+            <div id="proof-strip" className={styles.proofStrip} aria-label="Platform credentials and recognitions">
+                <ul className={styles.proofList}>
+                    {PROOF_ITEMS.map((item) => (
+                        <li key={item} className={styles.proofItem}>
+                            <FaCircleCheck className={styles.proofCheckIcon} />
+                            <span>{item}</span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
+            {/* --------------------------------------------------------------
+                3.3 LOWER HERO: PRODUCT SLIDES (LEFT) & COLLECTION ACCOUNT (RIGHT)
                -------------------------------------------------------------- */}
             <div className={styles.heroBottom}>
                 {/* Left Column: Dashboard Carousel & DSO Caption */}
@@ -95,7 +140,7 @@ const Hero = () => {
                         </div>
                     </div>
 
-                    {/* DSO Reduction Caption & Footnote */}
+                    {/* DSO Reduction Caption & Footnote (Preserved per P0 #1) */}
                     <div className={styles.sliderCaption}>
                         Reduce DSO By 5-10 Days* in a Credit Cycle
                         <span className={styles.dsoFootnote}>
@@ -122,14 +167,6 @@ const Hero = () => {
                     </Link>
                 </div>
             </div>
-
-            {/* --------------------------------------------------------------
-                2.3 TRUE COST ANALYSIS & SAVINGS CALCULATOR MODAL
-               -------------------------------------------------------------- */}
-            <TrueCostModal
-                isOpen={isCostModalOpen}
-                onClose={() => setIsCostModalOpen(false)}
-            />
         </section>
     );
 };
