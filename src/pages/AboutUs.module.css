@@ -831,17 +831,17 @@
     }
 
     .heroImageContainer {
-        border-radius: 16px;
-        background: #0d1e38;
-        padding: 4px;
-        border: 1.5px solid rgba(58, 141, 213, 0.3);
-        box-shadow: 0 12px 28px rgba(28, 78, 128, 0.14);
+        border-radius: 12px;
+        background: #ffffff;
+        padding: 0;
+        border: 1px solid rgba(28, 78, 128, 0.12);
+        box-shadow: 0 8px 22px rgba(28, 78, 128, 0.08);
     }
 
     .heroImage {
-        min-height: 108px;
-        object-fit: cover;
-        object-position: 82% center;
+        width: 100%;
+        height: auto;
+        display: block;
         border-radius: 12px;
     }
 

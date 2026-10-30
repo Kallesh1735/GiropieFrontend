@@ -824,7 +824,9 @@
     }
 
     .bannerImage {
-        height: 140px;
+        height: auto;
+        max-height: 180px;
+        object-fit: cover;
     }
 
     .openRolesSection {

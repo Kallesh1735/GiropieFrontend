@@ -52,8 +52,7 @@ const FeaturesPage = () => {
                         <div className={`${styles.gapIconPod} ${styles.iconPodRed}`}>
                             <FaLinkSlash />
                         </div>
-                        <span className={`${styles.gapTag} ${styles.tagRed}`}>01 • Solid Workflows</span>
-                        <h3 className={styles.gapTitle}>Disconnected Workflows</h3>
+                        <span className={`${styles.gapTag} ${styles.tagRed}`}>01 • Disconnected Workflow</span>
                         <p className={styles.gapText}>
                             Invoice status, payment commitments, and settlements are rarely connected end-to-end across buyers and suppliers.
                         </p>
@@ -64,8 +63,7 @@ const FeaturesPage = () => {
                         <div className={`${styles.gapIconPod} ${styles.iconPodAmber}`}>
                             <FaCalendarXmark />
                         </div>
-                        <span className={`${styles.gapTag} ${styles.tagAmber}`}>02 • Cash Uncertainty</span>
-                        <h3 className={styles.gapTitle}>Unpredictable Forecasting</h3>
+                        <span className={`${styles.gapTag} ${styles.tagAmber}`}>02 • Unpredictable Forecasting</span>
                         <p className={styles.gapText}>
                             Cash-flow planning relies on expected collections rather than committed, verified payment dates.
                         </p>
@@ -76,8 +74,7 @@ const FeaturesPage = () => {
                         <div className={`${styles.gapIconPod} ${styles.iconPodBlue}`}>
                             <FaCommentsDollar />
                         </div>
-                        <span className={`${styles.gapTag} ${styles.tagBlue}`}>03 • Operational Drag</span>
-                        <h3 className={styles.gapTitle}>Manual Chasing &amp; Disputes</h3>
+                        <span className={`${styles.gapTag} ${styles.tagBlue}`}>03 • Manual Chasing &amp; Disputes</span>
                         <p className={styles.gapText}>
                             Teams spend significant time chasing payments, managing disputes, approvals, and reconciliation across fragmented systems.
                         </p>
