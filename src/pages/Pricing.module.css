@@ -384,11 +384,11 @@
 
 @media (max-width: 768px) {
     .pricingPage {
-        padding: 4.35rem 0 3.5rem;
+        padding: 4.15rem 0 3rem;
     }
 
     .heroBanner {
-        padding: 0.75rem 4% 1.5rem;
+        padding: 0.35rem 4% 0.45rem;
     }
 
     .heroImage {
@@ -401,7 +401,7 @@
     }
 
     .pricingContainer {
-        margin: 0.5rem auto 2.5rem;
+        margin: 0.5rem auto 2rem;
         padding: 0 4%;
     }
 
@@ -413,6 +413,7 @@
         padding: 5px;
         gap: 4px;
         border-radius: 14px;
+        margin-bottom: 1.25rem;
     }
 
     .tabButton {

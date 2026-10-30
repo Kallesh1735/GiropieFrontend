@@ -790,17 +790,17 @@
 
 @media (max-width: 768px) {
     .careersPage {
-        padding-top: 4rem;
+        padding-top: 3.85rem;
     }
 
     .heroSection {
-        padding: 1rem 4% 1.5rem;
+        padding: 0.5rem 4% 0.65rem;
     }
 
     .heroBadge {
         font-size: 0.78rem;
         padding: 0.35rem 0.9rem;
-        margin-bottom: 1rem;
+        margin-bottom: 0.75rem;
     }
 
     .heroHeading {
@@ -810,12 +810,12 @@
 
     .heroSubtitle {
         font-size: 1rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.15rem;
     }
 
     .talentChipsRow {
         gap: 0.5rem;
-        margin-bottom: 1.75rem;
+        margin-bottom: 1.25rem;
     }
 
     .talentChip {
@@ -830,7 +830,7 @@
     }
 
     .openRolesSection {
-        padding: 2.5rem 4% 1.5rem;
+        padding: 1.25rem 4% 1rem;
     }
 
     .sectionHeader {
