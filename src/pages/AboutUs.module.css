@@ -822,98 +822,6 @@
 }
 
 /* ==========================================================================
-   SOCIAL CONNECT BAR (Contact Section)
-   ========================================================================== */
-.socialConnectBar {
-    grid-column: span 2;
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
-    text-align: center;
-}
-
-.socialConnectTitle {
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: #1C4E80;
-    margin: 0 0 0.35rem;
-}
-
-.socialConnectSubtitle {
-    font-size: 0.88rem;
-    color: #64748B;
-    margin: 0 0 1.25rem;
-}
-
-.socialConnectLinks {
-    display: flex;
-    justify-content: center;
-    gap: 0.85rem;
-    flex-wrap: wrap;
-}
-
-.socialPill {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.6rem 1.15rem;
-    border-radius: 50px;
-    font-size: 0.88rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-}
-
-.socialPill.linkedin {
-    background: #eef5fb;
-    color: #0A66C2;
-    border: 1px solid #cbe0f4;
-}
-.socialPill.linkedin:hover {
-    background: #0A66C2;
-    color: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(10, 102, 194, 0.25);
-}
-
-.socialPill.twitter {
-    background: #f1f5f9;
-    color: #0f172a;
-    border: 1px solid #cbd5e1;
-}
-.socialPill.twitter:hover {
-    background: #000000;
-    color: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
-}
-
-.socialPill.youtube {
-    background: #fef2f2;
-    color: #FF0000;
-    border: 1px solid #fecaca;
-}
-.socialPill.youtube:hover {
-    background: #FF0000;
-    color: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(255, 0, 0, 0.25);
-}
-
-.socialPill.facebook {
-    background: #f0f6ff;
-    color: #1877F2;
-    border: 1px solid #bfdbfe;
-}
-.socialPill.facebook:hover {
-    background: #1877F2;
-    color: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(24, 119, 242, 0.25);
-}
-
-/* ==========================================================================
    RESPONSIVE DESIGN
    ========================================================================== */
 @media (max-width: 992px) {
@@ -1063,7 +971,6 @@
     .fullWidth,
     .submitBtnWrapper,
     .privacyText,
-    .socialConnectBar,
     .successNotice,
     .errorNotice {
         grid-column: 1 / -1;
@@ -1088,18 +995,6 @@
         width: 100%;
         padding: 0.9rem 1.5rem;
     }
-
-    .socialConnectLinks {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.65rem;
-    }
-
-    .socialPill {
-        justify-content: center;
-        padding: 0.6rem 0.75rem;
-        font-size: 0.84rem;
-    }
 }
 
 @media (max-width: 420px) {
@@ -1113,9 +1008,5 @@
     .founderPhotoWrap {
         width: 58px;
         height: 58px;
-    }
-
-    .socialConnectLinks {
-        grid-template-columns: 1fr;
     }
 }

@@ -11,11 +11,7 @@ import {
     FaLayerGroup,
     FaArrowsRotate,
     FaArrowTrendDown,
-    FaCheck,
-    FaYoutube,
-    FaFacebook,
-    FaXTwitter,
-    FaLinkedin
+    FaCheck
 } from 'react-icons/fa6';
 import missionImg from '../assets/Mission.avif';
 import visionImg from '../assets/Focus_edited.avif';
@@ -315,7 +311,7 @@ const AboutUs = () => {
                         <h3 className={styles.pillarTitle}>Value</h3>
                         <div className={styles.pillarBar}></div>
                         <p className={styles.pillarDesc}>
-                            Seamless integration of digital payment system, AR/AP management, your accounting software and ERP / CRMs for informed decision making.
+                            Seamlessly unifies digital payments, AR/AP workflows, and existing ERP / accounting systems for informed decision-making.
                         </p>
                     </div>
                 </div>
@@ -445,52 +441,6 @@ const AboutUs = () => {
                     <p className={styles.privacyText}>
                         By submitting this form, I confirm and agree to storing and processing of my data by GIROPie as defined in the <Link to="/privacy">Privacy Policy</Link>*
                     </p>
-
-                    {/* Social Media Connect Bar */}
-                    <div className={styles.socialConnectBar}>
-                        <h3 className={styles.socialConnectTitle}>Connect with GIROPie</h3>
-                        <p className={styles.socialConnectSubtitle}>
-                            Follow us on social media for working capital insights, product releases, and news.
-                        </p>
-                        <div className={styles.socialConnectLinks}>
-                            <a
-                                href="https://www.linkedin.com/company/peppertreeai"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={`${styles.socialPill} ${styles.linkedin}`}
-                                aria-label="LinkedIn"
-                            >
-                                <FaLinkedin size={18} /> <span>LinkedIn</span>
-                            </a>
-                            <a
-                                href="https://x.com/PeppertreeAI"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={`${styles.socialPill} ${styles.twitter}`}
-                                aria-label="X (Twitter)"
-                            >
-                                <FaXTwitter size={17} /> <span>X (Twitter)</span>
-                            </a>
-                            <a
-                                href="https://www.youtube.com/@giropie"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={`${styles.socialPill} ${styles.youtube}`}
-                                aria-label="YouTube"
-                            >
-                                <FaYoutube size={18} /> <span>YouTube</span>
-                            </a>
-                            <a
-                                href="https://www.facebook.com/giropie/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={`${styles.socialPill} ${styles.facebook}`}
-                                aria-label="Facebook"
-                            >
-                                <FaFacebook size={18} /> <span>Facebook</span>
-                            </a>
-                        </div>
-                    </div>
                 </form>
             </section>
         </div>

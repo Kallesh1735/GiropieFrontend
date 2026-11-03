@@ -31,7 +31,7 @@ const tabData = [
     {
         id: 'ar',
         label: 'AR Management',
-        content: 'Reduce DSO (Days Sales Outstanding) by 5-10 days. Send automated payment links and orchestrate collection workflows effortlessly.',
+        content: 'Accelerate collection turnaround and eliminate manual payment follow-ups. Send automated payment links and orchestrate collection workflows effortlessly.',
         highlights: [
             'Scheduled Pay-by-Date tracking',
             'Authorized bank mandate debits',

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Hero.module.css';
-import { FaShieldHalved, FaCalendarDays, FaArrowRight, FaCircleCheck } from 'react-icons/fa6';
+import { FaShieldHalved, FaCalendarDays, FaCircleCheck } from 'react-icons/fa6';
 
 // ============================================================================
 // SECTION 1: HERO SLIDER ASSETS
@@ -16,10 +16,10 @@ const slides = [slide1, slide2, slide3, slide4];
 
 // ============================================================================
 // SECTION 2: PROOF STRIP ITEMS (P0 #4)
-// NOTE: None link to unpublished pages. Keep all 6 proof items visible.
+// NOTE: None link to unpublished pages. 'Patented in India' is rendered in the
+// upper patent badge above H1, so proof strip lists external partners & recognitions.
 // ============================================================================
 const PROOF_ITEMS = [
-    'Patented in India',
     'TallyPrime integrated',
     'Easebuzz payment partner',
     'Built on NPCI eMandate and NACH',
@@ -70,7 +70,7 @@ const Hero = () => {
                     Connect invoices with buyer-approved Pay-by-Dates and automated bank mandate collections—built alongside your existing TallyPrime and ERP workflows.
                 </p>
 
-                {/* Primary & Secondary Hero Actions (P0 #1 & Tech #8) */}
+                {/* Primary Hero Action */}
                 <div className={styles.buttonGroup}>
                     <a
                         href="https://calendly.com/giropie/giropie-demo"
@@ -79,15 +79,6 @@ const Hero = () => {
                         className={styles.primaryBtn}
                     >
                         <FaCalendarDays /> Book a 30-minute demo
-                    </a>
-
-                    <a
-                        href="https://live.giropie.com/signup"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.secondaryBtn}
-                    >
-                        Start your trial <FaArrowRight />
                     </a>
                 </div>
             </div>

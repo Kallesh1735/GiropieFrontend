@@ -1,7 +1,5 @@
 import styles from './P1Pages.module.css';
 import {
-    FaCalendarDays,
-    FaArrowRight,
     FaTruckFast,
     FaFileContract,
     FaRoute,
@@ -32,24 +30,6 @@ const Logistics = () => {
                     <p className={styles.heroSubtitle}>
                         Logistics operators, 3PLs, and fleet owners face stretched receivable cycles while fuel, tolls, and driver payouts happen upfront. CollectX on GIROPie structures freight invoice confirmation, discrepancy resolution, and scheduled mandate collection.
                     </p>
-                    <div className={styles.heroActions}>
-                        <a
-                            href="https://calendly.com/giropie/giropie-demo"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.primaryCta}
-                        >
-                            <FaCalendarDays /> Book a 30-minute demo
-                        </a>
-                        <a
-                            href="https://live.giropie.com/signup"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.secondaryCta}
-                        >
-                            Start your trial <FaArrowRight />
-                        </a>
-                    </div>
                 </header>
 
                 {/* 2. Three Pillars of CollectX */}
@@ -112,30 +92,6 @@ const Logistics = () => {
                                 <span><strong>Instant remittance matching:</strong> Eliminate week-long BRS reconciliation across multi-invoice shipper advices.</span>
                             </li>
                         </ul>
-                    </div>
-                </section>
-
-                {/* 4. Bottom CTA */}
-                <section className={styles.bottomCtaBanner}>
-                    <h2>Explore CollectX for Your Fleet or 3PL Operations</h2>
-                    <p>Walk through contracted freight billing and automated shipper mandate workflows with our team.</p>
-                    <div className={styles.heroActions}>
-                        <a
-                            href="https://calendly.com/giropie/giropie-demo"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.bannerOrangeBtn}
-                        >
-                            <FaCalendarDays /> Book a 30-minute demo
-                        </a>
-                        <a
-                            href="https://live.giropie.com/signup"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.bannerGhostBtn}
-                        >
-                            Start your trial <FaArrowRight />
-                        </a>
                     </div>
                 </section>
             </div>

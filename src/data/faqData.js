@@ -155,8 +155,7 @@ GIROPie charges for Receivables Management only.`
         {
             id: 'price-7',
             question: 'How can we evaluate GIROPie for our invoice volume?',
-            answer: `Book a 30-minute walkthrough with our product team to review your current receivable workflow, TallyPrime/ERP setup, and per-invoice mandate pricing.`,
-            hasDemoCta: true
+            answer: `Book a 30-minute walkthrough with our product team to review your current receivable workflow, TallyPrime/ERP setup, and per-invoice mandate pricing.`
         }
     ]
 };

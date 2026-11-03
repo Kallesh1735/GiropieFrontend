@@ -8,8 +8,7 @@ import embeddedSupplyChainImg from '../assets/embeded supply chain.avif';
 import {
     FaLinkSlash,
     FaCalendarXmark,
-    FaCommentsDollar,
-    FaArrowRight
+    FaCommentsDollar
 } from 'react-icons/fa6';
 
 // ============================================================================
@@ -144,7 +143,7 @@ const FeaturesPage = () => {
                             <h3 className={styles.featureTitle}>Live Cash-Flow Dashboard with AR/AP Aging</h3>
                         </div>
                         <p className={styles.featureDesc}>
-                            Providing real-time visualization of receivables, payables, and cash balances, along with invoice-aging insights. Helps distributors and retailers make data-driven decisions around inventory, procurement, and working capital deployment.
+                            Provides real-time visualization of receivables, payables, and cash balances, along with invoice-aging insights. Helps distributors and retailers make data-driven decisions around inventory, procurement, and working capital deployment.
                         </p>
                     </div>
 
@@ -166,12 +165,12 @@ const FeaturesPage = () => {
                         </p>
                     </div>
 
-                    {/* Feature 5 (P0 #10: GOFundZ represented under Features as "Trade finance (coming soon)") */}
+                    {/* Feature 5 (P0 #10: GOFundZ represented under Features as "Trade Finance") */}
                     <div id="trade-finance" className={styles.featureCard}>
                         <div className={styles.featureImgContainer}>
                             <img
                                 src={embeddedSupplyChainImg}
-                                alt="Trade finance (coming soon)"
+                                alt="Trade Finance"
                                 className={styles.featureGraphic}
                             />
                         </div>
@@ -180,35 +179,11 @@ const FeaturesPage = () => {
                                 <span className={styles.categoryTag}>Liquidity</span>
                                 <span className={styles.comingSoonPill}>Coming Soon</span>
                             </div>
-                            <h3 className={styles.featureTitle}>Trade finance (coming soon)</h3>
+                            <h3 className={styles.featureTitle}>Trade Finance</h3>
                         </div>
                         <p className={styles.featureDesc}>
                             Connect eligible invoices to working capital, invoice discounting, and supply chain finance options through regulated lending partners—designed to unlock liquidity without disrupting buyer payment schedules.
                         </p>
-                    </div>
-                </div>
-
-                {/* Bottom Call to Action */}
-                <div className={styles.ctaBox}>
-                    <h2>Ready to Automate Your Cash Flow Operations?</h2>
-                    <p>Get started with GIROPie today and experience connected invoice-to-cash execution.</p>
-                    <div className={styles.ctaBtnGroup}>
-                        <a
-                            href="https://calendly.com/giropie/giropie-demo"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.ctaButton}
-                        >
-                            Book a 30-minute demo <FaArrowRight />
-                        </a>
-                        <a
-                            href="https://live.giropie.com/signup"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.ctaSecondaryButton}
-                        >
-                            Start your trial <FaArrowRight />
-                        </a>
                     </div>
                 </div>
             </section>

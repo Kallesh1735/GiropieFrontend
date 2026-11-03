@@ -272,16 +272,16 @@ const Navbar = () => {
                     </li>
                 </ul>
 
-                {/* Right Actions: Book a Demo CTA + Mobile Hamburger */}
+                {/* Right Actions: Start your trial CTA + Mobile Hamburger */}
                 <div className={styles.navRightActions}>
                     <a
-                        href="https://calendly.com/giropie/giropie-demo"
+                        href="https://live.giropie.com/signup"
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.trialBtn}
                         style={{ textDecoration: 'none' }}
                     >
-                        Book a demo
+                        Start your trial
                     </a>
 
                     <button
@@ -403,22 +403,13 @@ const Navbar = () => {
                     </li>
                 </ul>
 
-                {/* Mobile Drawer Primary & Secondary CTAs */}
+                {/* Mobile Drawer CTA */}
                 <div className={styles.mobileDrawerActions}>
-                    <a
-                        href="https://calendly.com/giropie/giropie-demo"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.mobileTrialBtn}
-                        onClick={closeAllMenus}
-                    >
-                        Book a 30-minute demo
-                    </a>
                     <a
                         href="https://live.giropie.com/signup"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={styles.mobileSecondaryBtn}
+                        className={styles.mobileTrialBtn}
                         onClick={closeAllMenus}
                     >
                         Start your trial &rarr;

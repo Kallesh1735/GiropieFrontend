@@ -110,14 +110,9 @@ const WhyMandates = () => {
                                     <td>Scheduled debit against buyer&apos;s pre-authorized mandate</td>
                                 </tr>
                                 <tr>
-                                    <td>B2B invoice ticket sizes</td>
-                                    <td>Constrained by per-transaction UPI limits &amp; MDR above ₹2,000</td>
-                                    <td>Built for B2B wholesale, distribution, and enterprise invoices</td>
-                                </tr>
-                                <tr>
-                                    <td>Pricing visibility</td>
-                                    <td>Percentage MDR above ₹2,000 (up to cap, per bank terms)</td>
-                                    <td>Subscription + per-transaction fee quoted before mandate request</td>
+                                    <td>Ticket sizes &amp; pricing structure</td>
+                                    <td>Constrained by transaction limits; variable percentage MDR on commercial collections above ₹2,000</td>
+                                    <td>Built for wholesale and enterprise invoice volumes; subscription + upfront per-transaction fee</td>
                                 </tr>
                                 <tr>
                                     <td>Ledger reconciliation</td>

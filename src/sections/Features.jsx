@@ -56,7 +56,7 @@ const Features = () => {
             {/* Section Header */}
             <div className={styles.header}>
                 <div className={styles.badge}>Platform Features</div>
-                <h2>Powering Smarter Cash Flow</h2>
+                <h2>Engineered for Cash Flow Automation</h2>
                 <p>Everything you need to automate your invoice-to-cash process.</p>
             </div>
 

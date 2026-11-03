@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import styles from './FAQ.module.css';
-import { FaChevronDown, FaMagnifyingGlass, FaCalendarDays, FaArrowRight } from 'react-icons/fa6';
+import { FaChevronDown, FaMagnifyingGlass } from 'react-icons/fa6';
 import { CATEGORY_LABELS, faqData } from '../data/faqData';
 
 // ============================================================================
@@ -165,17 +164,6 @@ const FAQ = () => {
                                                     {item.answer.split('\n\n').map((para, pIdx) => (
                                                         <p key={pIdx}>{para}</p>
                                                     ))}
-
-                                                    {item.hasDemoCta && (
-                                                        <a
-                                                            href="https://calendly.com/giropie/giropie-demo"
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            className={styles.calculatorCtaBtn}
-                                                        >
-                                                            <FaCalendarDays /> Book a 30-minute demo
-                                                        </a>
-                                                    )}
                                                 </div>
                                             ) : (
                                                 <p className={styles.placeholderAnswer}>
@@ -193,27 +181,6 @@ const FAQ = () => {
                         </div>
                     )}
                 </div>
-
-                {/* 4. Bottom Consultation Banner */}
-                <section className={styles.bottomBanner}>
-                    <h2>Still have a specific workflow question?</h2>
-                    <p>
-                        Walk through Linked vs. Unlinked buyer modes, TallyPrime integration, or custom enterprise volume in 30 minutes.
-                    </p>
-                    <div className={styles.bannerActions}>
-                        <a
-                            href="https://calendly.com/giropie/giropie-demo"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.bannerPrimaryBtn}
-                        >
-                            <FaCalendarDays /> Book a 30-minute demo
-                        </a>
-                        <Link to="/contact" className={styles.bannerSecondaryBtn}>
-                            Contact Our Team <FaArrowRight />
-                        </Link>
-                    </div>
-                </section>
             </div>
         </div>
     );

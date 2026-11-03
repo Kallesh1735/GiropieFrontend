@@ -1,7 +1,6 @@
 import styles from './P1Pages.module.css';
 import DsoCalculator from '../components/DsoCalculator';
 import {
-    FaCalendarDays,
     FaArrowRight,
     FaBoxesStacked,
     FaHandshake,
@@ -32,15 +31,7 @@ const Distributors = () => {
                         Wholesale distributors lose days of working capital when sales teams double as collection agents. GIROPie connects TallyPrime invoices with dealer Pay-by-Dates and automated bank mandate settlement.
                     </p>
                     <div className={styles.heroActions}>
-                        <a
-                            href="https://calendly.com/giropie/giropie-demo"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.primaryCta}
-                        >
-                            <FaCalendarDays /> Book a 30-minute demo
-                        </a>
-                        <a href="#dso-calculator" className={styles.secondaryCta}>
+                        <a href="#dso-calculator" className={styles.primaryCta}>
                             Estimate DSO Cash Release <FaArrowRight />
                         </a>
                     </div>
@@ -114,21 +105,13 @@ const Distributors = () => {
                 {/* 5. Bottom CTA */}
                 <section className={styles.bottomCtaBanner}>
                     <h2>See How GIROPie Fits Your Distribution Network</h2>
-                    <p>Book a 30-minute walkthrough tailored to your monthly invoice volume and TallyPrime workflow.</p>
+                    <p>Get started with GIROPie tailored to your monthly invoice volume and TallyPrime workflow.</p>
                     <div className={styles.heroActions}>
-                        <a
-                            href="https://calendly.com/giropie/giropie-demo"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.bannerOrangeBtn}
-                        >
-                            <FaCalendarDays /> Book a 30-minute demo
-                        </a>
                         <a
                             href="https://live.giropie.com/signup"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={styles.bannerGhostBtn}
+                            className={styles.bannerOrangeBtn}
                         >
                             Start your trial <FaArrowRight />
                         </a>

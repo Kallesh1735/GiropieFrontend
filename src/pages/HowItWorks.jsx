@@ -1,9 +1,5 @@
 import styles from './P1Pages.module.css';
-import {
-    FaCalendarDays,
-    FaArrowRight,
-    FaCircleCheck
-} from 'react-icons/fa6';
+import { FaCircleCheck } from 'react-icons/fa6';
 
 // ============================================================================
 // HOW IT WORKS PAGE — /how-it-works (P1 #1)
@@ -58,24 +54,6 @@ const HowItWorks = () => {
                     <p className={styles.heroSubtitle}>
                         GIROPie sits alongside your existing ERP and connects invoice confirmation, Pay-by-Date scheduling, NPCI mandate execution, and invoice-level reconciliation.
                     </p>
-                    <div className={styles.heroActions}>
-                        <a
-                            href="https://calendly.com/giropie/giropie-demo"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.primaryCta}
-                        >
-                            <FaCalendarDays /> Book a 30-minute demo
-                        </a>
-                        <a
-                            href="https://live.giropie.com/signup"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.secondaryCta}
-                        >
-                            Start your trial <FaArrowRight />
-                        </a>
-                    </div>
                 </header>
 
                 {/* 2. Four-Step Workflow */}
@@ -133,8 +111,8 @@ const HowItWorks = () => {
                                 </tr>
                                 <tr>
                                     <td>Dispute handling</td>
-                                    <td>Structured pre-due-date dispute pause &amp; resolution</td>
-                                    <td>Managed via supplier notifications and invoice notes</td>
+                                    <td>In-app flagging &amp; early pause before presentation date</td>
+                                    <td>Offline coordination via email notifications and invoice notes</td>
                                 </tr>
                                 <tr>
                                     <td>Bank mandate debit &amp; reconciliation</td>
@@ -154,37 +132,13 @@ const HowItWorks = () => {
                         <ul className={styles.checkList}>
                             <li>
                                 <FaCircleCheck className={styles.checkIcon} />
-                                <span>Disputed invoices pause automatically before presentation so only confirmed invoices are submitted for collection.</span>
+                                <span>Clear return reason codes let finance teams pinpoint the exact return status instantly.</span>
                             </li>
                             <li>
                                 <FaCircleCheck className={styles.checkIcon} />
-                                <span>Buyers can split an invoice across multiple dates when partial cash-flow scheduling is needed.</span>
+                                <span>Flexible rescheduling enables partial milestone splits or extended settlement dates without resetting mandates.</span>
                             </li>
                         </ul>
-                    </div>
-                </section>
-
-                {/* 5. Bottom CTA */}
-                <section className={styles.bottomCtaBanner}>
-                    <h2>See the 4-Step Flow on Your Own Invoice Cycle</h2>
-                    <p>Walk through TallyPrime sync, mandate authorization, and auto-reconciliation in 30 minutes.</p>
-                    <div className={styles.heroActions}>
-                        <a
-                            href="https://calendly.com/giropie/giropie-demo"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.bannerOrangeBtn}
-                        >
-                            <FaCalendarDays /> Book a 30-minute demo
-                        </a>
-                        <a
-                            href="https://live.giropie.com/signup"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.bannerGhostBtn}
-                        >
-                            Start your trial <FaArrowRight />
-                        </a>
                     </div>
                 </section>
             </div>
